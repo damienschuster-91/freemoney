@@ -338,7 +338,7 @@ const RAW_LOCAL = [
 
 export const SCHOLARSHIPS: Scholarship[] = RAW_SCHOLARSHIPS.map(s => ({
   ...s,
-  slug: slugify(s.name),
+  slug: slugify(s.name), tags: [...s.tags] as string[],
 }))
 
 export const LOCAL_DATA: LocalScholarship[] = RAW_LOCAL.map(s => ({
@@ -346,7 +346,7 @@ export const LOCAL_DATA: LocalScholarship[] = RAW_LOCAL.map(s => ({
   slug: "local-" + s.id,
   category: "local" as const,
   gpa: "Varies",
-  renewable: false,
+  renewable: false, tags: [...s.tags] as string[],
 }))
 
 export const ALL_ITEMS = [...SCHOLARSHIPS, ...LOCAL_DATA] as (Scholarship | LocalScholarship)[]
