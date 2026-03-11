@@ -1,5 +1,5 @@
 "use client"
-import { useState, useMemo } from "react"
+import { useState, useMemo, Suspense } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import type { Scholarship } from "@/lib/data"
@@ -13,7 +13,7 @@ const CATS = [
   { id: "other",      label: "Contests & Easy Apply",   icon: "🎯" },
 ]
 
-export default function ScholarshipsClient({
+function ScholarshipsClientInner({
   scholarships,
   total,
 }: {
@@ -153,5 +153,13 @@ export default function ScholarshipsClient({
         )}
       </div>
     </>
+  )
+}
+
+export default function ScholarshipsClient(props: Parameters<typeof ScholarshipsClientInner>[0]) {
+  return (
+    <Suspense fallback={<div style={{padding:"2rem",textAlign:"center"}}>Loading...</div>}>
+      <ScholarshipsClientInner {...props} />
+    </Suspense>
   )
 }
