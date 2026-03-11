@@ -28,7 +28,7 @@ export default function StatePage({ params }: { params: { state: string } }) {
         </p>
         <div className="space-y-4">
           {listings.map(s => (
-            <div key={s.id} className="bg-white rounded-xl border border-gray-200 p-6">
+            <div key={s.id} className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <h2 className="text-lg font-semibold text-gray-900 mb-1">{s.name}</h2>
@@ -48,7 +48,7 @@ export default function StatePage({ params }: { params: { state: string } }) {
                     )}
                   </div>
                 </div>
-                <div className="shrink-0 bg-green-50 text-green-700 text-sm font-semibold px-3 py-1 rounded-full border border-green-200">
+                <div className="shrink-0 bg-green-50 text-green-700 text-sm font-semibold px-3 py-1 rounded-full border border-green-200 whitespace-nowrap">
                   {s.amount}
                 </div>
               </div>
