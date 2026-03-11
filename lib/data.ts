@@ -1,5 +1,5 @@
 // @ts-nocheck
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ TYPES Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// --- TYPES --------------------------------------------------------------------
 
 export type Category = "scholarship" | "grant" | "trade" | "other" | "local"
 
@@ -35,7 +35,7 @@ export interface LocalScholarship {
   renewable: boolean
 }
 
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ HELPERS Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// --- HELPERS ------------------------------------------------------------------
 
 export const slugify = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
@@ -57,7 +57,7 @@ export const ALL_TAGS = [
 ]
 
 
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ RAW DATA Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// --- RAW DATA ----------------------------------------------------------------
 
 const RAW_SCHOLARSHIPS = [
   { id:1,  name:"Gates Scholarship",                              category:"scholarship", amount:"Full Cost of Attendance", deadline:"Sept 15",        gpa:"3.3+",  renewable:true,  url:"https://www.thegatesscholarship.org",                tags:["minority","need-based","full-ride"],           eligibility:"Minority students with exceptional financial need" },
@@ -120,7 +120,7 @@ const RAW_SCHOLARSHIPS = [
   { id:58, name:"NASA Internship & Scholarship",                  category:"other",       amount:"Up to $9,000",           deadline:"Mar 1",          gpa:"3.0+",  renewable:false, url:"https://intern.nasa.gov",                           tags:["STEM","federal","internship"],                 eligibility:"US citizen STEM students interested in NASA's mission" },
   { id:59, name:"Fulbright U.S. Student Program",                 category:"other",       amount:"Full grant for study abroad",deadline:"Oct 11",     gpa:"Any",   renewable:false, url:"https://us.fulbrightonline.org",                    tags:["international","federal","research"],          eligibility:"US citizens seeking to study, research, or teach abroad" },
   { id:60, name:"Dollars for Scholars - Local Chapters",          category:"other",       amount:"$500-$5,000",            deadline:"Varies locally", gpa:"Varies",renewable:false, url:"https://scholarshipamerica.org/dollarforscholars",  tags:["local","community","need-based"],              eligibility:"Local community members - check your city's Dollars for Scholars chapter" },
-  // Ã¢ÂÂÃ¢ÂÂ 50 new scholarships Ã¢ÂÂÃ¢ÂÂ
+  // -- 50 new scholarships --
   { id:61,  name:"Walmart Associate Scholarship",                  category:"scholarship", amount:"$3,500-$13,000",         deadline:"Jan 31",         gpa:"2.5+",  renewable:true,  url:"https://foundation.walmart.com",                    tags:["employee","need-based","merit"],               eligibility:"Walmart or Sam's Club associates and their dependents" },
   { id:62,  name:"Tylenol Future Care Scholarship",                category:"scholarship", amount:"$5,000-$10,000",         deadline:"Jun 30",         gpa:"3.0+",  renewable:false, url:"https://www.tylenol.com/news/scholarship",          tags:["healthcare","merit","community"],              eligibility:"Students pursuing healthcare or related fields" },
   { id:63,  name:"AES Engineering Scholarship",                    category:"scholarship", amount:"$500",                   deadline:"Oct 6",          gpa:"Any",   renewable:false, url:"https://www.aesengineers.com/scholarships.htm",     tags:["STEM","engineering","merit"],                  eligibility:"Students in engineering or a related STEM field" },
@@ -171,7 +171,7 @@ const RAW_SCHOLARSHIPS = [
   { id:108, name:"Boettcher Web Award Scholarship",                category:"scholarship", amount:"$1,000",                 deadline:"Mar",            gpa:"Any",   renewable:false, url:"https://boettcherfoundation.org",                  tags:["tech","STEM","merit"],                         eligibility:"Colorado students pursuing web development, design, or computer science" },
   { id:109, name:"National Press Photographers Foundation",        category:"scholarship", amount:"$1,000-$5,000",          deadline:"Mar 1",          gpa:"Any",   renewable:false, url:"https://nppa.org/scholarships",                    tags:["arts","journalism","writing"],                 eligibility:"Students pursuing careers in photojournalism or visual storytelling" },
   { id:110, name:"Aga Khan Foundation USA Scholarship",            category:"scholarship", amount:"Up to $10,000",          deadline:"Mar 15",         gpa:"3.0+",  renewable:true,  url:"https://www.akdn.org/our-agencies/aga-khan-foundation/usa", tags:["minority","need-based","immigrant"],      eligibility:"Muslim students from developing countries studying in the US" },
-  // Ã¢ÂÂÃ¢ÂÂ Batch 3: 50 more scholarships Ã¢ÂÂÃ¢ÂÂ
+  // -- Batch 3: 50 more scholarships --
   { id:111, name:"American Institute of Architects Scholarship",   category:"scholarship", amount:"$2,500-$7,500",          deadline:"Feb 1",          gpa:"3.0+",  renewable:false, url:"https://www.aia.org/scholarships",                  tags:["arts","architecture","merit"],              eligibility:"Students pursuing a professional degree in architecture" },
   { id:112, name:"CDW Foundation Scholarship",                     category:"scholarship", amount:"$2,500",                 deadline:"Mar 15",         gpa:"2.8+",  renewable:false, url:"https://www.cdwfoundation.org",                    tags:["tech","STEM","need-based"],                 eligibility:"Students pursuing IT, computer science, or related technology degrees" },
   { id:113, name:"National Dairy Shrine Scholarship",              category:"scholarship", amount:"$1,500-$3,500",          deadline:"Apr 15",         gpa:"2.5+",  renewable:false, url:"https://www.dairyshrine.org",                      tags:["agriculture","merit","rural"],              eligibility:"Students pursuing dairy science, animal science, or agriculture" },
@@ -223,7 +223,7 @@ const RAW_SCHOLARSHIPS = [
   { id:159, name:"National Italian American Foundation Scholarship",category:"other",      amount:"$2,500-$12,000",         deadline:"Mar 1",          gpa:"3.5+",  renewable:false, url:"https://www.niaf.org/scholarships",              tags:["heritage","minority","merit"],              eligibility:"Students of Italian heritage or interest in Italian studies" },
   { id:160, name:"Polish American Club of North Jersey Scholarship",category:"other",      amount:"$500-$1,000",            deadline:"Apr 1",          gpa:"2.5+",  renewable:false, url:"https://www.polishamericanclub.org",             tags:["heritage","community","need-based"],        eligibility:"Students of Polish heritage in New Jersey pursuing higher education" },
 
-  // Ã¢ÂÂÃ¢ÂÂ Batch 4: No-Essay & Easy Apply Ã¢ÂÂÃ¢ÂÂ
+  // -- Batch 4: No-Essay & Easy Apply --
   { id:161, name:"Niche $25,000 No Essay Scholarship",               category:"other",       amount:"$25,000",                deadline:"Rolling",  gpa:"N/A",  renewable:false, url:"https://www.niche.com/colleges/scholarships/no-essay-scholarship", tags:["no-essay","open","sweepstakes"],        eligibility:"Any US high school or college student - random drawing, no essay required" },
   { id:162, name:"ScholarshipOwl No Essay Scholarship",              category:"other",       amount:"$2,000/mo",              deadline:"Monthly",  gpa:"N/A",  renewable:false, url:"https://scholarshipowl.com",                        tags:["no-essay","open","monthly"],               eligibility:"Any US student 16+ - monthly random drawing, no GPA or essay required" },
   { id:163, name:"Bold.org No Essay Scholarship",                    category:"other",       amount:"$10,000",                deadline:"Rolling",  gpa:"N/A",  renewable:false, url:"https://bold.org/scholarships/",                   tags:["no-essay","open","merit"],                 eligibility:"Students with a Bold.org profile - awarded based on boldest profile" },
@@ -235,7 +235,7 @@ const RAW_SCHOLARSHIPS = [
   { id:169, name:"CareerFitter Scholarship",                         category:"other",       amount:"$1,000",                 deadline:"Rolling",  gpa:"N/A",  renewable:false, url:"https://www.careerfitter.com/free_test/careerScholarship", tags:["no-essay","open","career"],           eligibility:"Students who complete a free career aptitude test - short form, no essay required" },
   { id:170, name:"Unigo $10K Scholarship",                           category:"other",       amount:"$10,000",                deadline:"Dec 31",   gpa:"N/A",  renewable:false, url:"https://www.unigo.com/scholarships/our-scholarships/10k-scholarship", tags:["no-essay","open","sweepstakes"], eligibility:"US students 13+ who answer a single simple prompt - sweepstakes style" },
 
-  // Ã¢ÂÂÃ¢ÂÂ Batch 5: Disability & Chronic Illness Ã¢ÂÂÃ¢ÂÂ
+  // -- Batch 5: Disability & Chronic Illness --
   { id:171, name:"National Federation of the Blind Scholarship",     category:"scholarship", amount:"$3,000-$12,000",         deadline:"Mar 31",   gpa:"Any",  renewable:false, url:"https://nfb.org/scholarships",                     tags:["disability","blind","merit"],               eligibility:"Legally blind US students in undergraduate or graduate programs" },
   { id:172, name:"American Council of the Blind Scholarship",        category:"scholarship", amount:"$2,000-$7,500",          deadline:"Mar 1",    gpa:"3.0+", renewable:false, url:"https://acb.org/scholarships",                     tags:["disability","blind","merit"],               eligibility:"Legally blind students maintaining 3.0 GPA, full-time or working 32+ hrs/week" },
   { id:173, name:"Sertoma Scholarship for Hard of Hearing or Deaf",  category:"scholarship", amount:"$1,000",                 deadline:"May 1",    gpa:"3.2+", renewable:false, url:"https://sertoma.org/scholarships",                 tags:["disability","deaf","hearing-loss"],          eligibility:"Students with clinically significant 40dB+ bilateral hearing loss pursuing a bachelor's degree" },
@@ -253,7 +253,7 @@ const RAW_SCHOLARSHIPS = [
   { id:185, name:"Millie Brother Scholarship (CODA)",                category:"scholarship", amount:"$1,500-$3,000",          deadline:"Apr 1",    gpa:"Any",  renewable:false, url:"https://www.coda-international.org/scholarship",   tags:["disability","deaf","community","CODA"],      eligibility:"Hearing children of deaf adult(s) - CODAs - pursuing post-secondary education" },
   { id:186, name:"Autism Speaks College Scholarship",                category:"scholarship", amount:"$3,000",                 deadline:"Feb 15",   gpa:"Any",  renewable:false, url:"https://www.autismspeaks.org/scholarships",        tags:["disability","autism","need-based"],          eligibility:"Students on the autism spectrum pursuing college or post-secondary programs" },
 
-  // Ã¢ÂÂÃ¢ÂÂ Batch 6: Creative Contests & Video Ã¢ÂÂÃ¢ÂÂ
+  // -- Batch 6: Creative Contests & Video --
   { id:187, name:"Duck Brand Stuck at Prom Scholarship",             category:"other",       amount:"Up to $15,000",          deadline:"Jun",      gpa:"N/A",  renewable:false, url:"https://www.duckbrand.com/stuck-at-prom",          tags:["creative","contest","open","fashion"],      eligibility:"Students who design and wear a prom outfit made entirely from Duck Tape" },
   { id:188, name:"Create-A-Greeting-Card Scholarship",               category:"other",       amount:"$10,000",                deadline:"Mar 9",    gpa:"N/A",  renewable:false, url:"https://www.gallerycollection.com/greeting-cards-scholarship.htm", tags:["creative","arts","contest","open"],eligibility:"Any student 14+ submitting an original greeting card design" },
   { id:189, name:"Project Yellow Light Scholarship",                 category:"other",       amount:"$2,000-$8,000",          deadline:"Apr 1",    gpa:"N/A",  renewable:false, url:"https://www.projectyellowlight.com",                tags:["video","contest","community","safety"],     eligibility:"HS juniors/seniors and undergrads creating a distracted-driving awareness PSA" },
@@ -264,7 +264,7 @@ const RAW_SCHOLARSHIPS = [
   { id:194, name:"National High School Poetry Contest",              category:"other",       amount:"$100-$1,000",            deadline:"Rolling",  gpa:"N/A",  renewable:false, url:"https://www.poetrysociety.org",                    tags:["writing","poetry","arts","contest"],         eligibility:"High school students submitting original poetry to national competitions" },
   { id:195, name:"Make It With Wool Competition",                    category:"other",       amount:"$500-$2,500",            deadline:"Oct",      gpa:"N/A",  renewable:false, url:"https://www.nationalmakeitwithwool.com",           tags:["contest","creative","agriculture","arts"],   eligibility:"Students creating and wearing a garment made from wool - regional and national rounds" },
 
-  // Ã¢ÂÂÃ¢ÂÂ Batch 7: Women & Adult Learners Ã¢ÂÂÃ¢ÂÂ
+  // -- Batch 7: Women & Adult Learners --
   { id:196, name:"Jeannette Rankin Women's Scholarship",             category:"scholarship", amount:"$2,000+",                deadline:"Mar 1",    gpa:"Any",  renewable:false, url:"https://rankinfoundation.org",                     tags:["women","adult-learner","need-based"],        eligibility:"Low-income women 35+ pursuing technical, vocational, or undergraduate education" },
   { id:197, name:"P.E.O. Scholar Award",                             category:"scholarship", amount:"$20,000",                deadline:"Nov (nom)",gpa:"Any",  renewable:false, url:"https://www.peointernational.org/about-peo-scholar-awards", tags:["women","graduate","merit"],            eligibility:"Women in final two years of doctoral program, nominated by a local P.E.O. chapter" },
   { id:198, name:"Zonta Amelia Earhart Fellowship",                  category:"scholarship", amount:"$10,000",                deadline:"Nov 15",   gpa:"Any",  renewable:false, url:"https://www.zonta.org/WhatWeDo/InternationalPrograms/AmeliaEarhartFellowship", tags:["women","STEM","aviation","graduate"], eligibility:"Women pursuing aerospace science or engineering graduate degrees" },
@@ -273,7 +273,7 @@ const RAW_SCHOLARSHIPS = [
   { id:201, name:"Talbots Scholarship Foundation",                   category:"scholarship", amount:"$1,000-$30,000",         deadline:"Jan",      gpa:"Any",  renewable:false, url:"https://www.talbots.com/scholarship",               tags:["women","adult-learner","merit"],             eligibility:"Women who earned a HS diploma 10+ years ago now pursuing undergraduate education" },
   { id:202, name:"Business and Professional Women's Foundation",     category:"scholarship", amount:"$1,000-$2,500",          deadline:"Apr 1",    gpa:"Any",  renewable:false, url:"https://bpwfoundation.org/education-equity-fund",  tags:["women","adult-learner","need-based"],        eligibility:"Women 25+ pursuing post-secondary education with demonstrated financial need" },
 
-  // Ã¢ÂÂÃ¢ÂÂ Batch 8: Niche / Heritage / Unique Ã¢ÂÂÃ¢ÂÂ
+  // -- Batch 8: Niche / Heritage / Unique --
   { id:203, name:"Evans Scholars Program",                           category:"scholarship", amount:"Full Tuition",           deadline:"Oct 17",   gpa:"3.0+", renewable:true,  url:"https://www.wgaesf.org/evans-scholars-program",    tags:["full-ride","caddie","merit","need-based"],   eligibility:"HS seniors who worked as golf caddies 2+ years with strong academics and financial need" },
   { id:204, name:"Stephen Phillips Memorial Scholarship",            category:"scholarship", amount:"Up to $17,000",          deadline:"Mar 1",    gpa:"3.0+", renewable:true,  url:"https://www.s-p-m-f.org",                          tags:["need-based","New England","leadership"],     eligibility:"Permanent New England residents demonstrating financial need, leadership, and work ethic" },
   { id:205, name:"American Radio Relay League (Ham Radio) Scholarship",category:"scholarship",amount:"$500-$10,000",         deadline:"Jan 15",   gpa:"Any",  renewable:false, url:"https://www.arrl.org/scholarship-program",         tags:["STEM","radio","tech","open"],                eligibility:"Students holding any class amateur (ham) radio license pursuing post-secondary education" },
