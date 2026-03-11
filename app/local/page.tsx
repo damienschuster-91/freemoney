@@ -22,7 +22,7 @@ const STATE_NAMES: Record<string, string> = {
   VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming",
 }
 
-function buildStateIndex() {
+function buildStateIndex() { // counts all entries
   const idx: Record<string, number> = {}
   for (const item of LOCAL_DATA) {
     idx[item.state] = (idx[item.state] || 0) + 1
