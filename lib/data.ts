@@ -376,7 +376,7 @@ const RAW_LOCAL = [
 
 export const LOCAL_DATA: LocalScholarship[] = RAW_LOCAL.map(s => ({
   ...s,
-  slug: "local-" + s.id,
+  slug: s.state.toLowerCase() + "-" + s.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
   category: "local" as const,
   gpa: "Varies",
   renewable: false, tags: [...s.tags] as string[],
