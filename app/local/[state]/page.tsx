@@ -37,30 +37,27 @@ export default function StatePage({ params }: { params: { state: string } }) {
         </p>
         <div style={{display:"flex",flexDirection:"column",gap:"16px"}}>
           {listings.map(s => (
-            <div key={s.id} style={{background:"white",borderRadius:"14px",border:"1px solid #e2e8f0",padding:"24px 28px",boxShadow:"0 1px 4px rgba(0,0,0,0.06)"}}>
-              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:"16px",flexWrap:"wrap"}}>
-                <div style={{flex:1,minWidth:"200px"}}>
-                  <h2 style={{fontSize:"18px",fontWeight:700,color:"#0f172a",marginBottom:"6px",marginTop:0}}>{s.name}</h2>
-                  <p style={{color:"#475569",fontSize:"14px",marginBottom:"14px",marginTop:0,lineHeight:1.5}}>{s.eligibility}</p>
-                  <div style={{display:"flex",gap:"16px",flexWrap:"wrap",alignItems:"center",fontSize:"13px",color:"#64748b"}}>
-                    <span>Deadline: {s.deadline}</span>
-                    <span>Location: {s.city}</span>
-                    <a href={s.propublica_url || s.url} target="_blank" rel="noopener noreferrer" style={{fontWeight:600,color:"white",background:"#2563eb",padding:"5px 14px",borderRadius:"6px",textDecoration:"none"}}>
-                      View Foundation
-                    </a>
+            <Link key={s.id} href={"/local/" + s.state.toLowerCase() + "/" + s.slug} style={{textDecoration:"none"}}>
+              <div style={{background:"white",borderRadius:"14px",border:"1px solid #e2e8f0",padding:"24px 28px",boxShadow:"0 1px 4px rgba(0,0,0,0.06)",cursor:"pointer"}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:"16px",flexWrap:"wrap"}}>
+                  <div style={{flex:1,minWidth:"200px"}}>
+                    <h2 style={{fontSize:"18px",fontWeight:700,color:"#0f172a",marginBottom:"6px",marginTop:0}}>{s.name}</h2>
+                    <p style={{color:"#475569",fontSize:"14px",marginBottom:"14px",marginTop:0,lineHeight:1.5}}>{s.eligibility}</p>
+                    <div style={{display:"flex",gap:"16px",flexWrap:"wrap",fontSize:"13px",color:"#64748b"}}>
+                      <span>Deadline: {s.deadline}</span>
+                      <span>Location: {s.city}</span>
+                    </div>
+                  </div>
+                  <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:"8px",flexShrink:0}}>
+                    <div style={{background:"#f0fdf4",color:"#15803d",fontSize:"14px",fontWeight:700,padding:"6px 14px",borderRadius:"999px",border:"1px solid #bbf7d0",whiteSpace:"nowrap"}}>
+                      {s.amount}
+                    </div>
+                    <span style={{fontSize:"13px",color:"#2563eb",fontWeight:600}}>View details &rarr;</span>
                   </div>
                 </div>
-                <div style={{background:"#f0fdf4",color:"#15803d",fontSize:"14px",fontWeight:700,padding:"6px 14px",borderRadius:"999px",border:"1px solid #bbf7d0",whiteSpace:"nowrap",flexShrink:0}}>
-                  {s.amount}
-                </div>
               </div>
-            </div>
+            </Link>
           ))}
-        </div>
-        <div style={{marginTop:"48px",padding:"24px",background:"#eff6ff",borderRadius:"12px",border:"1px solid #bfdbfe"}}>
-          <p style={{margin:0,fontSize:"14px",color:"#1e40af",lineHeight:1.6}}>
-            <strong>How to apply:</strong> Click View Foundation to see the IRS 990 filing on ProPublica, which includes contact info and website links. Then visit the foundation directly to apply.
-          </p>
         </div>
       </div>
     </div>
