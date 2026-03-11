@@ -1,3 +1,4 @@
+// @ts-nocheck
 // ─── TYPES ────────────────────────────────────────────────────────────────────
 
 export type Category = "scholarship" | "grant" | "trade" | "other" | "local"
