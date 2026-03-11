@@ -11,30 +11,51 @@ export default function StatePage({ params }: { params: { state: string } }) {
   const stateUpper = params.state.toUpperCase()
   const listings = LOCAL_DATA.filter(l => l.state.toUpperCase() === stateUpper)
   if (!listings.length) notFound()
-  const stateName = listings[0].county?.split("/")[0] || stateUpper
 
   return (
-    <main style={{maxWidth:900,margin:"0 auto",padding:"2rem 1rem"}}>
-      <Link href="/local" style={{color:"#1a3a6b",fontSize:"0.9rem"}}>â All States</Link>
-      <h1 style={{marginTop:"1rem",fontSize:"2rem",fontWeight:700}}>{stateUpper} Local Foundation Scholarships</h1>
-      <p style={{color:"#666",marginBottom:"2rem"}}>{listings.length} verified foundation{listings.length>1?"s":""} â all confirmed via IRS 990 filings</p>
-      <div style={{display:"flex",flexDirection:"column",gap:"1rem"}}>
-        {listings.map(l => (
-          <div key={l.id} style={{border:"1px solid #e2e8f0",borderRadius:12,padding:"1.5rem",background:"#fff"}}>
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"0.5rem"}}>
-              <h2 style={{fontSize:"1.2rem",fontWeight:600,color:"#0d1f3c",margin:0}}>{l.name}</h2>
-              <span style={{background:"#e8f5e9",color:"#2e7d32",padding:"0.25rem 0.75rem",borderRadius:20,fontSize:"0.85rem",fontWeight:600}}>{l.amount}</span>
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <div className="mb-6">
+          <Link href="/local" className="text-blue-600 hover:underline text-sm">
+            &larr; All States
+          </Link>
+        </div>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          {stateUpper} Local Foundation Scholarships
+        </h1>
+        <p className="text-gray-500 mb-8">
+          {listings.length} verified foundation{listings.length !== 1 ? "s" : ""} &mdash; all confirmed via IRS 990 filings
+        </p>
+        <div className="space-y-4">
+          {listings.map(s => (
+            <div key={s.id} className="bg-white rounded-xl border border-gray-200 p-6">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">
+                  <h2 className="text-lg font-semibold text-gray-900 mb-1">{s.name}</h2>
+                  <p className="text-gray-600 text-sm mb-3">{s.eligibility}</p>
+                  <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                    <span>Deadline: {s.deadline}</span>
+                    <span>Location: {s.city}</span>
+                    <a href={s.url} target="_blank" rel="noopener noreferrer"
+                      className="font-semibold text-blue-700 hover:underline">
+                      Apply
+                    </a>
+                    {s.propublica_url && (
+                      <a href={s.propublica_url} target="_blank" rel="noopener noreferrer"
+                        className="text-gray-400 hover:underline">
+                        990 Filing
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <div className="shrink-0 bg-green-50 text-green-700 text-sm font-semibold px-3 py-1 rounded-full border border-green-200">
+                  {s.amount}
+                </div>
+              </div>
             </div>
-            <p style={{color:"#555",margin:"0.75rem 0",fontSize:"0.95rem"}}>{l.eligibility}</p>
-            <div style={{display:"flex",gap:"1rem",flexWrap:"wrap",alignItems:"center"}}>
-              <span style={{color:"#666",fontSize:"0.85rem"}}>ð {l.deadline}</span>
-              {l.county && <span style={{color:"#666",fontSize:"0.85rem"}}>ð {l.county}</span>}
-              <a href={l.url} target="_blank" rel="noopener noreferrer" style={{color:"#1a3a6b",fontSize:"0.85rem",fontWeight:600}}>Apply â</a>
-              {l.propublica_url && <a href={l.propublica_url} target="_blank" rel="noopener noreferrer" style={{color:"#666",fontSize:"0.8rem"}}>ð 990 Filing</a>}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </main>
+    </div>
   )
 }
