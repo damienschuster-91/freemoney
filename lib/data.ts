@@ -305,7 +305,6 @@ export const SCHOLARSHIPS: Scholarship[] = RAW_SCHOLARSHIPS.map(s => ({
 
 
 
-export const SCHOLARSHIPS: Scholarship[] = RAW_SCHOLARSHIPS.map(s => ({ ...s, slug: slugify(s.name), tags: [...s.tags] as string[] }))
 
 const RAW_LOCAL = [
   { id:"ny-1", name:"New York Community Trust", state:"NY", county:"New York City", city:"New York", amount:"$1,000-$10,000", deadline:"Varies", eligibility:"New York City residents - 200+ funds across all 5 boroughs", url:"https://www.nycommunitytrust.org/scholarships", propublica_url:"https://projects.propublica.org/nonprofits/organizations/131684331", tags:["community","local","need-based"] },
