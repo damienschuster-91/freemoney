@@ -262,7 +262,7 @@ function FoundationQueue() {
 
   const S = {
     label: { fontSize: 10, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.1em", color: "#8a9abb", marginBottom: 5 },
-    input: { width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 13, fontWeight: 500 } as React.CSSProperties,
+    input: { width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 13, fontWeight: 500 },
     card: { background: "#fff", border: "1.5px solid #e8edf5", borderRadius: 14, overflow: "hidden" as const },
   }
 
