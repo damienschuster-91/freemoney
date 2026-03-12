@@ -101,9 +101,10 @@ const CAT_COLOR: Record<string, string> = {
   trade: "#e85d26",
   other: "#6b3fa0",
   local: "#1a7a4a",
+  standalone: "#7a4a1a",
 }
 const CAT_ICON: Record<string, string> = {
-  scholarship: "[S]", grant: "[G]", trade: "[T]", other: "[O]", local: "[L]",
+  scholarship: "[S]", grant: "[G]", trade: "[T]", other: "[O]", local: "[L]", standalone: "[B]",
 }
 
 // --- MAIN CMS ----------------------------------------------------------------
@@ -576,6 +577,18 @@ function BlogTracker() {
                 placeholder="e.g. Gates Scholarship" style={{ width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 14, fontWeight: 600 }} />
             </div>
             <div>
+              <div style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#8a9abb", marginBottom: 5 }}>Type</div>
+              <select value={newPost.category ?? "scholarship"} onChange={e => setNewPost(p => ({ ...p, category: e.target.value }))}
+                style={{ width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 13 }}>
+                <option value="scholarship">Scholarship</option>
+                <option value="grant">Grant</option>
+                <option value="local">Local / Foundation</option>
+                <option value="trade">Trade</option>
+                <option value="other">Other</option>
+                <option value="standalone">Standalone Blog Post</option>
+              </select>
+            </div>
+            <div>
               <div style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#8a9abb", marginBottom: 5 }}>Amount</div>
               <input value={newPost.amount ?? ""} onChange={e => setNewPost(p => ({ ...p, amount: e.target.value }))}
                 placeholder="$1,000" style={{ width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 13 }} />
@@ -598,7 +611,7 @@ function BlogTracker() {
               const id = "blog-custom-" + Date.now()
               setPosts([...posts, {
                 id, scholarship_id: 0, name: newPost.name ?? "", amount: newPost.amount ?? "",
-                url: newPost.url ?? "", tags: [], category: "scholarship", eligibility: "",
+                url: newPost.url ?? "", tags: [], category: newPost.category ?? "scholarship", eligibility: "",
                 status: "draft", notes: newPost.notes ?? "", blog_url: "", created_at: new Date().toISOString(),
               }])
               setNewPost({}); setShowNewForm(false)
