@@ -35,7 +35,7 @@ export default function CityPage({ params }: { params: { state: string; city: st
   const listings = LOCAL_DATA.filter(s => s.state.toUpperCase() === stateUpper && citySlug(s.city) === params.city)
   if (!listings.length) notFound()
   const cityName = listings[0].city
-  const otherCities = [...new Set(LOCAL_DATA.filter(s => s.state.toUpperCase() === stateUpper && citySlug(s.city) !== params.city).map(s => s.city))].slice(0, 6)
+  const otherCities = Array.from(new Set(LOCAL_DATA.filter(s => s.state.toUpperCase() === stateUpper && citySlug(s.city) !== params.city).map(s => s.city))).slice(0, 6)
   return (
     <div style={{ minHeight:"100vh", background:"#f9fafb" }}>
       <div style={{ maxWidth:"860px", margin:"0 auto", padding:"48px 20px" }}>
