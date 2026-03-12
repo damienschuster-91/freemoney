@@ -212,7 +212,7 @@ function FoundationQueue() {
     setDraft({
       name: item.name, amount: item.amount, deadline: item.deadline ?? "",
       eligibility: item.eligibility, url: item.url ?? "",
-      county: item.county ?? "", tags: (item.tags ?? []).join(", "), notes: item.notes ?? "",
+      county: item.county ?? "", tags: (item.tags ?? []).join(", ") as unknown as string[], notes: item.notes ?? "",
     })
   }
 
