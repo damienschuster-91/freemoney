@@ -295,7 +295,7 @@ const RAW_SCHOLARSHIPS = [
 
 export const SCHOLARSHIPS: Scholarship[] = RAW_SCHOLARSHIPS.map(s => ({
   ...s,
-  slug: s.id,
+  slug: String(s.id),
   tags: [...s.tags] as string[],
 }))
 
