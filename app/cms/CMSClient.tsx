@@ -497,6 +497,10 @@ function FoundationQueue() {
 
 // --- BLOG TRACKER ------------------------------------------------------------
 
+function toSlug(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
+}
+
 function BlogTracker() {
   const [posts, setPosts, postsReady] = useLocalStorage<BlogPost[]>("cms:blog", [])
   const [filter, setFilter] = useState<"all" | "draft" | "written" | "published">("all")
@@ -516,6 +520,33 @@ function BlogTracker() {
 
   const updatePost = (id: string, changes: Partial<BlogPost>) => {
     setPosts(posts.map(p => p.id === id ? { ...p, ...changes } : p))
+  }
+
+  const publishStandalone = async (post: BlogPost) => {
+    const slug = toSlug(post.name)
+    await fetch("/api/blog/publish", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        slug,
+        title: post.name,
+        description: post.notes?.slice(0, 160) || post.name,
+        date: new Date().toISOString().slice(0, 10),
+        tags: post.tags,
+        content: post.notes || "",
+      }),
+    })
+    updatePost(post.id, { status: "published", blog_url: `/blog/${slug}` })
+  }
+
+  const unpublishStandalone = async (post: BlogPost) => {
+    const slug = toSlug(post.name)
+    await fetch("/api/blog/publish", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slug }),
+    })
+    updatePost(post.id, { status: "written", blog_url: "" })
   }
 
   const filtered = useMemo(() => posts.filter(p => {
@@ -695,15 +726,18 @@ function BlogTracker() {
                       </button>
                     )}
                     {post.status === "written" && (
-                      <button onClick={() => updatePost(post.id, { status: "published" })} style={{ background: "#1a7a4a", color: "#fff", border: "none", padding: "6px 12px", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>
+                      <button onClick={() => post.category === "standalone" ? publishStandalone(post) : updatePost(post.id, { status: "published" })} style={{ background: "#1a7a4a", color: "#fff", border: "none", padding: "6px 12px", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>
                         Publish
                       </button>
                     )}
                     {post.status === "published" && (
-                      <button onClick={() => updatePost(post.id, { status: "written" })} className="btn-ghost" style={{ fontSize: 11, padding: "5px 9px", whiteSpace: "nowrap" }}>Unpublish</button>
+                      <button onClick={() => post.category === "standalone" ? unpublishStandalone(post) : updatePost(post.id, { status: "written" })} className="btn-ghost" style={{ fontSize: 11, padding: "5px 9px", whiteSpace: "nowrap" }}>Unpublish</button>
                     )}
                     {post.status !== "draft" && (
-                      <button onClick={() => updatePost(post.id, { status: "draft" })} className="btn-ghost" style={{ fontSize: 11, padding: "5px 9px" }}>Reset</button>
+                      <button onClick={() => {
+                        if (post.category === "standalone" && post.status === "published") unpublishStandalone(post).then(() => updatePost(post.id, { status: "draft" }))
+                        else updatePost(post.id, { status: "draft" })
+                      }} className="btn-ghost" style={{ fontSize: 11, padding: "5px 9px" }}>Reset</button>
                     )}
                     <button onClick={() => { setEditId(post.id); setDraft({ name: post.name, notes: post.notes, blog_url: post.blog_url }) }} className="btn-ghost" style={{ padding: "6px 10px", fontSize: 12 }}>Edit</button>
                     <a href={post.url} target="_blank" rel="noopener noreferrer" title="Official page" className="btn-ghost" style={{ padding: "6px 10px", fontSize: 12, textDecoration: "none" }}>Link</a>
