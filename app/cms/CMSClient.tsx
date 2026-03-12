@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from "react"
 import { SCHOLARSHIPS } from "@/lib/data"
 
-// âââ TYPES ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ TYPES Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 type Status = "pending" | "approved" | "rejected"
 
@@ -55,7 +55,7 @@ interface ImportMeta {
   states: string[]
 }
 
-// âââ STORAGE HOOK ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ STORAGE HOOK Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 function useLocalStorage<T>(key: string, defaultValue: T): [T, (v: T) => void, boolean] {
   const [data, setData] = useState<T>(defaultValue)
@@ -77,7 +77,7 @@ function useLocalStorage<T>(key: string, defaultValue: T): [T, (v: T) => void, b
   return [data, save, ready]
 }
 
-// âââ BLOG SEED âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ BLOG SEED Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 const BLOG_SEED: BlogPost[] = SCHOLARSHIPS.slice(0, 60).map(s => ({
   id: `blog-${s.id}`,
@@ -103,10 +103,10 @@ const CAT_COLOR: Record<string, string> = {
   local: "#1a7a4a",
 }
 const CAT_ICON: Record<string, string> = {
-  scholarship: "ð", grant: "ð¸", trade: "ð§", other: "ð¯", local: "ð",
+  scholarship: "Ã°ÂÂÂ", grant: "Ã°ÂÂÂ¸", trade: "Ã°ÂÂÂ§", other: "Ã°ÂÂÂ¯", local: "Ã°ÂÂÂ",
 }
 
-// âââ MAIN CMS ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ MAIN CMS Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 export default function CMSClient() {
   const [mainTab, setMainTab] = useState<"foundations" | "blog">("foundations")
@@ -126,7 +126,7 @@ export default function CMSClient() {
             fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.8)",
             letterSpacing: "0.08em", textTransform: "uppercase",
           }}>
-            ð Internal Tool â Not Indexed
+            Ã°ÂÂÂ Internal Tool Ã¢ÂÂ Not Indexed
           </div>
           <h1 style={{
             fontFamily: "'Fraunces', serif",
@@ -140,8 +140,8 @@ export default function CMSClient() {
           {/* Tab bar */}
           <div style={{ display: "flex", gap: 4, background: "rgba(255,255,255,0.08)", padding: 4, borderRadius: 12, width: "fit-content" }}>
             {[
-              { id: "foundations" as const, label: "ð Foundation Queue" },
-              { id: "blog" as const, label: "âï¸ Blog Tracker" },
+              { id: "foundations" as const, label: "Ã°ÂÂÂ Foundation Queue" },
+              { id: "blog" as const, label: "Ã¢ÂÂÃ¯Â¸Â Blog Tracker" },
             ].map(t => (
               <button key={t.id} onClick={() => setMainTab(t.id)} style={{
                 padding: "9px 18px", borderRadius: 9, border: "none", cursor: "pointer",
@@ -166,7 +166,7 @@ export default function CMSClient() {
   )
 }
 
-// âââ FOUNDATION QUEUE ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ FOUNDATION QUEUE Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 function FoundationQueue() {
   const [pending,  setPending,  pendingReady]  = useLocalStorage<Foundation[]>("cms:pending",  [])
@@ -243,7 +243,7 @@ function FoundationQueue() {
       }
       setPending([...pending, ...fresh.map(l => ({ ...l, _status: "pending" as const, _imported_at: new Date().toISOString() }))])
       setMeta([...meta, { imported_at: new Date().toISOString(), new_added: fresh.length, dupes_skipped: dupes, states: parsed.meta?.states_scraped ?? [] }])
-      setImportMsg({ type: "ok", text: `â Imported ${fresh.length} listings${dupes ? ` (${dupes} dupes skipped)` : ""}.` })
+      setImportMsg({ type: "ok", text: `Ã¢ÂÂ Imported ${fresh.length} listings${dupes ? ` (${dupes} dupes skipped)` : ""}.` })
       setImportTxt("")
     } catch (e: unknown) {
       setImportMsg({ type: "err", text: `Error: ${e instanceof Error ? e.message : String(e)}` })
@@ -266,7 +266,7 @@ function FoundationQueue() {
     card: { background: "#fff", border: "1.5px solid #e8edf5", borderRadius: 14, overflow: "hidden" as const },
   }
 
-  if (!ready) return <div style={{ padding: "60px 0", textAlign: "center", color: "#8a9abb" }}>Loadingâ¦</div>
+  if (!ready) return <div style={{ padding: "60px 0", textAlign: "center", color: "#8a9abb" }}>LoadingÃ¢ÂÂ¦</div>
 
   return (
     <div>
@@ -294,7 +294,7 @@ function FoundationQueue() {
           padding: "11px 16px", background: "#fff", borderRadius: 12, border: "1.5px solid #e8edf5",
           listStyle: "none", display: "flex", alignItems: "center", gap: 8,
         }}>
-          <span style={{ color: "#1a3a6b", fontSize: 16 }}>â¬</span> Import Scraper Results
+          <span style={{ color: "#1a3a6b", fontSize: 16 }}>Ã¢Â¬Â</span> Import Scraper Results
         </summary>
         <div style={{ background: "#fff", border: "1.5px solid #e8edf5", borderTop: "none", borderRadius: "0 0 12px 12px", padding: 16 }}>
           <p style={{ fontSize: 12, color: "#8a9abb", marginBottom: 10, lineHeight: 1.7 }}>
@@ -311,7 +311,7 @@ function FoundationQueue() {
               className="btn-primary"
               style={{ background: importTxt.trim() ? "#1a3a6b" : "#c5cde0", cursor: importTxt.trim() ? "pointer" : "default" }}
             >
-              {importing ? "Importingâ¦" : "Import"}
+              {importing ? "ImportingÃ¢ÂÂ¦" : "Import"}
             </button>
             {importMsg && (
               <span style={{ fontSize: 13, fontWeight: 600, color: { ok: "#1a7a4a", warn: "#b87a00", err: "#c0392b" }[importMsg.type] }}>
@@ -328,8 +328,8 @@ function FoundationQueue() {
           <div style={{ fontSize: 10, color: "#3a7a55", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 6 }}>Import History</div>
           {[...meta].reverse().slice(0, 4).map((m, i) => (
             <div key={i} style={{ fontSize: 13, color: "#5a8a6a", lineHeight: 1.9, fontWeight: 500 }}>
-              â {new Date(m.imported_at).toLocaleDateString()} â <strong style={{ color: "#0d2e1a" }}>{m.new_added}</strong> new
-              {m.states?.length > 0 && <span style={{ color: "#8aa89a" }}> ({m.states.slice(0, 6).join(", ")}{m.states.length > 6 ? "â¦" : ""})</span>}
+              Ã¢ÂÂ {new Date(m.imported_at).toLocaleDateString()} Ã¢ÂÂ <strong style={{ color: "#0d2e1a" }}>{m.new_added}</strong> new
+              {m.states?.length > 0 && <span style={{ color: "#8aa89a" }}> ({m.states.slice(0, 6).join(", ")}{m.states.length > 6 ? "Ã¢ÂÂ¦" : ""})</span>}
             </div>
           ))}
         </div>
@@ -343,7 +343,7 @@ function FoundationQueue() {
         <div style={{ display: "flex", gap: 8 }}>
           {tab === "approved" && approved.length > 0 && (
             <button onClick={exportApproved} className="btn-ghost" style={{ fontSize: 12, padding: "5px 12px" }}>
-              â Export JSON
+              Ã¢ÂÂ Export JSON
             </button>
           )}
           {tab === "rejected" && rejected.length > 0 && (
@@ -378,7 +378,7 @@ function FoundationQueue() {
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ display: "flex", gap: 7, flexWrap: "wrap", marginBottom: 6 }}>
                     <span style={{ fontSize: 11, fontWeight: 600, background: "#f4f6fb", color: "#5a6a8a", padding: "2px 9px", borderRadius: 100 }}>
-                      {item.state} Â· {item.city}
+                      {item.state} ÃÂ· {item.city}
                     </span>
                     {item.ntee_code === "B82" && (
                       <span style={{ fontSize: 10, fontWeight: 700, color: "#1a7a4a", background: "#e8f5ee", padding: "2px 8px", borderRadius: 100 }}>B82 Scholarship</span>
@@ -393,33 +393,33 @@ function FoundationQueue() {
                   }
 
                   <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-                    <span style={{ fontSize: 13, color: "#8a9abb", fontWeight: 500 }}>ð° <strong style={{ color: "#1a3a6b" }}>${(item.grants_paid ?? 0).toLocaleString()}</strong> grants paid</span>
-                    <span style={{ fontSize: 13, color: "#8a9abb", fontWeight: 500 }}>ð {item.latest_year}</span>
-                    {item._score && <span style={{ fontSize: 13, color: "#8a9abb", fontWeight: 500 }}>â­ score {item._score}</span>}
+                    <span style={{ fontSize: 13, color: "#8a9abb", fontWeight: 500 }}>Ã°ÂÂÂ° <strong style={{ color: "#1a3a6b" }}>${(item.grants_paid ?? 0).toLocaleString()}</strong> grants paid</span>
+                    <span style={{ fontSize: 13, color: "#8a9abb", fontWeight: 500 }}>Ã°ÂÂÂ {item.latest_year}</span>
+                    {item._score && <span style={{ fontSize: 13, color: "#8a9abb", fontWeight: 500 }}>Ã¢Â­Â score {item._score}</span>}
                   </div>
                 </div>
 
                 <div style={{ display: "flex", gap: 6, flexShrink: 0, flexWrap: "wrap", justifyContent: "flex-end" }}>
                   {tab === "pending" && !isEditing && (<>
-                    <button onClick={() => approve(item)} className="btn-primary" style={{ padding: "7px 14px", fontSize: 12, background: "#1a7a4a" }}>â Approve</button>
-                    <button onClick={() => startEdit(item)} className="btn-ghost" style={{ padding: "7px 12px", fontSize: 12 }}>â Edit</button>
-                    <button onClick={() => reject(item)} className="btn-ghost" style={{ padding: "7px 12px", fontSize: 12, color: "#c0392b", borderColor: "#f5c5c5" }}>â</button>
+                    <button onClick={() => approve(item)} className="btn-primary" style={{ padding: "7px 14px", fontSize: 12, background: "#1a7a4a" }}>Ã¢ÂÂ Approve</button>
+                    <button onClick={() => startEdit(item)} className="btn-ghost" style={{ padding: "7px 12px", fontSize: 12 }}>Ã¢ÂÂ Edit</button>
+                    <button onClick={() => reject(item)} className="btn-ghost" style={{ padding: "7px 12px", fontSize: 12, color: "#c0392b", borderColor: "#f5c5c5" }}>Ã¢ÂÂ</button>
                   </>)}
                   {tab === "pending" && isEditing && (<>
                     <button onClick={() => saveEdit(item)} className="btn-primary" style={{ padding: "7px 14px", fontSize: 12, background: "#1a7a4a" }}>Save</button>
                     <button onClick={() => setEditId(null)} className="btn-ghost" style={{ padding: "7px 12px", fontSize: 12 }}>Cancel</button>
                   </>)}
                   {tab === "approved" && (<>
-                    <button onClick={() => startEdit(item)} className="btn-ghost" style={{ padding: "7px 10px", fontSize: 12 }}>â</button>
-                    <button onClick={() => unapprove(item)} className="btn-ghost" style={{ padding: "7px 10px", fontSize: 11 }}>â© Unpublish</button>
+                    <button onClick={() => startEdit(item)} className="btn-ghost" style={{ padding: "7px 10px", fontSize: 12 }}>Ã¢ÂÂ</button>
+                    <button onClick={() => unapprove(item)} className="btn-ghost" style={{ padding: "7px 10px", fontSize: 11 }}>Ã¢ÂÂ© Unpublish</button>
                   </>)}
                   {tab === "approved" && isEditing && (<>
                     <button onClick={() => saveEdit(item)} className="btn-primary" style={{ padding: "7px 14px", fontSize: 12, background: "#1a7a4a" }}>Save</button>
                     <button onClick={() => setEditId(null)} className="btn-ghost" style={{ padding: "7px 12px", fontSize: 12 }}>Cancel</button>
                   </>)}
-                  {tab === "rejected" && <button onClick={() => restore(item)} className="btn-ghost" style={{ padding: "7px 10px", fontSize: 12 }}>â© Restore</button>}
+                  {tab === "rejected" && <button onClick={() => restore(item)} className="btn-ghost" style={{ padding: "7px 10px", fontSize: 12 }}>Ã¢ÂÂ© Restore</button>}
                   <button onClick={() => setExpandId(isExpanded ? null : item.ein)} className="btn-ghost" style={{ padding: "7px 10px", fontSize: 12 }}>
-                    {isExpanded ? "â²" : "â¼"}
+                    {isExpanded ? "Ã¢ÂÂ²" : "Ã¢ÂÂ¼"}
                   </button>
                 </div>
               </div>
@@ -458,12 +458,12 @@ function FoundationQueue() {
                 <div style={{ padding: "14px 18px", borderTop: "1px solid #f0f2f8" }}>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10, marginBottom: 12 }}>
                     {[
-                      { l: "Est. Amount", v: item.amount ?? "â" },
+                      { l: "Est. Amount", v: item.amount ?? "Ã¢ÂÂ" },
                       { l: "990 Grants", v: `$${(item.grants_paid ?? 0).toLocaleString()}` },
-                      { l: "Filing Year", v: String(item.latest_year ?? "â") },
+                      { l: "Filing Year", v: String(item.latest_year ?? "Ã¢ÂÂ") },
                       { l: "Revenue", v: `$${(item.revenue_raw ?? 0).toLocaleString()}` },
-                      { l: "NTEE", v: item.ntee_code ?? "â" },
-                      { l: "County", v: item.county ?? "â" },
+                      { l: "NTEE", v: item.ntee_code ?? "Ã¢ÂÂ" },
+                      { l: "County", v: item.county ?? "Ã¢ÂÂ" },
                     ].map(({ l, v }) => (
                       <div key={l} style={{ background: "#f8faff", borderRadius: 8, padding: "9px 11px" }}>
                         <div style={S.label}>{l}</div>
@@ -477,13 +477,13 @@ function FoundationQueue() {
                   </div>
                   <div style={{ display: "flex", gap: 12 }}>
                     {item.propublica_url && (
-                      <a href={item.propublica_url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#e85d26", fontWeight: 700, textDecoration: "none" }}>ð ProPublica â</a>
+                      <a href={item.propublica_url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#e85d26", fontWeight: 700, textDecoration: "none" }}>Ã°ÂÂÂ ProPublica Ã¢ÂÂ</a>
                     )}
                     {item.url && item.url !== "#" && (
-                      <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#0f6eb4", fontWeight: 700, textDecoration: "none" }}>ð Website â</a>
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#0f6eb4", fontWeight: 700, textDecoration: "none" }}>Ã°ÂÂÂ Website Ã¢ÂÂ</a>
                     )}
                   </div>
-                  {item.notes && <div style={{ marginTop: 10, fontSize: 12, color: "#5a6a8a", background: "#fffbee", padding: "8px 12px", borderRadius: 8 }}>ð {item.notes}</div>}
+                  {item.notes && <div style={{ marginTop: 10, fontSize: 12, color: "#5a6a8a", background: "#fffbee", padding: "8px 12px", borderRadius: 8 }}>Ã°ÂÂÂ {item.notes}</div>}
                 </div>
               )}
             </div>
@@ -494,7 +494,7 @@ function FoundationQueue() {
   )
 }
 
-// âââ BLOG TRACKER ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ BLOG TRACKER Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 function BlogTracker() {
   const [posts, setPosts, postsReady] = useLocalStorage<BlogPost[]>("cms:blog", [])
@@ -502,6 +502,8 @@ function BlogTracker() {
   const [search, setSearch] = useState("")
   const [editId, setEditId] = useState<string | null>(null)
   const [draft, setDraft] = useState<Partial<BlogPost>>({})
+  const [showNewForm, setShowNewForm] = useState(false)
+  const [newPost, setNewPost] = useState<Partial<BlogPost>>({})
 
   // Seed on first load
   useEffect(() => {
@@ -528,18 +530,18 @@ function BlogTracker() {
   }
 
   const statusColor = { draft: "#e85d26", written: "#0f6eb4", published: "#1a7a4a" }
-  const statusLabel = { draft: "âï¸ Draft", written: "ð Written", published: "â Published" }
+  const statusLabel = { draft: "Ã¢ÂÂÃ¯Â¸Â Draft", written: "Ã°ÂÂÂ Written", published: "Ã¢ÂÂ Published" }
 
-  if (!postsReady) return <div style={{ padding: "60px 0", textAlign: "center", color: "#8a9abb" }}>Loadingâ¦</div>
+  if (!postsReady) return <div style={{ padding: "60px 0", textAlign: "center", color: "#8a9abb" }}>LoadingÃ¢ÂÂ¦</div>
 
   return (
     <div>
       {/* Stats bar */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12, marginBottom: 24 }}>
         {([
-          { k: "draft" as const, label: "To Write", icon: "âï¸" },
-          { k: "written" as const, label: "Written", icon: "ð" },
-          { k: "published" as const, label: "Published", icon: "â" },
+          { k: "draft" as const, label: "To Write", icon: "Ã¢ÂÂÃ¯Â¸Â" },
+          { k: "written" as const, label: "Written", icon: "Ã°ÂÂÂ" },
+          { k: "published" as const, label: "Published", icon: "Ã¢ÂÂ" },
         ]).map(x => (
           <div key={x.k} onClick={() => setFilter(filter === x.k ? "all" : x.k)} style={{
             background: filter === x.k ? statusColor[x.k] : "#fff",
@@ -552,15 +554,66 @@ function BlogTracker() {
         ))}
         <div style={{ background: "#fff", border: "1.5px solid #e8edf5", borderRadius: 12, padding: "14px 16px" }}>
           <div style={{ fontSize: 26, fontWeight: 800, color: "#1a3a6b", fontFamily: "'Fraunces', serif" }}>{posts.length}</div>
-          <div style={{ fontSize: 11, color: "#8a9abb", fontWeight: 600, marginTop: 2 }}>ð Total</div>
+          <div style={{ fontSize: 11, color: "#8a9abb", fontWeight: 600, marginTop: 2 }}>Ã°ÂÂÂ Total</div>
         </div>
       </div>
 
       {/* Search + filter */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+        <button onClick={() => setShowNewForm(f => !f)} style={{ background: "#1a3a6b", color: "#fff", border: "none", padding: "9px 18px", borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
+          {showNewForm ? "✕ Cancel" : "+ New Post"}
+        </button>
+      </div>
+      
+      {/* New Post */}
+      {showNewForm ? (
+        <div style={{ background: "#fff", border: "1.5px solid #1a3a6b", borderRadius: 14, padding: "18px 20px", marginBottom: 20 }}>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: 16, fontWeight: 700, color: "#0d1f3c", marginBottom: 14 }}>✍️ New Blog Post</div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+            <div style={{ gridColumn: "1/-1" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#8a9abb", marginBottom: 5 }}>Title / Scholarship Name</div>
+              <input value={newPost.name ?? ""} onChange={e => setNewPost(p => ({ ...p, name: e.target.value }))}
+                placeholder="e.g. Gates Scholarship" style={{ width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 14, fontWeight: 600 }} />
+            </div>
+            <div>
+              <div style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#8a9abb", marginBottom: 5 }}>Amount</div>
+              <input value={newPost.amount ?? ""} onChange={e => setNewPost(p => ({ ...p, amount: e.target.value }))}
+                placeholder="$1,000" style={{ width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 13 }} />
+            </div>
+            <div>
+              <div style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#8a9abb", marginBottom: 5 }}>URL</div>
+              <input value={newPost.url ?? ""} onChange={e => setNewPost(p => ({ ...p, url: e.target.value }))}
+                placeholder="https://..." style={{ width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 13 }} />
+            </div>
+            <div style={{ gridColumn: "1/-1" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#8a9abb", marginBottom: 5 }}>Notes</div>
+              <textarea value={newPost.notes ?? ""} onChange={e => setNewPost(p => ({ ...p, notes: e.target.value }))}
+                placeholder="SEO angle, outline, key points…"
+                style={{ width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 13, height: 60, resize: "vertical" }} />
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 10, marginTop: 14 }}>
+            <button onClick={() => {
+              if (!newPost.name?.trim()) return
+              const id = "blog-custom-" + Date.now()
+              setPosts(prev => [...prev, {
+                id, scholarship_id: 0, name: newPost.name ?? "", amount: newPost.amount ?? "",
+                url: newPost.url ?? "", tags: [], category: "scholarship", eligibility: "",
+                status: "draft", notes: newPost.notes ?? "", blog_url: "", created_at: new Date().toISOString(),
+              }])
+              setNewPost({}); setShowNewForm(false)
+            }} style={{ background: "#1a3a6b", color: "#fff", border: "none", padding: "9px 20px", borderRadius: 9, fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
+              Add Post
+            </button>
+            <button onClick={() => { setNewPost({}); setShowNewForm(false) }} className="btn-ghost" style={{ padding: "9px 16px", fontSize: 13 }}>Cancel</button>
+          </div>
+        </div>
+      ) : null}
+
       <div style={{ display: "flex", gap: 10, marginBottom: 16, flexWrap: "wrap", alignItems: "center" }}>
         <div style={{ position: "relative", flex: 1, minWidth: 200 }}>
-          <span style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "#8a9abb", fontSize: 14 }}>ð</span>
-          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search scholarshipsâ¦"
+          <span style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "#8a9abb", fontSize: 14 }}>Ã°ÂÂÂ</span>
+          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search scholarshipsÃ¢ÂÂ¦"
             style={{ width: "100%", background: "#fff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "10px 12px 10px 36px", borderRadius: 10, fontSize: 14, fontWeight: 500 }} />
         </div>
         <div style={{ display: "flex", gap: 6 }}>
@@ -568,7 +621,7 @@ function BlogTracker() {
             <button key={f} onClick={() => setFilter(f)} className={`pill${filter === f ? " active" : ""}`} style={{ fontSize: 12, padding: "6px 14px" }}>{f}</button>
           ))}
         </div>
-        {search && <button onClick={() => setSearch("")} className="btn-ghost" style={{ fontSize: 12, padding: "7px 12px", color: "#e85d26", borderColor: "#e85d26" }}>â clear</button>}
+        {search && <button onClick={() => setSearch("")} className="btn-ghost" style={{ fontSize: 12, padding: "7px 12px", color: "#e85d26", borderColor: "#e85d26" }}>Ã¢ÂÂ clear</button>}
       </div>
 
       <div style={{ fontSize: 13, color: "#8a9abb", fontWeight: 500, marginBottom: 16 }}>
@@ -591,8 +644,8 @@ function BlogTracker() {
                     <span style={{ fontSize: 10, fontWeight: 700, color: cc, background: `${cc}14`, padding: "2px 8px", borderRadius: 100, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       {CAT_ICON[post.category]} {post.category}
                     </span>
-                    <span style={{ fontSize: 11, color: "#8a9abb", fontWeight: 500 }}>ð° {post.amount}</span>
-                    {post.deadline && <span style={{ fontSize: 11, color: "#8a9abb", fontWeight: 500 }}>ð {post.deadline}</span>}
+                    <span style={{ fontSize: 11, color: "#8a9abb", fontWeight: 500 }}>Ã°ÂÂÂ° {post.amount}</span>
+                    {post.deadline && <span style={{ fontSize: 11, color: "#8a9abb", fontWeight: 500 }}>Ã°ÂÂÂ {post.deadline}</span>}
                   </div>
 
                   {isEditing ? (
@@ -600,20 +653,20 @@ function BlogTracker() {
                       <input value={draft.name ?? ""} onChange={e => setDraft(d => ({ ...d, name: e.target.value }))}
                         style={{ width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 15, fontWeight: 700, fontFamily: "'Fraunces', serif" }} />
                       <textarea value={draft.notes ?? ""} onChange={e => setDraft(d => ({ ...d, notes: e.target.value }))}
-                        placeholder="Blog post notes, outline, key SEO pointsâ¦"
+                        placeholder="Blog post notes, outline, key SEO pointsÃ¢ÂÂ¦"
                         style={{ width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 13, height: 72, resize: "vertical" }} />
                       <input value={draft.blog_url ?? ""} onChange={e => setDraft(d => ({ ...d, blog_url: e.target.value }))}
-                        placeholder="Published blog URL (once live)â¦"
+                        placeholder="Published blog URL (once live)Ã¢ÂÂ¦"
                         style={{ width: "100%", background: "#f8faff", border: "1.5px solid #e2e7f0", color: "#0d1f3c", padding: "9px 12px", borderRadius: 8, fontSize: 13 }} />
                     </div>
                   ) : (
                     <>
                       <div style={{ fontFamily: "'Fraunces', serif", fontSize: 15, fontWeight: 700, color: "#0d1f3c", lineHeight: 1.3, marginBottom: 4 }}>{post.name}</div>
                       <div style={{ fontSize: 12, color: "#8a9abb", lineHeight: 1.5, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 1, WebkitBoxOrient: "vertical" as const }}>{post.eligibility}</div>
-                      {post.notes && <div style={{ fontSize: 12, color: "#5a6a8a", background: "#f8faff", padding: "5px 10px", borderRadius: 8, marginTop: 4 }}>ð {post.notes}</div>}
+                      {post.notes && <div style={{ fontSize: 12, color: "#5a6a8a", background: "#f8faff", padding: "5px 10px", borderRadius: 8, marginTop: 4 }}>Ã°ÂÂÂ {post.notes}</div>}
                       {post.blog_url && (
                         <a href={post.blog_url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#1a7a4a", display: "inline-block", marginTop: 4, fontWeight: 700, textDecoration: "none" }}>
-                          ð {post.blog_url}
+                          Ã°ÂÂÂ {post.blog_url}
                         </a>
                       )}
                     </>
@@ -630,18 +683,18 @@ function BlogTracker() {
                     )}
                     {post.status === "written" && (
                       <button onClick={() => updatePost(post.id, { status: "published" })} style={{ background: "#1a7a4a", color: "#fff", border: "none", padding: "6px 12px", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>
-                        Publish â
+                        Publish Ã¢ÂÂ
                       </button>
                     )}
                     {post.status === "published" && (
-                      <button onClick={() => updatePost(post.id, { status: "written" })} className="btn-ghost" style={{ fontSize: 11, padding: "5px 9px", whiteSpace: "nowrap" }}>â© Unpublish</button>
+                      <button onClick={() => updatePost(post.id, { status: "written" })} className="btn-ghost" style={{ fontSize: 11, padding: "5px 9px", whiteSpace: "nowrap" }}>Ã¢ÂÂ© Unpublish</button>
                     )}
                     {post.status !== "draft" && (
                       <button onClick={() => updatePost(post.id, { status: "draft" })} className="btn-ghost" style={{ fontSize: 11, padding: "5px 9px" }}>Reset</button>
                     )}
-                    <button onClick={() => { setEditId(post.id); setDraft({ name: post.name, notes: post.notes, blog_url: post.blog_url }) }} className="btn-ghost" style={{ padding: "6px 10px", fontSize: 12 }}>â</button>
-                    <a href={post.url} target="_blank" rel="noopener noreferrer" title="Official page" className="btn-ghost" style={{ padding: "6px 10px", fontSize: 12, textDecoration: "none" }}>ð</a>
-                    <a href={`/blog/${post.id.replace("blog-", "")}`} target="_blank" rel="noopener noreferrer" title="Blog post" className="btn-ghost" style={{ padding: "6px 10px", fontSize: 12, textDecoration: "none" }}>ð</a>
+                    <button onClick={() => { setEditId(post.id); setDraft({ name: post.name, notes: post.notes, blog_url: post.blog_url }) }} className="btn-ghost" style={{ padding: "6px 10px", fontSize: 12 }}>Ã¢ÂÂ</button>
+                    <a href={post.url} target="_blank" rel="noopener noreferrer" title="Official page" className="btn-ghost" style={{ padding: "6px 10px", fontSize: 12, textDecoration: "none" }}>Ã°ÂÂÂ</a>
+                    <a href={`/blog/${post.id.replace("blog-", "")}`} target="_blank" rel="noopener noreferrer" title="Blog post" className="btn-ghost" style={{ padding: "6px 10px", fontSize: 12, textDecoration: "none" }}>Ã°ÂÂÂ</a>
                   </>) : (<>
                     <button onClick={() => { updatePost(post.id, { name: draft.name, notes: draft.notes, blog_url: draft.blog_url }); setEditId(null) }} className="btn-primary" style={{ padding: "7px 14px", fontSize: 12 }}>Save</button>
                     <button onClick={() => setEditId(null)} className="btn-ghost" style={{ padding: "7px 12px", fontSize: 12 }}>Cancel</button>
@@ -655,7 +708,7 @@ function BlogTracker() {
 
       {filtered.length === 0 && (
         <div style={{ textAlign: "center", padding: "60px 0", color: "#8a9abb" }}>
-          <div style={{ fontSize: 40, marginBottom: 12 }}>ð</div>
+          <div style={{ fontSize: 40, marginBottom: 12 }}>Ã°ÂÂÂ</div>
           <div style={{ fontSize: 15, fontWeight: 500 }}>No posts match your filter.</div>
           <button className="btn-ghost" style={{ marginTop: 12 }} onClick={() => { setFilter("all"); setSearch("") }}>Clear filters</button>
         </div>
