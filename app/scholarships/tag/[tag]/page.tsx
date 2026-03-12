@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: { tag: string } }):
   return {
     title: `${label} Scholarships — ${matches.length} Awards | ${SITE_NAME}`,
     description: `Browse ${matches.length} verified ${label} scholarships. All free to apply, no registration required.`,
-    alternates: { canonical: `/scholarships/${tag}` },
+    alternates: { canonical: `/scholarships/tag/${tag}` },
   }
 }
 
@@ -53,7 +53,7 @@ export default function TagPage({ params }: { params: { tag: string } }) {
         {related.length > 0 && (
           <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginBottom:40 }}>
             {related.map(t => (
-              <Link key={t} href={`/scholarships/${t}`} style={{ background:"white", border:"1px solid #e2e8f0", borderRadius:999, padding:"4px 12px", fontSize:13, color:"#475569", textDecoration:"none", fontWeight:500 }}>
+              <Link key={t} href={`/scholarships/tag/${t}`} style={{ background:"white", border:"1px solid #e2e8f0", borderRadius:999, padding:"4px 12px", fontSize:13, color:"#475569", textDecoration:"none", fontWeight:500 }}>
                 {t.replace(/-/g, " ")}
               </Link>
             ))}

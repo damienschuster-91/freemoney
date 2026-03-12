@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: { state: string; ci
   return {
     title: `${cityName} Scholarships — ${listings.length} Local Foundations | ${SITE_NAME}`,
     description: `${listings.length} IRS 990-verified local foundation scholarships in ${cityName}, ${stateUpper}. Less competition than national awards.`,
-    alternates: { canonical: `/local/${params.state}/${params.city}` },
+    alternates: { canonical: `/local/${params.state}/city/${params.city}` },
   }
 }
 
@@ -80,7 +80,7 @@ export default function CityPage({ params }: { params: { state: string; city: st
             <h2 style={{ fontSize:18, fontWeight:700, color:"#0f172a", marginBottom:16 }}>Other {stateUpper} Cities</h2>
             <div style={{ display:"flex", gap:10, flexWrap:"wrap" }}>
               {otherCities.map(city => (
-                <Link key={city} href={`/local/${params.state}/${citySlug(city)}`} style={{ background:"white", border:"1px solid #e2e8f0", borderRadius:10, padding:"8px 16px", fontSize:14, color:"#2563eb", textDecoration:"none", fontWeight:500 }}>{city} →</Link>
+                <Link key={city} href={`/local/${params.state}/city/${citySlug(city)}`} style={{ background:"white", border:"1px solid #e2e8f0", borderRadius:10, padding:"8px 16px", fontSize:14, color:"#2563eb", textDecoration:"none", fontWeight:500 }}>{city} →</Link>
               ))}
               <Link href={`/local/${params.state}`} style={{ background:"#eff6ff", border:"1px solid #bfdbfe", borderRadius:10, padding:"8px 16px", fontSize:14, color:"#1d4ed8", textDecoration:"none", fontWeight:600 }}>All {stateUpper} →</Link>
             </div>
