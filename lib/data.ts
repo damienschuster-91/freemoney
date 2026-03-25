@@ -293,11 +293,17 @@ const RAW_SCHOLARSHIPS = [
 
 // ─── PROCESSED EXPORTS ────────────────────────────────────────────────────────
 
-export const SCHOLARSHIPS: Scholarship[] = RAW_SCHOLARSHIPS.map(s => ({
-  ...s,
-  slug: String(s.id),
-  tags: [...s.tags] as string[],
-}))
+export const SCHOLARSHIPS: Scholarship[] = (() => {
+  const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+  const bases = RAW_SCHOLARSHIPS.map(s => slugify(s.name))
+  const counts: Record<string, number> = {}
+  bases.forEach(b => { counts[b] = (counts[b] || 0) + 1 })
+  return RAW_SCHOLARSHIPS.map((s, i) => ({
+    ...s,
+    slug: counts[bases[i]] > 1 ? `${bases[i]}-${s.id}` : bases[i],
+    tags: [...s.tags] as string[],
+  }))
+})()
 
 
 
@@ -416,13 +422,20 @@ const RAW_LOCAL = [
   { id:"wi-3", name:"Madison Community Foundation", state:"WI", county:"Dane", city:"Madison", amount:"$500-$5,000", deadline:"Feb 28", eligibility:"Dane County and greater Madison area students", url:"https://www.madisoncf.org/scholarships", propublica_url:"https://projects.propublica.org/nonprofits/organizations/396038248", tags:["community","local","need-based"] },
 ]
 
-export const LOCAL_DATA: LocalScholarship[] = RAW_LOCAL.map(s => ({
-  ...s,
-  slug: s.state.toLowerCase() + "-" + s.id + "-" + s.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
-  category: "local" as const,
-  gpa: "Varies",
-  renewable: false, tags: [...s.tags] as string[],
-}))
+export const LOCAL_DATA: LocalScholarship[] = (() => {
+  const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+  const bases = RAW_LOCAL.map(s => slugify(s.name))
+  const counts: Record<string, number> = {}
+  bases.forEach(b => { counts[b] = (counts[b] || 0) + 1 })
+  return RAW_LOCAL.map((s, i) => ({
+    ...s,
+    slug: counts[bases[i]] > 1 ? `${bases[i]}-${s.state.toLowerCase()}` : bases[i],
+    category: "local" as const,
+    gpa: "Varies",
+    renewable: false,
+    tags: [...s.tags] as string[],
+  }))
+})()
 
 export const ALL_ITEMS = [...SCHOLARSHIPS, ...LOCAL_DATA] as (Scholarship | LocalScholarship)[]
 
