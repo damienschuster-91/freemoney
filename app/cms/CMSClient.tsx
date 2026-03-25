@@ -127,7 +127,7 @@ export default function CMSClient() {
             fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.8)",
             letterSpacing: "0.08em", textTransform: "uppercase",
           }}>
-            [CMS] Internal Tool — Not Indexed
+            [CMS] Internal Tool - Not Indexed
           </div>
           <h1 style={{
             fontFamily: "'Fraunces', serif",
@@ -329,7 +329,7 @@ function FoundationQueue() {
           <div style={{ fontSize: 10, color: "#3a7a55", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 6 }}>Import History</div>
           {[...meta].reverse().slice(0, 4).map((m, i) => (
             <div key={i} style={{ fontSize: 13, color: "#5a8a6a", lineHeight: 1.9, fontWeight: 500 }}>
-              &gt; {new Date(m.imported_at).toLocaleDateString()} — <strong style={{ color: "#0d2e1a" }}>{m.new_added}</strong> new
+              &gt; {new Date(m.imported_at).toLocaleDateString()} - <strong style={{ color: "#0d2e1a" }}>{m.new_added}</strong> new
               {m.states?.length > 0 && <span style={{ color: "#8aa89a" }}> ({m.states.slice(0, 6).join(", ")}{m.states.length > 6 ? "..." : ""})</span>}
             </div>
           ))}
@@ -420,7 +420,7 @@ function FoundationQueue() {
                   </>)}
                   {tab === "rejected" && <button onClick={() => restore(item)} className="btn-ghost" style={{ padding: "7px 10px", fontSize: 12 }}>Restore</button>}
                   <button onClick={() => setExpandId(isExpanded ? null : item.ein)} className="btn-ghost" style={{ padding: "7px 10px", fontSize: 12 }}>
-                    {isExpanded ? "▲" : "▼"}
+                    {isExpanded ? "Hide" : "Show"}
                   </button>
                 </div>
               </div>
@@ -459,12 +459,12 @@ function FoundationQueue() {
                 <div style={{ padding: "14px 18px", borderTop: "1px solid #f0f2f8" }}>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10, marginBottom: 12 }}>
                     {[
-                      { l: "Est. Amount", v: item.amount ?? "—" },
+                      { l: "Est. Amount", v: item.amount ?? "-" },
                       { l: "990 Grants", v: `$${(item.grants_paid ?? 0).toLocaleString()}` },
-                      { l: "Filing Year", v: String(item.latest_year ?? "—") },
+                      { l: "Filing Year", v: String(item.latest_year ?? "-") },
                       { l: "Revenue", v: `$${(item.revenue_raw ?? 0).toLocaleString()}` },
-                      { l: "NTEE", v: item.ntee_code ?? "—" },
-                      { l: "County", v: item.county ?? "—" },
+                      { l: "NTEE", v: item.ntee_code ?? "-" },
+                      { l: "County", v: item.county ?? "-" },
                     ].map(({ l, v }) => (
                       <div key={l} style={{ background: "#f8faff", borderRadius: 8, padding: "9px 11px" }}>
                         <div style={S.label}>{l}</div>
