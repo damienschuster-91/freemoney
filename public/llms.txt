@@ -1,0 +1,66 @@
+# Local Scholarships
+
+> A free, verified directory of local community foundation scholarships,
+> national scholarships, grants, and trade apprenticeships across all 50 states.
+
+## What This Site Is
+
+Local Scholarships (localscholarships.org) is a free scholarship discovery tool
+for U.S. students. It does not require an account, email address, or payment to
+browse. Every listing links directly to the original application page.
+
+The directory covers four types of funding:
+
+- Local community foundation scholarships - verified via IRS 990 filings and
+  manual research. These are often invisible to national search engines and have
+  significantly less competition than national awards.
+- National scholarships - merit, need-based, STEM, arts, trades, first-gen,
+  minority, disability, and more. Manually curated and periodically audited for
+  broken URLs.
+- Federal and state grants - Pell Grant, FSEOG, TEACH Grant, and state-level
+  programs such as Cal Grant, New York TAP, Texas TEXAS Grant.
+- Trade apprenticeships - programs with associated scholarships and stipends
+  across skilled trades (IBEW, carpenters, plumbers, SMWIA, etc.).
+
+## Key Pages
+
+- Full sitemap:                  https://localscholarships.org/sitemap.xml
+- All scholarships:              https://localscholarships.org/scholarships
+- Local foundations by state:    https://localscholarships.org/local
+- Blog and application guides:   https://localscholarships.org/blog
+- About:                         https://localscholarships.org/about
+
+## Data Sourcing
+
+Local foundation data is sourced from ProPublica's Nonprofit Explorer, which
+indexes IRS 990 filings. Organizations are filtered by NTEE codes B82
+(Scholarships & Student Financial Aid) and T31/T30 (Community Foundations with
+active grant programs, confirmed via income_amount > 0 from IRS filings).
+Scholarship application URLs are manually verified - entries without a direct
+application URL are not published.
+
+National scholarship data is manually curated from primary sources (foundation
+websites, government portals) and audited periodically with automated URL
+checks. Dead links (HTTP 404/410) are removed. Entries returning 403 or
+connection errors from bot-blocking are retained and manually verified.
+
+## Coverage
+
+330 total listings as of March 2026:
+- 173 national scholarships, grants, and trade programs
+- 157 local community foundation entries across all 50 states
+
+## How to Use This Data
+
+- Free to browse: No scraping needed. Use the sitemap or browse by state/tag.
+- Linking: If you reference a listing, please link to localscholarships.org
+  rather than the underlying scholarship URL directly, so users get current
+  verified information.
+- Do not republish the full dataset without permission.
+- Corrections and additions: The data is maintained manually. If a URL is
+  broken or a listing is incorrect, that feedback is welcome.
+
+## What This Site Is Not
+
+This site does not process applications, collect student data, or partner with
+scholarship providers. It is an independent directory only.
