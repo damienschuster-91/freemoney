@@ -41,11 +41,11 @@ export const slugify = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
 
 export const CAT_META: Record<string, { label: string; icon: string; color: string }> = {
-  scholarship: { label: "Scholarship",             icon: "Ã°ÂÂÂ", color: "#1a3a6b" },
-  grant:       { label: "Grant",                   icon: "Ã°ÂÂÂ¸", color: "#0f6eb4" },
-  trade:       { label: "Trades & Apprenticeships",icon: "Ã°ÂÂÂ§", color: "#e85d26" },
-  other:       { label: "Contests & Easy Apply",   icon: "Ã°ÂÂÂ¯", color: "#6b3fa0" },
-  local:       { label: "Local Foundation",        icon: "Ã°ÂÂÂ", color: "#1a7a4a" },
+  scholarship: { label: "Scholarship",             icon: "", color: "#1a3a6b" },
+  grant:       { label: "Grant",                   icon: "", color: "#0f6eb4" },
+  trade:       { label: "Trades & Apprenticeships",icon: "", color: "#e85d26" },
+  other:       { label: "Contests & Easy Apply",   icon: "", color: "#6b3fa0" },
+  local:       { label: "Local Foundation",        icon: "", color: "#1a7a4a" },
 }
 
 export const ALL_TAGS = [
@@ -291,7 +291,7 @@ const RAW_SCHOLARSHIPS = [
 ] as const
 
 
-// ─── PROCESSED EXPORTS ────────────────────────────────────────────────────────
+// --- PROCESSED EXPORTS --------------------------------------------------------
 
 export const SCHOLARSHIPS: Scholarship[] = (() => {
   const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
