@@ -36,8 +36,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="footer-brand">
               <div className="footer-logo">$</div>
               <div>
-                <div className="footer-name">Free Money Directory</div>
-                <div className="footer-tagline">220+ verified opportunities. Always free.</div>
+                <div className="footer-name">LocalScholarships.org</div>
+                <div className="footer-tagline">355+ verified opportunities. Always free.</div>
               </div>
             </div>
             <div className="footer-links">

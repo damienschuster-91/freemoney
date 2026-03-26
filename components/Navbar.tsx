@@ -19,7 +19,10 @@ export default function Navbar() {
       <Link href="/" className="navbar-brand">
         <div className="navbar-logo">$</div>
         <div>
-          <div className="navbar-site-name">Free Money</div>
+          <div className="navbar-site-name">
+            LocalScholarships
+            <span style={{ color: "#7eb8f7", fontWeight: 700 }}>.org</span>
+          </div>
           <div className="navbar-tagline">Scholarship Directory</div>
         </div>
       </Link>
