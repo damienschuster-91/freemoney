@@ -54,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (seenCities.has(key)) return []
     seenCities.add(key)
     return [{
-      url: `${SITE_URL}/local/${s.state.toLowerCase()}/city/${citySlug(s.city)}`,
+      url: `${SITE_URL}/local/${s.state.toLowerCase()}/${citySlug(s.city)}-scholarships`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.55,
