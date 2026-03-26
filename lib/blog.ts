@@ -6,8 +6,10 @@ export interface BlogPost {
   title: string
   description: string
   date: string
+  reviewed: string   // falls back to date if not present in frontmatter
   tags: string[]
   content: string
+  readingTime: number  // estimated minutes at ~200 wpm
 }
 
 const BLOG_DIR = path.join(process.cwd(), "content/blog")
@@ -30,6 +32,11 @@ function parseFrontmatter(raw: string): { meta: Record<string, string | string[]
   return { meta, content: match[2].trim() }
 }
 
+function calcReadingTime(content: string): number {
+  const words = content.trim().split(/\s+/).length
+  return Math.max(1, Math.ceil(words / 200))
+}
+
 export function getAllPosts(): BlogPost[] {
   if (!fs.existsSync(BLOG_DIR)) return []
   return fs.readdirSync(BLOG_DIR)
@@ -38,13 +45,16 @@ export function getAllPosts(): BlogPost[] {
       const slug = f.replace(/\.md$/, "")
       const raw = fs.readFileSync(path.join(BLOG_DIR, f), "utf8")
       const { meta, content } = parseFrontmatter(raw)
+      const date = (meta.date as string) || ""
       return {
         slug,
-        title: (meta.title as string) || slug,
+        title:       (meta.title as string) || slug,
         description: (meta.description as string) || "",
-        date: (meta.date as string) || "",
-        tags: (meta.tags as string[]) || [],
+        date,
+        reviewed:    (meta.reviewed as string) || date,
+        tags:        (meta.tags as string[]) || [],
         content,
+        readingTime: calcReadingTime(content),
       }
     })
     .sort((a, b) => (a.date > b.date ? -1 : 1))
@@ -55,13 +65,16 @@ export function getPostBySlug(slug: string): BlogPost | null {
   if (!fs.existsSync(filePath)) return null
   const raw = fs.readFileSync(filePath, "utf8")
   const { meta, content } = parseFrontmatter(raw)
+  const date = (meta.date as string) || ""
   return {
     slug,
-    title: (meta.title as string) || slug,
+    title:       (meta.title as string) || slug,
     description: (meta.description as string) || "",
-    date: (meta.date as string) || "",
-    tags: (meta.tags as string[]) || [],
+    date,
+    reviewed:    (meta.reviewed as string) || date,
+    tags:        (meta.tags as string[]) || [],
     content,
+    readingTime: calcReadingTime(content),
   }
 }
 

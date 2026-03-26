@@ -3,7 +3,6 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { SCHOLARSHIPS, CAT_META } from "@/lib/data"
 import { getAllPosts, getPostBySlug, renderMarkdown } from "@/lib/blog"
-import { SITE_NAME } from "@/lib/utils"
 
 export async function generateStaticParams() {
   const scholarshipSlugs = SCHOLARSHIPS.map(s => ({ slug: s.slug }))
@@ -18,10 +17,47 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = getPostBySlug(params.slug)
-  if (post) return { title: `${post.title} | ${SITE_NAME}`, description: post.description, alternates: { canonical: `/blog/${post.slug}` } }
+  if (post) return {
+    title: post.title,
+    description: post.description,
+    alternates: { canonical: `/blog/${post.slug}` },
+  }
   const s = SCHOLARSHIPS.find(x => x.slug === params.slug)
   if (!s) return {}
-  return { title: `How to Win the ${s.name} (${s.amount})`, description: `Complete guide to the ${s.name}: eligibility, application tips. ${s.amount} available.`, alternates: { canonical: `/blog/${s.slug}` } }
+  return {
+    title: `How to Win the ${s.name} (${s.amount})`,
+    description: `Complete guide to the ${s.name}: eligibility, application tips. ${s.amount} available.`,
+    alternates: { canonical: `/blog/${s.slug}` },
+  }
+}
+
+function formatDate(iso: string) {
+  if (!iso) return ""
+  const d = new Date(iso)
+  return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+}
+
+function AuthorBio({ reviewed }: { reviewed: string }) {
+  return (
+    <div className="author-bio">
+      <div className="author-avatar">D</div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div className="author-name">Damien</div>
+        <div className="author-role">Founder, LocalScholarships.org</div>
+        <p className="author-bio-text">
+          I built LocalScholarships.org after missing out on dozens of local scholarships in high school. Every listing is free, verified, and updated regularly.
+        </p>
+        <div className="author-links">
+          <Link href="/about" style={{ color:"var(--blue)", textDecoration:"underline" }}>
+            Read my full story
+          </Link>
+          {reviewed && (
+            <span>Last reviewed: {formatDate(reviewed)}</span>
+          )}
+        </div>
+      </div>
+    </div>
+  )
 }
 
 function generateArticle(s: (typeof SCHOLARSHIPS)[number]) {
@@ -57,18 +93,23 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <span>›</span>
             <span style={{ color:"#0f172a", fontWeight:600 }}>{post.title}</span>
           </div>
-          <h1 style={{ fontSize:32, fontWeight:800, color:"#0f172a", lineHeight:1.2, marginBottom:12 }}>{post.title}</h1>
-          {post.date && <div style={{ fontSize:13, color:"#94a3b8", marginBottom:8 }}>{post.date}</div>}
+          <h1 style={{ fontFamily:"'Fraunces',serif", fontSize:"clamp(28px,5vw,44px)", fontWeight:900, color:"#0d1f3c", lineHeight:1.15, letterSpacing:"-0.02em", marginBottom:16 }}>{post.title}</h1>
+          <div style={{ display:"flex", gap:10, alignItems:"center", fontSize:13, color:"#94a3b8", fontWeight:600, marginBottom:16 }}>
+            {post.date && <span>{post.date}</span>}
+            {post.date && <span>·</span>}
+            <span>{post.readingTime} min read</span>
+          </div>
           {post.tags.length > 0 && (
-            <div style={{ display:"flex", gap:6, marginBottom:40, flexWrap:"wrap" }}>
-              {post.tags.map(t => <span key={t} style={{ background:"#eff6ff", color:"#2563eb", borderRadius:999, padding:"3px 12px", fontSize:12, fontWeight:700, border:"1px solid #bfdbfe" }}>{t}</span>)}
+            <div style={{ display:"flex", gap:6, marginBottom:8, flexWrap:"wrap" }}>
+              {post.tags.map(t => <span key={t} className="tag-chip">{t}</span>)}
             </div>
           )}
-          <article style={{ fontSize:16, lineHeight:1.8, color:"#334155" }} dangerouslySetInnerHTML={{ __html: renderMarkdown(post.content) }} />
+          <AuthorBio reviewed={post.reviewed} />
+          <article className="blog-article" dangerouslySetInnerHTML={{ __html: renderMarkdown(post.content) }} />
           <div style={{ marginTop:48, padding:"24px", background:"#eff6ff", borderRadius:14, border:"1px solid #bfdbfe" }}>
             <strong style={{ color:"#1d4ed8" }}>Find your local scholarships</strong>
             <p style={{ color:"#475569", marginTop:8, marginBottom:16 }}>Community foundation scholarships have far less competition than national awards.</p>
-            <Link href="/local" style={{ background:"#2563eb", color:"white", padding:"10px 22px", borderRadius:10, textDecoration:"none", fontWeight:700, fontSize:14 }}>Browse Local Foundations →</Link>
+            <Link href="/local" style={{ background:"#2563eb", color:"white", padding:"10px 22px", borderRadius:10, textDecoration:"none", fontWeight:700, fontSize:14 }}>Browse Local Foundations</Link>
           </div>
         </div>
       </div>
@@ -91,7 +132,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <span style={{ color:"#0f172a", fontWeight:600, maxWidth:280, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}>{s.name}</span>
         </div>
         <span style={{ background:`${meta.color}18`, color:meta.color, borderRadius:999, padding:"3px 12px", fontSize:12, fontWeight:700 }}>{meta.icon} {meta.label}</span>
-        <h1 style={{ fontSize:32, fontWeight:800, color:"#0f172a", lineHeight:1.2, margin:"16px 0 32px" }}>How to Win the {s.name}</h1>
+        <h1 style={{ fontFamily:"'Fraunces',serif", fontSize:32, fontWeight:900, color:"#0f172a", lineHeight:1.2, margin:"16px 0 32px" }}>How to Win the {s.name}</h1>
         <div style={{ background:"#f8faff", border:"1.5px solid #dce4f5", borderRadius:14, padding:"20px 24px", marginBottom:32 }}>
           <div style={{ fontWeight:700, color:"#1a3a6b", marginBottom:12, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }}>Quick Facts</div>
           <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(160px, 1fr))", gap:12 }}>
@@ -103,29 +144,29 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             ))}
           </div>
         </div>
-        <article style={{ fontSize:16, lineHeight:1.8, color:"#334155" }}>
+        <article style={{ fontSize:17, lineHeight:1.85, color:"#334155" }}>
           <p>{article.intro}</p>
           {article.sections.map(sec => (
             <div key={sec.heading}>
-              <h2 style={{ fontSize:20, fontWeight:700, color:"#0f172a", marginTop:32, marginBottom:12 }}>{sec.heading}</h2>
+              <h2 style={{ fontFamily:"'Fraunces',serif", fontSize:22, fontWeight:700, color:"#0f172a", marginTop:36, marginBottom:12 }}>{sec.heading}</h2>
               <p>{sec.body}</p>
             </div>
           ))}
           <div style={{ background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:12, padding:"20px 24px", margin:"32px 0" }}>
             <strong style={{ color:"#15803d" }}>Ready to apply?</strong>
             <p style={{ color:"#374151", marginTop:8, marginBottom:16 }}>Visit the official {s.name} website for the current application and deadline.</p>
-            <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ background:"#16a34a", color:"white", padding:"10px 22px", borderRadius:10, textDecoration:"none", fontWeight:700, fontSize:14, display:"inline-block" }}>Apply on Official Site →</a>
+            <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ background:"#16a34a", color:"white", padding:"10px 22px", borderRadius:10, textDecoration:"none", fontWeight:700, fontSize:14, display:"inline-block" }}>Apply on Official Site</a>
           </div>
           <p style={{ fontSize:13, color:"#94a3b8", fontStyle:"italic" }}>Always verify current deadlines and eligibility at the official source. Details change yearly.</p>
         </article>
         {related.length > 0 && (
           <div style={{ marginTop:48 }}>
-            <h2 style={{ fontSize:18, fontWeight:700, color:"#0f172a", marginBottom:16 }}>More {meta.label} Guides</h2>
+            <h2 style={{ fontFamily:"'Fraunces',serif", fontSize:20, fontWeight:700, color:"#0f172a", marginBottom:16 }}>More {meta.label} Guides</h2>
             <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(200px, 1fr))", gap:12 }}>
               {related.map(r => (
                 <Link key={r.id} href={`/blog/${r.slug}`} style={{ background:"white", border:"1px solid #e2e8f0", borderRadius:12, padding:"16px", textDecoration:"none" }}>
                   <div style={{ fontSize:12, color:meta.color, fontWeight:700, marginBottom:6 }}>{r.amount}</div>
-                  <div style={{ fontSize:14, fontWeight:700, color:"#0d1f3c", lineHeight:1.3 }}>How to Win the {r.name}</div>
+                  <div style={{ fontFamily:"'Fraunces',serif", fontSize:14, fontWeight:700, color:"#0d1f3c", lineHeight:1.3 }}>How to Win the {r.name}</div>
                 </Link>
               ))}
             </div>

@@ -3,7 +3,7 @@ import Link from "next/link"
 import { SCHOLARSHIPS, LOCAL_DATA } from "@/lib/data"
 
 export const metadata: Metadata = {
-  title: "About LocalScholarships.org",
+  title: { absolute: "About | LocalScholarships.org" },
   description: "How we find and verify scholarships, grants, and local foundation money. Free. No signup. No spam.",
   alternates: { canonical: "/about" },
 }

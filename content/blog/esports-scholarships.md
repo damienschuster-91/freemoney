@@ -2,6 +2,7 @@
 title: "Esports Scholarships: How to Get Paid to Play Video Games in College"
 description: "Over 200 colleges offer esports scholarships worth up to $25,000. Here's what they are, how to get one, and which schools to consider."
 date: "2026-03-25"
+reviewed: "2026-03-25"
 tags: ["scholarships", "esports", "gaming", "college"]
 ---
 

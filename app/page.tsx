@@ -4,7 +4,7 @@ import { SCHOLARSHIPS, LOCAL_DATA, CAT_META } from "@/lib/data"
 import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/utils"
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} - Free Scholarships, Grants & Trades`,
+  title: { absolute: `${SITE_NAME} — Free Scholarships, Grants & Trades` },
   description: SITE_DESCRIPTION,
 }
 
@@ -45,11 +45,10 @@ export default function HomePage() {
             {CATEGORIES.map(cat => {
               const meta = CAT_META[cat.id]
               return (
-                <Link key={cat.id} href={cat.href} style={{background:"#fff",border:"1.5px solid #e8edf5",borderRadius:16,padding:"20px",textDecoration:"none",color:"inherit",transition:"all 0.15s",display:"block"}}
-                  onMouseOver={undefined}>
-                  <div style={{fontSize:28,marginBottom:8}}>{meta.icon}</div>
-                  <div style={{fontFamily:"'Fraunces',serif",fontSize:18,fontWeight:700,color:"#0d1f3c",marginBottom:4}}>{meta.label}</div>
-                  <div style={{fontSize:13,color:meta.color,fontWeight:700}}>{cat.stat} available</div>
+                <Link key={cat.id} href={cat.href} className="cat-card" style={{borderBottomColor: meta.color}}>
+                  <span className="cat-card-icon">{meta.icon}</span>
+                  <div className="cat-card-name">{meta.label}</div>
+                  <div className="cat-card-stat" style={{color:meta.color}}>{cat.stat} available</div>
                 </Link>
               )
             })}
@@ -62,7 +61,7 @@ export default function HomePage() {
           <p className="section-sub" style={{marginBottom:20}}>These awards renew each year - apply once, get paid for multiple years.</p>
           <div className="card-grid">
             {FEATURED.map((s, i) => (
-              <Link key={s.id} href={`/scholarships/${s.slug}`} className="card" style={{animationDelay:`${i*0.05}s`}}>
+              <Link key={s.id} href={`/scholarships/${s.slug}`} className="card" style={{animationDelay:`${i*0.05}s`,borderLeft:`3px solid ${CAT_META[s.category].color}`}}>
                 <div className="card-accent" style={{background:`linear-gradient(90deg,${CAT_META[s.category].color},${CAT_META[s.category].color}88)`}} />
                 <div className="card-body">
                   <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10}}>

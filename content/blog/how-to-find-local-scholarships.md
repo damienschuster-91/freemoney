@@ -2,6 +2,7 @@
 title: "How to Find Local Scholarships Nobody Else Applies To"
 description: "Most students skip local scholarships. Here's why that's a mistake and how to find the ones with the least competition."
 date: "2026-03-11"
+reviewed: "2026-03-25"
 tags: ["local", "strategy", "community foundation"]
 ---
 

@@ -2,6 +2,7 @@
 title: "What is a Pell Grant?"
 description: "A Pell Grant is free federal money for college that you never have to pay back. Here's who qualifies, how much you can get, and how to apply."
 date: "2026-03-25"
+reviewed: "2026-03-25"
 tags: ["grants", "federal", "financial-aid", "FAFSA", "need-based"]
 ---
 
