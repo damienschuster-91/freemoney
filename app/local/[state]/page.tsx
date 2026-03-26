@@ -2,6 +2,10 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { LOCAL_DATA, SCHOLARSHIPS, CAT_META } from "@/lib/data"
 
+function citySlug(city: string) {
+  return city.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+}
+
 const STATE_NAMES: Record<string, string> = {
   AL:"Alabama", AK:"Alaska", AZ:"Arizona", AR:"Arkansas", CA:"California",
   CO:"Colorado", CT:"Connecticut", DE:"Delaware", FL:"Florida", GA:"Georgia",
@@ -77,26 +81,30 @@ export default function StatePage({ params }: { params: { state: string } }) {
         </h2>
         <div style={{ display:"flex", flexDirection:"column", gap:"16px", marginBottom: stateScholarships.length > 0 ? "56px" : "0" }}>
           {listings.map(s => (
-            <Link key={s.id} href={`/local/${s.state.toLowerCase()}/${s.slug}`} style={{ textDecoration:"none" }}>
-              <div style={{ background:"white", borderRadius:"14px", border:"1px solid #e2e8f0", borderLeft:"3px solid #1a7a4a", padding:"24px 28px", boxShadow:"0 1px 4px rgba(0,0,0,0.06)", transition:"box-shadow 0.15s" }}>
-                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:"16px", flexWrap:"wrap" }}>
-                  <div style={{ flex:1, minWidth:"200px" }}>
+            <div key={s.id} style={{ background:"white", borderRadius:"14px", border:"1px solid #e2e8f0", borderLeft:"3px solid #1a7a4a", padding:"24px 28px", boxShadow:"0 1px 4px rgba(0,0,0,0.06)" }}>
+              <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:"16px", flexWrap:"wrap" }}>
+                <div style={{ flex:1, minWidth:"200px" }}>
+                  <Link href={`/local/${s.state.toLowerCase()}/${s.slug}`} style={{ textDecoration:"none" }}>
                     <h3 style={{ fontFamily:"'Fraunces',serif", fontSize:"18px", fontWeight:700, color:"#0f172a", marginBottom:"6px", marginTop:0 }}>{s.name}</h3>
-                    <p style={{ color:"#475569", fontSize:"14px", marginBottom:"14px", marginTop:0, lineHeight:1.5 }}>{s.eligibility}</p>
-                    <div style={{ display:"flex", gap:"16px", flexWrap:"wrap", fontSize:"13px", color:"#64748b" }}>
-                      <span>Deadline: {s.deadline}</span>
-                      <span>{s.city}</span>
-                    </div>
-                  </div>
-                  <div style={{ display:"flex", flexDirection:"column", alignItems:"flex-end", gap:"8px", flexShrink:0 }}>
-                    <div style={{ background:"#f0fdf4", color:"#15803d", fontSize:"14px", fontWeight:700, padding:"6px 14px", borderRadius:"999px", border:"1px solid #bbf7d0", whiteSpace:"nowrap" }}>
-                      {s.amount}
-                    </div>
-                    <span style={{ fontSize:"13px", color:"#2563eb", fontWeight:600 }}>View details</span>
+                  </Link>
+                  <p style={{ color:"#475569", fontSize:"14px", marginBottom:"14px", marginTop:0, lineHeight:1.5 }}>{s.eligibility}</p>
+                  <div style={{ display:"flex", gap:"16px", flexWrap:"wrap", fontSize:"13px", color:"#64748b" }}>
+                    <span>Deadline: {s.deadline}</span>
+                    <Link href={`/local/${s.state.toLowerCase()}/city/${citySlug(s.city)}`} style={{ color:"#2563eb", fontWeight:600 }}>
+                      All {s.city} scholarships
+                    </Link>
                   </div>
                 </div>
+                <div style={{ display:"flex", flexDirection:"column", alignItems:"flex-end", gap:"8px", flexShrink:0 }}>
+                  <div style={{ background:"#f0fdf4", color:"#15803d", fontSize:"14px", fontWeight:700, padding:"6px 14px", borderRadius:"999px", border:"1px solid #bbf7d0", whiteSpace:"nowrap" }}>
+                    {s.amount}
+                  </div>
+                  <Link href={`/local/${s.state.toLowerCase()}/${s.slug}`} style={{ fontSize:"13px", color:"#2563eb", fontWeight:600 }}>
+                    View details
+                  </Link>
+                </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 

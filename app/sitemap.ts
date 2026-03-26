@@ -45,6 +45,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }))
 
+  function citySlug(city: string) {
+    return city.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+  }
+  const seenCities = new Set<string>()
+  const cityPages: MetadataRoute.Sitemap = LOCAL_DATA.flatMap(s => {
+    const key = `${s.state.toLowerCase()}-${citySlug(s.city)}`
+    if (seenCities.has(key)) return []
+    seenCities.add(key)
+    return [{
+      url: `${SITE_URL}/local/${s.state.toLowerCase()}/city/${citySlug(s.city)}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.55,
+    }]
+  })
+
   const blogPages: MetadataRoute.Sitemap = getAllPosts().map(p => ({
     url: `${SITE_URL}/blog/${p.slug}`,
     lastModified: p.reviewed ? new Date(p.reviewed) : p.date ? new Date(p.date) : now,
@@ -58,6 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...tagPages,
     ...statePages,
     ...localPages,
+    ...cityPages,
     ...blogPages,
   ]
 }
