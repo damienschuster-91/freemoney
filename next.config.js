@@ -10,7 +10,7 @@ const nextConfig = {
     }]
   },
   async headers() {
-    const isVercelPreview = process.env.VERCEL_URL?.includes('vercel.app')
+    const isVercelPreview = process.env.VERCEL_ENV !== 'production'
     if (!isVercelPreview) return []
     return [{
       source: '/(.*)',
