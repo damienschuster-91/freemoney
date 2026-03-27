@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: { params: { state: string; sl
     const citySchCount = getCityScholarships(cityName).length
     const stateSchCount = getStateScholarships(stateUpper).length
     const total = listings.length + citySchCount + stateSchCount
-    const isThin = listings.length < 2 && stateSchCount === 0
+    const isThin = listings.length < 2
     return {
       title: `${cityName} Local Scholarships — ${total} Verified`,
       description: `Find local scholarships in ${cityName}, ${stateUpper}. Verified community foundation awards with less competition than national scholarships.`,
