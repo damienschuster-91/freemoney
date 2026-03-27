@@ -20,7 +20,7 @@ function windowIsOpen(openStr: string, closeStr: string): boolean {
   if (!open || !close) return true
   const t = new Date()
   const tM = t.getMonth(), tD = t.getDate()
-  const afterOpen  = tM > open.mon  || (tM === open.mon  && tD >= open.day)
+  const afterOpen   = tM > open.mon  || (tM === open.mon  && tD >= open.day)
   const beforeClose = tM < close.mon || (tM === close.mon && tD <= close.day)
   return open.mon > close.mon ? (afterOpen || beforeClose) : (afterOpen && beforeClose)
 }
@@ -28,8 +28,8 @@ function windowIsOpen(openStr: string, closeStr: string): boolean {
 function deadlineOpen(dl: string): boolean {
   const s = dl.toLowerCase()
   if (!s || s.includes("rolling") || s.includes("varies") || s.includes("n/a")) return true
-  const rangeMatch = dl.match(/([a-z]+\s+\d+)\s*[-–]\s*([a-z]+\s+\d+)/i)
-  if (rangeMatch) return windowIsOpen(rangeMatch[1], rangeMatch[2])
+  const range = dl.match(/([a-z]+\s+\d+)\s*[-–]\s*([a-z]+\s+\d+)/i)
+  if (range) return windowIsOpen(range[1], range[2])
   const d = parseMonDay(dl)
   if (!d) return true
   const today = new Date()
@@ -44,70 +44,60 @@ type Props = {
   applicationClose?: string
 }
 
-export default function FoundationStatusBlock({
-  url, propublicaUrl, deadline,
-  applicationOpen, applicationClose,
-}: Props) {
-  const [open, setOpen] = useState(true) // SSR-safe default
+export default function FoundationStatusBlock({ url, propublicaUrl, deadline, applicationOpen, applicationClose }: Props) {
+  const [open, setOpen] = useState(true)
 
   useEffect(() => {
-    if (applicationOpen && applicationClose) {
-      setOpen(windowIsOpen(applicationOpen, applicationClose))
-    } else {
-      setOpen(deadlineOpen(deadline))
-    }
+    setOpen(applicationOpen && applicationClose
+      ? windowIsOpen(applicationOpen, applicationClose)
+      : deadlineOpen(deadline))
   }, [deadline, applicationOpen, applicationClose])
 
   return (
-    <div style={{
-      background: "white",
-      borderRadius: "14px",
-      border: `1.5px solid ${open ? "#bbf7d0" : "#e2e8f0"}`,
-      padding: "24px 28px",
-      boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
-    }}>
-      {/* Status label */}
-      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #e2e8f0" }}>
+      {/* Status banner */}
+      <div style={{
+        background: open ? "#f0fdf4" : "#f1f5f9",
+        borderBottom: `1px solid ${open ? "#bbf7d0" : "#e2e8f0"}`,
+        padding: "12px 20px",
+        display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+      }}>
         <span style={{
-          display: "inline-flex", alignItems: "center", gap: 6,
-          background: open ? "#f0fdf4" : "#f1f5f9",
-          color: open ? "#15803d" : "#6b7280",
-          fontSize: 13, fontWeight: 700,
-          padding: "5px 14px", borderRadius: 999,
-          border: `1px solid ${open ? "#bbf7d0" : "#e2e8f0"}`,
-        }}>
-          <span style={{ fontSize: 8 }}>{open ? "●" : "○"}</span>
+          width: 8, height: 8, borderRadius: "50%",
+          background: open ? "#16a34a" : "#9ca3af",
+          display: "inline-block", flexShrink: 0,
+        }} />
+        <span style={{ fontSize: 13, fontWeight: 700, color: open ? "#15803d" : "#6b7280", letterSpacing: "0.01em" }}>
           {open ? "Now Accepting Applications" : "Applications Closed"}
         </span>
       </div>
 
       {/* Buttons */}
-      <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+      <div style={{
+        background: "white", padding: "16px 20px",
+        display: "grid", gridTemplateColumns: propublicaUrl ? "1fr 1fr" : "1fr", gap: 10,
+      }}>
         <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={url} target="_blank" rel="noopener noreferrer"
           style={{
-            display: "inline-flex", alignItems: "center",
-            background: open ? "#2563eb" : "#6b7280",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            background: open ? "#1a3a6b" : "#4b5563",
             color: "white", textDecoration: "none",
-            padding: "12px 22px", borderRadius: "10px",
-            fontWeight: 700, fontSize: 14, whiteSpace: "nowrap",
+            padding: "12px 18px", borderRadius: 9,
+            fontWeight: 700, fontSize: 14,
           }}
         >
           {open ? "Apply Now →" : "Visit Website →"}
         </a>
         {propublicaUrl && (
           <a
-            href={propublicaUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={propublicaUrl} target="_blank" rel="noopener noreferrer"
             style={{
-              display: "inline-flex", alignItems: "center",
-              background: "#f8fafc", color: "#475569",
-              border: "1.5px solid #e2e8f0", textDecoration: "none",
-              padding: "12px 22px", borderRadius: "10px",
-              fontWeight: 600, fontSize: 14, whiteSpace: "nowrap",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              background: "white", color: "#374151",
+              border: "1.5px solid #d1d5db", textDecoration: "none",
+              padding: "12px 18px", borderRadius: 9,
+              fontWeight: 600, fontSize: 14,
             }}
           >
             View 990 Filing
