@@ -273,6 +273,16 @@ function CityPage({ params }: { params: { state: string; slug: string } }) {
 
 // ─── FOUNDATION PAGE ──────────────────────────────────────────────────────────
 
+// Parse "Jan 15 (renewals) · Feb 15 (first-time)" into [{date, label}]
+function parseDeadlineLines(s: string): { date: string; label: string }[] | null {
+  const parts = s.split("·").map(p => p.trim()).filter(Boolean)
+  if (parts.length < 2) return null
+  return parts.map(part => {
+    const m = part.match(/^(.+?)\s*\(([^)]+)\)$/)
+    return m ? { date: m[1].trim(), label: m[2].trim() } : { date: part, label: "" }
+  })
+}
+
 function formatVerifiedDate(dateStr: string): string {
   const SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
   const parts = dateStr.split("-")
@@ -385,11 +395,26 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, marginBottom:10 }}>
           <div style={{ background:"white", borderRadius:11, border:"1px solid #e2e8f0", padding:"12px 16px" }}>
             <div style={{ fontSize:10, color:"#94a3b8", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:3 }}>Deadline</div>
-            <div style={{ fontSize:15, fontWeight:700, color:"#0f172a" }}>
-              {f.application_open && f.application_close
-                ? `${f.application_open} – ${f.application_close}`
-                : f.deadline}
-            </div>
+            {(() => {
+              const lines = parseDeadlineLines(f.deadline)
+              if (lines) return (
+                <div style={{ display:"flex", flexDirection:"column", gap:3 }}>
+                  {lines.map((l, i) => (
+                    <div key={i}>
+                      <span style={{ fontSize:15, fontWeight:700, color:"#0f172a" }}>{l.date}</span>
+                      {l.label && <span style={{ fontSize:12, color:"#64748b", marginLeft:6 }}>— {l.label}</span>}
+                    </div>
+                  ))}
+                </div>
+              )
+              return (
+                <div style={{ fontSize:15, fontWeight:700, color:"#0f172a" }}>
+                  {f.application_open && f.application_close
+                    ? `${f.application_open} – ${f.application_close}`
+                    : f.deadline}
+                </div>
+              )
+            })()}
           </div>
           <div style={{ background:"white", borderRadius:11, border:"1px solid #e2e8f0", padding:"12px 16px" }}>
             <div style={{ fontSize:10, color:"#94a3b8", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:3 }}>Location</div>
