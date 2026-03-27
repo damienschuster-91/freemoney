@@ -337,7 +337,7 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
         </div>
 
         {/* ── 3. VERIFIED STATS — 3 bold blocks ── */}
-        {f.verified_by_foundation && (f.scholarships_count || f.annual_awards || f.awards_announced) && (
+        {(f.scholarships_count || f.annual_awards || f.awards_announced) && (
           <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:8, marginBottom:10 }}>
             {f.scholarships_count && (
               <div style={{ background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:12, padding:"14px 12px", textAlign:"center" }}>
@@ -354,7 +354,7 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
             {f.awards_announced && (
               <div style={{ background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:12, padding:"14px 12px", textAlign:"center" }}>
                 <div style={{ fontFamily:"'Fraunces',serif", fontSize:26, fontWeight:900, color:"#15803d", lineHeight:1 }}>{f.awards_announced}</div>
-                <div style={{ fontSize:11, color:"#16a34a", fontWeight:600, marginTop:4, textTransform:"uppercase", letterSpacing:"0.05em" }}>Results</div>
+                <div style={{ fontSize:11, color:"#16a34a", fontWeight:600, marginTop:4, textTransform:"uppercase", letterSpacing:"0.05em" }}>Awards</div>
               </div>
             )}
           </div>
