@@ -316,9 +316,8 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
               {f.name}
             </h1>
             {f.verified_by_foundation && (
-              <span style={{ display:"inline-flex", alignItems:"center", gap:4, background:"#f0fdf4", color:"#15803d", fontSize:11, fontWeight:700, padding:"4px 10px", borderRadius:999, border:"1px solid #bbf7d0", whiteSpace:"nowrap", flexShrink:0 }}>
-                ✓ Verified by Foundation
-                {f.verified_date && <span style={{ fontWeight:400, color:"#86efac" }}>· {formatVerifiedDate(f.verified_date)}</span>}
+              <span style={{ display:"inline-flex", alignItems:"center", gap:4, background:"#dcfce7", color:"#166534", fontSize:12, fontWeight:700, padding:"5px 12px", borderRadius:999, border:"1px solid #86efac", whiteSpace:"nowrap", flexShrink:0 }}>
+                ✓ Verified by Foundation{f.verified_date && ` · ${formatVerifiedDate(f.verified_date)}`}
               </span>
             )}
           </div>
