@@ -35,38 +35,79 @@ const NAME_TO_ABBR: Record<string, string> = Object.fromEntries(
   Object.entries(STATE_NAMES).map(([k, v]) => [v.toLowerCase(), k])
 )
 
-// Zip first-digit → state abbreviations (per spec)
-const ZIP_FIRST: Record<string, string[]> = {
-  "0": ["CT","MA","ME","NH","NJ","NY","RI","VT"],
-  "1": ["DE","MD","NJ","NY","PA"],
-  "2": ["DC","MD","NC","SC","VA","WV"],
-  "3": ["AL","FL","GA","MS","TN"],
-  "4": ["IN","KY","MI","OH"],
-  "5": ["IA","MN","MT","ND","SD","WI"],
-  "6": ["IL","KS","MO","NE"],
-  "7": ["AR","LA","OK","TX"],
-  "8": ["AZ","CO","ID","NM","NV","UT","WY"],
-  "9": ["AK","CA","HI","OR","WA"],
+// 3-digit zip prefix → single state
+function zipToState(zip: string): string | null {
+  const prefix = parseInt(zip.substring(0, 3))
+  if (prefix >= 750 && prefix <= 799) return 'TX'
+  if (prefix >= 900 && prefix <= 961) return 'CA'
+  if (prefix >= 100 && prefix <= 149) return 'NY'
+  if (prefix >= 320 && prefix <= 349) return 'FL'
+  if (prefix >= 600 && prefix <= 629) return 'IL'
+  if (prefix >= 150 && prefix <= 196) return 'PA'
+  if (prefix >= 430 && prefix <= 459) return 'OH'
+  if (prefix >= 300 && prefix <= 319) return 'GA'
+  if (prefix >= 270 && prefix <= 289) return 'NC'
+  if (prefix >= 480 && prefix <= 499) return 'MI'
+  if (prefix >= 70  && prefix <= 89)  return 'NJ'
+  if (prefix >= 220 && prefix <= 246) return 'VA'
+  if (prefix >= 980 && prefix <= 994) return 'WA'
+  if (prefix >= 850 && prefix <= 865) return 'AZ'
+  if (prefix >= 10  && prefix <= 27)  return 'MA'
+  if (prefix >= 370 && prefix <= 385) return 'TN'
+  if (prefix >= 460 && prefix <= 479) return 'IN'
+  if (prefix >= 630 && prefix <= 658) return 'MO'
+  if (prefix >= 206 && prefix <= 219) return 'MD'
+  if (prefix >= 530 && prefix <= 549) return 'WI'
+  if (prefix >= 550 && prefix <= 567) return 'MN'
+  if (prefix >= 800 && prefix <= 816) return 'CO'
+  if (prefix >= 350 && prefix <= 369) return 'AL'
+  if (prefix >= 290 && prefix <= 299) return 'SC'
+  if (prefix >= 700 && prefix <= 714) return 'LA'
+  if (prefix >= 400 && prefix <= 427) return 'KY'
+  if (prefix >= 970 && prefix <= 979) return 'OR'
+  if (prefix >= 730 && prefix <= 749) return 'OK'
+  if (prefix >= 60  && prefix <= 69)  return 'CT'
+  if (prefix >= 500 && prefix <= 528) return 'IA'
+  if (prefix >= 386 && prefix <= 397) return 'MS'
+  if (prefix >= 716 && prefix <= 729) return 'AR'
+  if (prefix >= 660 && prefix <= 679) return 'KS'
+  if (prefix >= 840 && prefix <= 847) return 'UT'
+  if (prefix >= 889 && prefix <= 898) return 'NV'
+  if (prefix >= 870 && prefix <= 884) return 'NM'
+  if (prefix >= 680 && prefix <= 693) return 'NE'
+  if (prefix >= 247 && prefix <= 268) return 'WV'
+  if (prefix >= 832 && prefix <= 838) return 'ID'
+  if (prefix >= 967 && prefix <= 968) return 'HI'
+  if (prefix >= 39  && prefix <= 49)  return 'ME'
+  if (prefix >= 30  && prefix <= 38)  return 'NH'
+  if (prefix >= 28  && prefix <= 29)  return 'RI'
+  if (prefix >= 590 && prefix <= 599) return 'MT'
+  if (prefix >= 197 && prefix <= 199) return 'DE'
+  if (prefix >= 570 && prefix <= 577) return 'SD'
+  if (prefix >= 995 && prefix <= 999) return 'AK'
+  if (prefix >= 820 && prefix <= 831) return 'WY'
+  return null
 }
 
 function citySlug(city: string) {
   return city.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
 }
 
-function searchFoundations(query: string, data: Foundation[]): Foundation[] {
+function searchFoundations(query: string, data: Foundation[]): { results: Foundation[]; zipState: string | null } {
   const q = query.trim().toLowerCase()
-  if (!q) return []
+  if (!q) return { results: [], zipState: null }
 
-  // Zip code: 3–5 digits
-  if (/^\d{3,5}$/.test(q)) {
-    const states = ZIP_FIRST[q[0]] ?? []
-    return data.filter(f => states.includes(f.state.toUpperCase()))
+  // 5-digit zip → single state via 3-digit prefix
+  if (/^\d{5}$/.test(q)) {
+    const state = zipToState(q)
+    const results = state ? data.filter(f => f.state.toUpperCase() === state) : []
+    return { results, zipState: state }
   }
 
   // Check if query matches a full state name → abbreviation
   const abbrFromName = NAME_TO_ABBR[q]
 
-  return data.filter(f => {
+  const results = data.filter(f => {
     const city = (f.city ?? "").toLowerCase()
     const state = f.state.toLowerCase()
     const stateFull = (STATE_NAMES[f.state.toUpperCase()] ?? "").toLowerCase()
@@ -83,13 +124,14 @@ function searchFoundations(query: string, data: Foundation[]): Foundation[] {
       county.includes(q)
     )
   })
+  return { results, zipState: null }
 }
 
 export default function LocalSearchClient({ data }: { data: Foundation[] }) {
   const [query, setQuery] = useState("")
   const hasQuery = query.trim().length > 0
 
-  const results = useMemo(() => searchFoundations(query, data), [query, data])
+  const { results, zipState } = useMemo(() => searchFoundations(query, data), [query, data])
 
   const resultStates = useMemo(() => {
     const seen = new Set<string>()
@@ -157,7 +199,9 @@ export default function LocalSearchClient({ data }: { data: Foundation[] }) {
             <>
               {/* Count */}
               <div style={{ fontSize: 13, fontWeight: 700, color: "#1a7a4a", marginBottom: 12 }}>
-                {results.length} foundation{results.length !== 1 ? "s" : ""} match your search
+                {zipState
+                  ? `Showing foundations in ${STATE_NAMES[zipState] || zipState} (zip ${query.trim()})`
+                  : `${results.length} foundation${results.length !== 1 ? "s" : ""} match your search`}
               </div>
 
               {/* State page links */}
