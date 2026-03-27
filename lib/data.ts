@@ -15,6 +15,7 @@ export interface Scholarship {
   url: string
   tags: string[]
   eligibility: string
+  application_open?: string   // "Aug 1" — when cycle opens
 }
 
 export interface LocalScholarship {
@@ -33,6 +34,15 @@ export interface LocalScholarship {
   category: "local"
   gpa: string
   renewable: boolean
+  // Verified foundation fields
+  verified_by_foundation?: boolean
+  verified_date?: string        // "2026-03-27"
+  verified_by?: string          // "Foundation contact name/title"
+  application_open?: string     // "Dec 15"
+  application_close?: string    // "Mar 15"
+  scholarships_count?: number   // 82
+  annual_awards?: string        // "~$1M"
+  notes?: string
 }
 
 // --- HELPERS ------------------------------------------------------------------
@@ -316,7 +326,7 @@ const RAW_LOCAL = [
   { id:"ok-1", name:"Oklahoma City Community Foundation", state:"OK", county:"Oklahoma", city:"Oklahoma City", amount:"$500-$5,000", deadline:"Feb 28", eligibility:"Oklahoma County students - 200+ scholarship funds", url:"https://www.occf.org/scholarships", propublica_url:"https://projects.propublica.org/nonprofits/organizations/237024262", tags:["community","local","need-based"] },
   { id:"ak-1", name:"Alaska Community Foundation", state:"AK", county:"Statewide", city:"Anchorage", amount:"$500-$5,000", deadline:"Mar 15", eligibility:"Alaska residents including rural and Native Alaska communities", url:"https://alaskacf.org/scholarships", propublica_url:"https://projects.propublica.org/nonprofits/organizations/920155067", tags:["community","local","rural","state","minority"] },
   { id:"ar-1", name:"Arkansas Community Foundation", state:"AR", county:"Statewide", city:"Little Rock", amount:"$500-$5,000", deadline:"Mar 1", eligibility:"Arkansas residents - 700+ funds across all 75 counties", url:"https://www.arcf.org/scholarships", propublica_url:"https://projects.propublica.org/nonprofits/organizations/521055743", tags:["community","local","rural","state","need-based"] },
-  { id:"de-1", name:"Delaware Community Foundation", state:"DE", county:"Statewide", city:"Wilmington", amount:"$500-$10,000+", deadline:"Dec 15 - Mar 15", eligibility:"Delaware residents and students who attended high school in Delaware. 82 scholarship opportunities from high school seniors through graduate and medical school students. Nearly $1 million awarded annually.", notes:"Application cycle opens December 15, closes March 15. Awards announced each May. 82 scholarship funds available.", verified_by_foundation:true, url:"https://www.delcf.org/scholarships", propublica_url:"https://projects.propublica.org/nonprofits/organizations/222804785", tags:["community","local","need-based","state"] },
+  { id:"de-1", name:"Delaware Community Foundation", state:"DE", county:"Statewide", city:"Wilmington", amount:"$500-$10,000+", deadline:"Mar 15", application_open:"Dec 15", application_close:"Mar 15", eligibility:"Delaware residents and students who attended high school in Delaware. 82 scholarship opportunities from high school seniors through graduate and medical school. Nearly $1 million awarded annually.", verified_by_foundation:true, verified_date:"2026-03-27", scholarships_count:82, annual_awards:"~$1M", notes:"Application cycle opens December 15, closes March 15. Awards announced each May.", url:"https://www.delcf.org/scholarships", propublica_url:"https://projects.propublica.org/nonprofits/organizations/222804785", tags:["community","local","need-based","state"] },
   { id:"in-1", name:"Central Indiana Community Foundation", state:"IN", county:"Marion", city:"Indianapolis", amount:"$500-$10,000", deadline:"Feb 15", eligibility:"Marion and Hamilton County Indiana students - 300+ scholarship funds", url:"https://www.cicf.org/scholarships", propublica_url:"https://projects.propublica.org/nonprofits/organizations/351793680", tags:["community","local","need-based"] },
   { id:"in-2", name:"Community Foundation of Greater Fort Wayne", state:"IN", county:"Allen", city:"Fort Wayne", amount:"$500-$5,000", deadline:"Feb 28", eligibility:"Allen County and northeast Indiana students - 200+ scholarship funds", url:"https://cfgfw.org/scholarships", propublica_url:"https://projects.propublica.org/nonprofits/organizations/351119450", tags:["community","local","need-based"] },
   { id:"ia-1", name:"Community Foundation of Greater Des Moines", state:"IA", county:"Polk", city:"Des Moines", amount:"$500-$10,000", deadline:"Feb 28", eligibility:"Greater Des Moines metro students - 300+ scholarship funds", url:"https://www.desmoinesfoundation.org/scholarships", propublica_url:"https://projects.propublica.org/nonprofits/nonprofits", tags:["community","local","need-based"] },

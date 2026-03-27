@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { SCHOLARSHIPS, CAT_META } from "@/lib/data"
 import { SITE_NAME } from "@/lib/utils"
+import ApplyButton from "@/components/ApplyButton"
 
 const TRADES = SCHOLARSHIPS.filter(s => s.category === "trade")
 
@@ -170,15 +171,16 @@ export default function TradeDetailPage({
         )}
 
         {/* CTA */}
-        <a
-          href={s.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-primary"
-          style={{ fontSize: 16, padding: "14px 32px", borderRadius: 14, marginBottom: 20, display: "inline-flex", background: meta.color }}
-        >
-          Apply on Official Site →
-        </a>
+        <div style={{ marginBottom: 20 }}>
+          <ApplyButton
+            url={s.url}
+            deadline={s.deadline}
+            applicationOpen={s.application_open}
+            applicationClose={s.deadline}
+            accentColor={meta.color}
+            openLabel="Apply on Official Site →"
+          />
+        </div>
 
         {/* Disclaimer */}
         <div className="disclaimer">
