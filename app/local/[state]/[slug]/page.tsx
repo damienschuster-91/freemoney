@@ -360,22 +360,21 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
 
         {/* ── 4b. TIPS FROM THE FOUNDATION ── */}
         {f.tips && f.tips.length > 0 && (
-          <div style={{ marginBottom:10 }}>
-            <div style={{ fontSize:12, fontWeight:700, color:"#1a7a4a", marginBottom:10, letterSpacing:"0.02em" }}>
-              💬 From the Foundation
+          <div style={{ background:"white", borderRadius:14, border:"1px solid #e2e8f0", padding:"18px 20px", marginBottom:10, boxShadow:"0 1px 3px rgba(0,0,0,0.04)" }}>
+            <div style={{ fontSize:10, fontWeight:700, color:"#94a3b8", textTransform:"uppercase", letterSpacing:"0.1em", marginBottom:16, paddingLeft:10, borderLeft:"3px solid #1a7a4a" }}>
+              From the Foundation
             </div>
-            <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
+            <div style={{ display:"flex", flexDirection:"column", gap:20 }}>
               {f.tips.map((tip, i) => (
-                <div key={i} style={{ background:"white", borderRadius:12, border:"1px solid #e2e8f0", borderLeft:"3px solid #1a7a4a", padding:"14px 18px", boxShadow:"0 1px 3px rgba(0,0,0,0.04)" }}>
-                  <div style={{ fontSize:10, fontWeight:700, color:"#94a3b8", textTransform:"uppercase", letterSpacing:"0.1em", marginBottom:6 }}>
+                <div key={i}>
+                  <div style={{ fontSize:11, fontWeight:700, color:"#64748b", textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:8 }}>
                     {tip.question}
                   </div>
-                  <p style={{ margin:0, fontSize:14, color:"#334155", lineHeight:1.7, marginBottom:8 }}>
-                    {tip.answer}
-                  </p>
-                  <div style={{ fontSize:12, color:"#94a3b8", fontStyle:"italic" }}>
-                    — {tip.source}
-                  </div>
+                  <blockquote style={{ margin:0, paddingLeft:16, borderLeft:"2px solid #86efac" }}>
+                    <span style={{ display:"block", fontFamily:"Georgia, serif", fontSize:22, lineHeight:1, color:"#1a7a4a", marginBottom:2 }}>"</span>
+                    <p style={{ margin:0, fontSize:14, color:"#334155", lineHeight:1.75 }}>{tip.answer}</p>
+                    <footer style={{ marginTop:10, fontSize:12, color:"#94a3b8", fontStyle:"italic" }}>— {tip.source}</footer>
+                  </blockquote>
                 </div>
               ))}
             </div>
