@@ -126,6 +126,7 @@ export default function StatePage({ params }: { params: { state: string } }) {
                         </Link>
                         <p style={{ color:"#475569", fontSize:"14px", marginBottom:"12px", marginTop:0, lineHeight:1.5 }}>{s.eligibility}</p>
                         <div style={{ fontSize:"13px", color:"#64748b" }}>
+                          {s.coverage && <span style={{ marginRight:10 }}>📍 {s.coverage}</span>}
                           Deadline: {s.deadline}
                         </div>
                       </div>

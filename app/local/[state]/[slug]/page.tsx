@@ -143,7 +143,10 @@ function CityPage({ params }: { params: { state: string; slug: string } }) {
                   <div style={{ flex:1, minWidth:200 }}>
                     <h3 style={{ fontFamily:"'Fraunces',serif", fontSize:17, fontWeight:700, color:"#0f172a", marginBottom:6, marginTop:0 }}>{s.name}</h3>
                     <p style={{ color:"#475569", fontSize:14, marginBottom:12, marginTop:0, lineHeight:1.5 }}>{s.eligibility}</p>
-                    <div style={{ fontSize:13, color:"#64748b" }}>Deadline: {s.deadline}</div>
+                    <div style={{ fontSize:13, color:"#64748b" }}>
+                      {s.coverage && <span style={{ marginRight:10 }}>📍 {s.coverage}</span>}
+                      Deadline: {s.deadline}
+                    </div>
                   </div>
                   <div style={{ display:"flex", flexDirection:"column", alignItems:"flex-end", gap:8, flexShrink:0 }}>
                     <div style={{ background:"#f0fdf4", color:"#15803d", fontSize:14, fontWeight:700, padding:"6px 14px", borderRadius:999, border:"1px solid #bbf7d0", whiteSpace:"nowrap" }}>{s.amount}</div>
@@ -368,7 +371,14 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
           </div>
           <div style={{ background:"white", borderRadius:11, border:"1px solid #e2e8f0", padding:"12px 16px" }}>
             <div style={{ fontSize:10, color:"#94a3b8", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:3 }}>Location</div>
-            <div style={{ fontSize:15, fontWeight:700, color:"#0f172a" }}>{f.city}, {f.state}</div>
+            {f.coverage ? (
+              <>
+                <div style={{ fontSize:15, fontWeight:700, color:"#0f172a" }}>{f.coverage}</div>
+                <div style={{ fontSize:12, color:"#64748b", marginTop:2 }}>Based in {f.city}, {f.state}</div>
+              </>
+            ) : (
+              <div style={{ fontSize:15, fontWeight:700, color:"#0f172a" }}>{f.city}, {f.state}</div>
+            )}
           </div>
         </div>
 

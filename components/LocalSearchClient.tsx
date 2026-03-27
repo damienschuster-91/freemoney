@@ -15,6 +15,7 @@ type Foundation = {
   url: string
   propublica_url?: string
   county?: string
+  coverage?: string
 }
 
 const STATE_NAMES: Record<string, string> = {
@@ -113,6 +114,7 @@ function searchFoundations(query: string, data: Foundation[]): { results: Founda
     const stateFull = (STATE_NAMES[f.state.toUpperCase()] ?? "").toLowerCase()
     const elig = (f.eligibility ?? "").toLowerCase()
     const county = (f.county ?? "").toLowerCase()
+    const coverage = (f.coverage ?? "").toLowerCase()
 
     if (abbrFromName) return f.state.toUpperCase() === abbrFromName
 
@@ -121,7 +123,8 @@ function searchFoundations(query: string, data: Foundation[]): { results: Founda
       state.includes(q) ||
       stateFull.includes(q) ||
       elig.includes(q) ||
-      county.includes(q)
+      county.includes(q) ||
+      coverage.includes(q)
     )
   })
   return { results, zipState: null }
@@ -252,7 +255,7 @@ export default function LocalSearchClient({ data }: { data: Foundation[] }) {
                           {f.eligibility}
                         </p>
                         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", fontSize: 13, color: "#64748b" }}>
-                          <span>📍 {f.city}, {f.state}</span>
+                          <span>📍 {f.coverage ?? `${f.city}, ${f.state}`}</span>
                           {f.deadline && <span>Deadline: {f.deadline}</span>}
                           <Link
                             href={`/local/${f.state.toLowerCase()}/${citySlug(f.city)}-scholarships`}
