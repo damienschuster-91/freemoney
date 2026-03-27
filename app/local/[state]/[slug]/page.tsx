@@ -358,6 +358,30 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
           <p style={{ margin:0, fontSize:14, color:"#334155", lineHeight:1.7 }}>{f.eligibility}</p>
         </div>
 
+        {/* ── 4b. TIPS FROM THE FOUNDATION ── */}
+        {f.tips && f.tips.length > 0 && (
+          <div style={{ marginBottom:10 }}>
+            <div style={{ fontSize:12, fontWeight:700, color:"#1a7a4a", marginBottom:10, letterSpacing:"0.02em" }}>
+              💬 From the Foundation
+            </div>
+            <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
+              {f.tips.map((tip, i) => (
+                <div key={i} style={{ background:"white", borderRadius:12, border:"1px solid #e2e8f0", borderLeft:"3px solid #1a7a4a", padding:"14px 18px", boxShadow:"0 1px 3px rgba(0,0,0,0.04)" }}>
+                  <div style={{ fontSize:10, fontWeight:700, color:"#94a3b8", textTransform:"uppercase", letterSpacing:"0.1em", marginBottom:6 }}>
+                    {tip.question}
+                  </div>
+                  <p style={{ margin:0, fontSize:14, color:"#334155", lineHeight:1.7, marginBottom:8 }}>
+                    {tip.answer}
+                  </p>
+                  <div style={{ fontSize:12, color:"#94a3b8", fontStyle:"italic" }}>
+                    — {tip.source}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* ── 5. DEADLINE + LOCATION ── */}
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, marginBottom:10 }}>
           <div style={{ background:"white", borderRadius:11, border:"1px solid #e2e8f0", padding:"12px 16px" }}>
