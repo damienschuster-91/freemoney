@@ -10,8 +10,8 @@ const nextConfig = {
     }]
   },
   async headers() {
-    const isVercelPreview = process.env.VERCEL_ENV !== 'production'
-    if (!isVercelPreview) return []
+    const isPreview = process.env.VERCEL_ENV !== 'production'
+    if (!isPreview) return []
     return [{
       source: '/(.*)',
       headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]
