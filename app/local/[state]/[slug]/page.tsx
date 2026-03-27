@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { LOCAL_DATA, SCHOLARSHIPS, CAT_META } from "@/lib/data"
-import ApplyButton from "@/components/ApplyButton"
+import FoundationStatusBlock from "@/components/FoundationStatusBlock"
 
 function citySlug(city: string) {
   return city.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
@@ -287,12 +287,7 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
     "@type": "EducationalOrganization",
     name: f.name,
     url: f.url,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: f.city,
-      addressRegion: f.state,
-      addressCountry: "US",
-    },
+    address: { "@type": "PostalAddress", addressLocality: f.city, addressRegion: f.state, addressCountry: "US" },
     description: f.eligibility,
   }
 
@@ -300,134 +295,96 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div style={{ minHeight:"100vh", background:"#f9fafb" }}>
-      <div style={{ maxWidth:"800px", margin:"0 auto", padding:"48px 20px" }}>
+      <div style={{ maxWidth:"800px", margin:"0 auto", padding:"40px 20px 60px" }}>
 
-        {/* Breadcrumb */}
-        <div style={{ marginBottom:"24px", display:"flex", gap:"8px", alignItems:"center", fontSize:"14px" }}>
-          <Link href="/local" style={{ color:"#2563eb", textDecoration:"none" }}>Local</Link>
-          <span style={{ color:"#94a3b8" }}>/</span>
-          <Link href={`/local/${f.state.toLowerCase()}`} style={{ color:"#2563eb", textDecoration:"none" }}>{f.state}</Link>
-          <span style={{ color:"#94a3b8" }}>/</span>
-          <Link href={`/local/${f.state.toLowerCase()}/${citySlug(f.city)}-scholarships`} style={{ color:"#2563eb", textDecoration:"none" }}>{f.city}</Link>
-          <span style={{ color:"#94a3b8" }}>/</span>
-          <span style={{ color:"#64748b" }}>{f.name}</span>
+        {/* ── 1. HEADER ── */}
+        <div style={{ background:"white", borderRadius:"16px", border:"1px solid #e2e8f0", padding:"32px 36px 28px", boxShadow:"0 2px 8px rgba(0,0,0,0.06)", marginBottom:16 }}>
+          {/* Name + verified badge */}
+          <div style={{ display:"flex", alignItems:"flex-start", gap:12, flexWrap:"wrap", marginBottom:12 }}>
+            <h1 style={{ fontFamily:"'Fraunces',serif", fontSize:"clamp(22px,4vw,28px)", fontWeight:900, color:"#0f172a", margin:0, lineHeight:1.3, flex:1, minWidth:180 }}>
+              {f.name}
+            </h1>
+            {f.verified_by_foundation && (
+              <div style={{ display:"flex", flexDirection:"column", alignItems:"flex-end", gap:3, flexShrink:0 }}>
+                <span style={{ display:"inline-flex", alignItems:"center", gap:5, background:"#f0fdf4", color:"#15803d", fontSize:12, fontWeight:700, padding:"5px 12px", borderRadius:999, border:"1px solid #bbf7d0", whiteSpace:"nowrap" }}>
+                  ✓ Verified by Foundation
+                </span>
+                {f.verified_date && (
+                  <span style={{ fontSize:11, color:"#94a3b8", fontWeight:500 }}>
+                    Verified {formatVerifiedDate(f.verified_date)}
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+          {/* Amount + location */}
+          <div style={{ display:"flex", alignItems:"center", gap:14, flexWrap:"wrap" }}>
+            <span style={{ background:"#f0fdf4", color:"#15803d", fontSize:15, fontWeight:700, padding:"5px 16px", borderRadius:999, border:"1px solid #bbf7d0" }}>
+              {f.amount}
+            </span>
+            <span style={{ fontSize:13, color:"#94a3b8" }}>📍 {f.city}, {f.state}</span>
+          </div>
         </div>
 
-        <div style={{ background:"white", borderRadius:"16px", border:"1px solid #e2e8f0", padding:"40px", boxShadow:"0 2px 8px rgba(0,0,0,0.06)" }}>
+        {/* ── 2. STATUS BLOCK ── */}
+        <div style={{ marginBottom:16 }}>
+          <FoundationStatusBlock
+            url={f.url}
+            propublicaUrl={f.propublica_url}
+            deadline={f.deadline}
+            applicationOpen={f.application_open}
+            applicationClose={f.application_close}
+            awardsAnnounced={f.awards_announced}
+          />
+        </div>
 
-          {/* Name + verified badge */}
-          <div style={{ marginBottom:"24px" }}>
-            <div style={{ display:"flex", alignItems:"flex-start", gap:12, flexWrap:"wrap", marginBottom:"12px" }}>
-              <h1 style={{ fontFamily:"'Fraunces',serif", fontSize:"28px", fontWeight:900, color:"#0f172a", margin:0, lineHeight:1.3, flex:1, minWidth:200 }}>
-                {f.name}
-              </h1>
-              {f.verified_by_foundation && (
-                <div style={{ display:"flex", flexDirection:"column", alignItems:"flex-end", gap:4, flexShrink:0 }}>
-                  <span style={{
-                    display:"inline-flex", alignItems:"center", gap:5,
-                    background:"#f0fdf4", color:"#15803d", fontSize:"12px", fontWeight:700,
-                    padding:"5px 12px", borderRadius:"999px", border:"1px solid #bbf7d0",
-                    whiteSpace:"nowrap",
-                  }}>
-                    ✓ Verified by Foundation
-                  </span>
-                  {f.verified_date && (
-                    <span style={{ fontSize:"11px", color:"#94a3b8", fontWeight:500 }}>
-                      Verified {formatVerifiedDate(f.verified_date)}
-                    </span>
-                  )}
+        {/* ── 3. ELIGIBILITY ── */}
+        <div style={{ background:"white", borderRadius:"14px", border:"1px solid #e2e8f0", padding:"24px 28px", marginBottom:16, boxShadow:"0 1px 4px rgba(0,0,0,0.04)" }}>
+          <p style={{ margin:0, fontSize:15, color:"#334155", lineHeight:1.7 }}>{f.eligibility}</p>
+        </div>
+
+        {/* ── 4. VERIFIED DETAILS ── */}
+        {f.verified_by_foundation && (f.scholarships_count || f.annual_awards) && (
+          <div style={{ background:"#f0fdf4", borderRadius:"14px", border:"1px solid #bbf7d0", padding:"20px 28px", marginBottom:16 }}>
+            <div style={{ fontSize:11, color:"#15803d", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:12 }}>
+              ✓ Foundation Verified Details
+            </div>
+            <div style={{ display:"grid", gap:10 }}>
+              {f.scholarships_count && (
+                <div style={{ display:"flex", justifyContent:"space-between", fontSize:14 }}>
+                  <span style={{ color:"#475569" }}>Scholarships available</span>
+                  <span style={{ fontWeight:700, color:"#0f172a" }}>{f.scholarships_count}</span>
+                </div>
+              )}
+              {f.annual_awards && (
+                <div style={{ display:"flex", justifyContent:"space-between", fontSize:14 }}>
+                  <span style={{ color:"#475569" }}>Annual awards</span>
+                  <span style={{ fontWeight:700, color:"#0f172a" }}>{f.annual_awards}</span>
                 </div>
               )}
             </div>
-            <span style={{ background:"#f0fdf4", color:"#15803d", fontSize:"15px", fontWeight:700, padding:"6px 16px", borderRadius:"999px", border:"1px solid #bbf7d0" }}>
-              {f.amount}
-            </span>
           </div>
+        )}
 
-          <div style={{ borderTop:"1px solid #f1f5f9", paddingTop:"24px", display:"grid", gap:"16px" }}>
-            {/* Deadline + Location */}
-            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"16px" }}>
-              <div style={{ background:"#f8fafc", borderRadius:"10px", padding:"16px" }}>
-                <div style={{ fontSize:"12px", color:"#94a3b8", fontWeight:600, textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:"6px" }}>Deadline</div>
-                <div style={{ fontSize:"16px", fontWeight:600, color:"#0f172a" }}>
-                  {f.application_open && f.application_close
-                    ? `${f.application_open} – ${f.application_close}`
-                    : f.deadline}
-                </div>
-              </div>
-              <div style={{ background:"#f8fafc", borderRadius:"10px", padding:"16px" }}>
-                <div style={{ fontSize:"12px", color:"#94a3b8", fontWeight:600, textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:"6px" }}>Location</div>
-                <div style={{ fontSize:"16px", fontWeight:600, color:"#0f172a" }}>{f.city}, {f.state}</div>
-              </div>
-            </div>
-
-            {/* Eligibility */}
-            <div style={{ background:"#f8fafc", borderRadius:"10px", padding:"16px" }}>
-              <div style={{ fontSize:"12px", color:"#94a3b8", fontWeight:600, textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:"8px" }}>Eligibility</div>
-              <div style={{ fontSize:"15px", color:"#334155", lineHeight:1.6 }}>{f.eligibility}</div>
-            </div>
-
-            {/* Verified details section */}
-            {f.verified_by_foundation && (f.scholarships_count || f.annual_awards || f.notes) && (
-              <div style={{ background:"#f0fdf4", borderRadius:"10px", padding:"16px", border:"1px solid #bbf7d0" }}>
-                <div style={{ fontSize:"12px", color:"#15803d", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:"12px" }}>
-                  ✓ Foundation Verified Details
-                </div>
-                <div style={{ display:"grid", gap:"8px" }}>
-                  {f.scholarships_count && (
-                    <div style={{ display:"flex", justifyContent:"space-between", fontSize:"14px" }}>
-                      <span style={{ color:"#475569" }}>Scholarships available</span>
-                      <span style={{ fontWeight:700, color:"#0f172a" }}>{f.scholarships_count}</span>
-                    </div>
-                  )}
-                  {f.annual_awards && (
-                    <div style={{ display:"flex", justifyContent:"space-between", fontSize:"14px" }}>
-                      <span style={{ color:"#475569" }}>Annual awards</span>
-                      <span style={{ fontWeight:700, color:"#0f172a" }}>{f.annual_awards}</span>
-                    </div>
-                  )}
-                  {f.application_open && f.application_close && (
-                    <div style={{ display:"flex", justifyContent:"space-between", fontSize:"14px" }}>
-                      <span style={{ color:"#475569" }}>Application window</span>
-                      <span style={{ fontWeight:700, color:"#0f172a" }}>{f.application_open} – {f.application_close}</span>
-                    </div>
-                  )}
-                  {f.notes && (
-                    <div style={{ marginTop:"8px", paddingTop:"8px", borderTop:"1px solid #bbf7d0", fontSize:"13px", color:"#334155", lineHeight:1.6 }}>
-                      {f.notes}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Apply button */}
-            <ApplyButton
-              url={f.url}
-              deadline={f.deadline}
-              propublicaUrl={f.propublica_url}
-              applicationOpen={f.application_open}
-              applicationClose={f.application_close}
-            />
+        {/* Disclaimer for non-verified */}
+        {!f.verified_by_foundation && (
+          <div style={{ padding:"14px 18px", background:"#fffbeb", borderRadius:"10px", border:"1px solid #fde68a", marginBottom:16 }}>
+            <p style={{ margin:0, fontSize:13, color:"#92400e", lineHeight:1.6 }}>
+              Always verify deadlines and eligibility directly with the foundation before applying.
+            </p>
           </div>
+        )}
 
-          {!f.verified_by_foundation && (
-            <div style={{ marginTop:"24px", padding:"16px", background:"#fffbeb", borderRadius:"10px", border:"1px solid #fde68a" }}>
-              <p style={{ margin:0, fontSize:"13px", color:"#92400e", lineHeight:1.6 }}>
-                Always verify deadlines and eligibility directly with the foundation before applying.
-              </p>
-            </div>
-          )}
-        </div>
-
-        <div style={{ marginTop:"24px", display:"flex", gap:16, flexWrap:"wrap" }}>
-          <Link href={`/local/${f.state.toLowerCase()}/${citySlug(f.city)}-scholarships`} style={{ color:"#2563eb", textDecoration:"none", fontSize:"14px" }}>
+        {/* ── 5. BOTTOM NAV ── */}
+        <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
+          <Link href={`/local/${f.state.toLowerCase()}/${citySlug(f.city)}-scholarships`} style={{ color:"#2563eb", textDecoration:"none", fontSize:14 }}>
             ← All {f.city} scholarships
           </Link>
-          <Link href={`/local/${f.state.toLowerCase()}`} style={{ color:"#64748b", textDecoration:"none", fontSize:"14px" }}>
+          <Link href={`/local/${f.state.toLowerCase()}`} style={{ color:"#64748b", textDecoration:"none", fontSize:14 }}>
             All {f.state} foundations
           </Link>
         </div>
+
       </div>
     </div>
     </>
