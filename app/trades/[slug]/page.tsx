@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { SCHOLARSHIPS, CAT_META, slugify } from "@/lib/data"
+import { SCHOLARSHIPS, CAT_META } from "@/lib/data"
 import { SITE_NAME } from "@/lib/utils"
 
-// Pre-generate every non-trade scholarship page at build time
+const TRADES = SCHOLARSHIPS.filter(s => s.category === "trade")
+
 export async function generateStaticParams() {
-  return SCHOLARSHIPS.filter(s => s.category !== "trade").map(s => ({ slug: s.slug }))
+  return TRADES.map(s => ({ slug: s.slug }))
 }
 
 export async function generateMetadata({
@@ -14,7 +15,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string }
 }): Promise<Metadata> {
-  const s = SCHOLARSHIPS.find(x => x.slug === params.slug)
+  const s = TRADES.find(x => x.slug === params.slug)
   if (!s) return {}
   const meta = CAT_META[s.category]
   return {
@@ -25,27 +26,23 @@ export async function generateMetadata({
       description: s.eligibility.slice(0, 200),
     },
     alternates: {
-      canonical: `/scholarships/${s.slug}`,
+      canonical: `/trades/${s.slug}`,
     },
   }
 }
 
-export default function ScholarshipDetailPage({
+export default function TradeDetailPage({
   params,
 }: {
   params: { slug: string }
 }) {
-  const s = SCHOLARSHIPS.find(x => x.slug === params.slug)
+  const s = TRADES.find(x => x.slug === params.slug)
   if (!s) notFound()
 
   const meta = CAT_META[s.category]
 
-  // Related: same category, different id
-  const related = SCHOLARSHIPS.filter(
-    x => x.category === s.category && x.id !== s.id
-  ).slice(0, 4)
+  const related = TRADES.filter(x => x.id !== s.id).slice(0, 4)
 
-  // JSON-LD structured data for Google rich snippets
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Grant",
@@ -69,14 +66,12 @@ export default function ScholarshipDetailPage({
         <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#8a9abb" }}>
           <Link href="/" style={{ color: "#8a9abb" }}>Home</Link>
           <span>›</span>
-          <Link href={s.category === "trade" ? "/trades" : "/scholarships"} style={{ color: "#8a9abb" }}>
-            {s.category === "trade" ? "Trades" : "Scholarships"}
-          </Link>
+          <Link href="/trades" style={{ color: "#8a9abb" }}>Trades</Link>
           <span>›</span>
           <span style={{ color: "#0d1f3c", fontWeight: 600 }}>{s.name}</span>
         </div>
-        <Link href={s.category === "trade" ? "/trades" : "/scholarships"} className="btn-ghost" style={{ padding: "6px 14px", fontSize: 12 }}>
-          {s.category === "trade" ? "← All Trades" : "← All Scholarships"}
+        <Link href="/trades" className="btn-ghost" style={{ padding: "6px 14px", fontSize: 12 }}>
+          ← All Trades
         </Link>
       </div>
 
@@ -163,7 +158,7 @@ export default function ScholarshipDetailPage({
               {s.tags.map(t => (
                 <Link
                   key={t}
-                  href={`/scholarships?tag=${t}`}
+                  href={`/trades?tag=${t}`}
                   className="tag-chip"
                   style={{ textDecoration: "none", cursor: "pointer" }}
                 >
@@ -180,7 +175,7 @@ export default function ScholarshipDetailPage({
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary"
-          style={{ fontSize: 16, padding: "14px 32px", borderRadius: 14, marginBottom: 20, display: "inline-flex" }}
+          style={{ fontSize: 16, padding: "14px 32px", borderRadius: 14, marginBottom: 20, display: "inline-flex", background: meta.color }}
         >
           Apply on Official Site →
         </a>
@@ -197,11 +192,11 @@ export default function ScholarshipDetailPage({
               className="section-title"
               style={{ marginBottom: 16, fontSize: 22 }}
             >
-              More {meta.label}s
+              More Trade Opportunities
             </h2>
             <div className="related-grid">
               {related.map(r => (
-                <Link key={r.id} href={`/scholarships/${r.slug}`} className="related-card">
+                <Link key={r.id} href={`/trades/${r.slug}`} className="related-card">
                   <div style={{ fontSize: 12, color: meta.color, fontWeight: 700, marginBottom: 6 }}>
                     {meta.icon} {r.amount}
                   </div>

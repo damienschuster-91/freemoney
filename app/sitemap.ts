@@ -15,12 +15,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/about`,        lastModified: now, changeFrequency: "monthly", priority: 0.4 },
   ]
 
-  const scholarshipPages: MetadataRoute.Sitemap = SCHOLARSHIPS.map(s => ({
-    url: `${SITE_URL}/scholarships/${s.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }))
+  const scholarshipPages: MetadataRoute.Sitemap = SCHOLARSHIPS
+    .filter(s => s.category !== "trade")
+    .map(s => ({
+      url: `${SITE_URL}/scholarships/${s.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }))
+
+  const tradePages: MetadataRoute.Sitemap = SCHOLARSHIPS
+    .filter(s => s.category === "trade")
+    .map(s => ({
+      url: `${SITE_URL}/trades/${s.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }))
 
   const tagPages: MetadataRoute.Sitemap = ALL_TAGS.map(tag => ({
     url: `${SITE_URL}/scholarships/tag/${encodeURIComponent(tag)}`,
@@ -72,6 +83,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticPages,
     ...scholarshipPages,
+    ...tradePages,
     ...tagPages,
     ...statePages,
     ...localPages,

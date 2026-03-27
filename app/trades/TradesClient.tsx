@@ -34,7 +34,7 @@ function TradesClientInner({ scholarships }: { scholarships: Scholarship[] }) {
   return (
     <>
       {/* Hero */}
-      <section className="hero" style={{ padding: "40px 24px 48px", background: "linear-gradient(135deg, #1a2e1a 0%, #2d5a1b 100%)" }}>
+      <section className="hero" style={{ padding: "40px 24px 48px", background: "linear-gradient(135deg, #e85d26 0%, #c44a18 100%)" }}>
         <div className="hero-inner">
           <div className="hero-badge">🔧 Verified Trade Opportunities</div>
           <h1 style={{ marginBottom: 10 }}>Trade School<br/><span>Scholarships & Apprenticeships</span></h1>
@@ -87,7 +87,7 @@ function TradesClientInner({ scholarships }: { scholarships: Scholarship[] }) {
           {filtered.map((s, i) => (
             <Link
               key={s.id}
-              href={`/scholarships/${s.slug}`}
+              href={`/trades/${s.slug}`}
               className="card fade-up"
               style={{ animationDelay: `${Math.min(i, 20) * 0.03}s` }}
             >
