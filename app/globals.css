@@ -406,3 +406,108 @@ button, input, select, textarea { font-family: inherit; outline: none; }
   transition: all 0.15s;
 }
 .related-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+/* ── HAMBURGER / MOBILE NAV ──────────────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  font-size: 26px; color: var(--navy); padding: 4px 6px;
+  line-height: 1; align-items: center; justify-content: center;
+  border-radius: 8px; transition: background 0.12s;
+}
+.hamburger:hover { background: var(--bg); }
+.mobile-nav {
+  position: absolute; top: 64px; left: 0; right: 0;
+  background: var(--white); border-bottom: 1.5px solid var(--border);
+  box-shadow: var(--shadow-md); z-index: 200;
+  padding: 8px 12px 14px; display: flex; flex-direction: column; gap: 2px;
+}
+.mobile-nav a {
+  display: block; padding: 13px 16px; border-radius: 10px;
+  font-size: 15px; font-weight: 700; color: var(--text-muted);
+  transition: background 0.12s, color 0.12s;
+}
+.mobile-nav a:hover, .mobile-nav a.active {
+  background: var(--bg); color: var(--navy);
+}
+
+/* ── HERO CTA BUTTONS ────────────────────────────────────────────────────────── */
+.hero-cta-wrap {
+  display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+}
+
+/* ── MOBILE BREAKPOINTS ──────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Navbar: show hamburger, hide desktop nav */
+  .navbar-nav { display: none; }
+  .navbar-count { display: none; }
+  .hamburger { display: flex; }
+
+  /* Mobile nav menu visibility handled by JS (conditional render) */
+}
+
+@media (max-width: 640px) {
+  /* Cards: 1 column */
+  .card-grid { grid-template-columns: 1fr; }
+
+  /* Tag filter row: horizontal scroll, no wrap */
+  .tag-filter-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tag-filter-row::-webkit-scrollbar { display: none; }
+  .tag-filter-label { flex-shrink: 0; }
+  .tag-filter-chip { flex-shrink: 0; }
+
+  /* Category filter pills: proper touch target */
+  .filter-bar { gap: 6px; }
+  .filter-bar .pill { min-height: 44px; padding: 10px 16px; font-size: 13px; }
+
+  /* State grid: 2 columns */
+  .state-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Detail info grid: 2 columns */
+  .detail-info-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Page padding: reduce on small screens */
+  .page-wrap { padding-left: 16px; padding-right: 16px; }
+  .page-wrap-md { padding-left: 16px; padding-right: 16px; }
+  .page-wrap-sm { padding-left: 16px; padding-right: 16px; }
+
+  /* Hero: reduce padding */
+  .hero { padding: 48px 16px 56px; }
+  .hero-sub { font-size: 15px; }
+
+  /* Hero buttons: stack vertically */
+  .hero-cta-wrap {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .hero-cta-wrap .btn-primary,
+  .hero-cta-wrap .btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Detail breadcrumb: wrap gracefully */
+  .detail-breadcrumb { flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
+
+  /* Blog cards: already column, just reduce padding */
+  .blog-card { padding: 20px; }
+
+  /* Navbar */
+  .navbar { padding: 0 16px; }
+
+  /* Footer links: smaller gap */
+  .footer-links { gap: 16px; }
+  .footer-links a { font-size: 13px; }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Cards: 2 columns on tablet */
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}

@@ -52,7 +52,7 @@ export default function HomePage() {
             {SCHOLARSHIPS.length + LOCAL_DATA.length}+ scholarships, grants, trades & local foundations —<br/>
             all verified, all free to apply.
           </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
+          <div className="hero-cta-wrap">
             <Link href="/local" className="btn-primary" style={{ fontSize: 16, padding: "14px 32px", borderRadius: 14, display: "inline-flex", background: "#1a7a4a" }}>
               Find Local Scholarships
             </Link>
