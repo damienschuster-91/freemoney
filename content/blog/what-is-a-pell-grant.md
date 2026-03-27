@@ -54,7 +54,7 @@ Sometimes it is possible for your Pell Grant award to exceed your costs for tuit
 
 ## Grants vs Scholarships
 
-Both scholarships and grants are helpful to paying for college because they are free money. That said, it's important to highlight that grants, like the Federal Pell Grant, are different from scholarships. For starters, scholarships are merit-based, which means they are awarded based on specific achievements, such as academic or athletic accomplishments. Grants are need-based, which means they are evaluated and awarded on demonstrated financial need.
+Both scholarships and grants are helpful to paying for college because they are free money. That said, it's important to highlight that grants, like the Federal Pell Grant, are different from scholarships. For starters, scholarships are merit-based, which means they are awarded based on specific achievements, such as academic or athletic accomplishments. Grants are need-based, which means they are evaluated and awarded on demonstrated financial need. While the Pell Grant covers need-based aid, [local scholarships](/local) can supplement your funding regardless of income level.
 
 You won't need to pay back your grant unless you withdraw early from a program or have a change in your enrollment status.
 

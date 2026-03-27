@@ -70,10 +70,12 @@ export async function generateMetadata({ params }: { params: { state: string; sl
     const citySchCount = getCityScholarships(cityName).length
     const stateSchCount = getStateScholarships(stateUpper).length
     const total = listings.length + citySchCount + stateSchCount
+    const isThin = listings.length < 2 && stateSchCount === 0
     return {
       title: `${cityName} Local Scholarships — ${total} Verified`,
       description: `Find local scholarships in ${cityName}, ${stateUpper}. Verified community foundation awards with less competition than national scholarships.`,
       alternates: { canonical: `/local/${params.state}/${params.slug}` },
+      ...(isThin && { robots: { index: false, follow: true } }),
     }
   }
 
@@ -271,8 +273,24 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
   const f = LOCAL_DATA.find(f => f.slug === params.slug)
   if (!f) notFound()
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: f.name,
+    url: f.url,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: f.city,
+      addressRegion: f.state,
+      addressCountry: "US",
+    },
+    description: f.eligibility,
+  }
+
   return (
-    <div style={{ minHeight:"100vh", background:"#f9fafb" }}>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <div style={{ minHeight:"100vh", background:"#f9fafb" }}>
       <div style={{ maxWidth:"800px", margin:"0 auto", padding:"48px 20px" }}>
 
         <div style={{ marginBottom:"24px", display:"flex", gap:"8px", alignItems:"center", fontSize:"14px" }}>
@@ -339,6 +357,7 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
         </div>
       </div>
     </div>
+    </>
   )
 }
 

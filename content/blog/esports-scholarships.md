@@ -44,3 +44,5 @@ There are over 200 colleges to consider but here are a few notable esports unive
 - Concordia University Texas (Austin, Texas)
 - Full Sail University (Winter Park, Florida)
 - University of Texas at Dallas (Richardson, Texas)
+
+Looking for more scholarships with less competition? [Browse local scholarships in your state](/local) — community foundation awards most students never find.

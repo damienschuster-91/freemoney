@@ -48,19 +48,12 @@ export default function ScholarshipDetailPage({
   // JSON-LD structured data for Google rich snippets
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "EducationalOccupationalProgram",
+    "@type": "Grant",
     name: s.name,
-    description: s.eligibility,
     url: s.url,
-    financialAidEligible: s.amount,
-    applicationDeadline: s.deadline || undefined,
-    programPrerequisites: s.gpa ? `Minimum GPA: ${s.gpa}` : undefined,
-    offers: {
-      "@type": "Offer",
-      price: 0,
-      priceCurrency: "USD",
-      description: s.amount,
-    },
+    funder: { "@type": "Organization", name: s.name },
+    description: s.eligibility,
+    amount: { "@type": "MonetaryAmount", currency: "USD", description: s.amount },
   }
 
   return (
