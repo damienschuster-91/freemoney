@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { LOCAL_DATA, SCHOLARSHIPS, CAT_META } from "@/lib/data"
+import ApplyButton from "@/components/ApplyButton"
 
 function citySlug(city: string) {
   return city.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
@@ -328,16 +329,7 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
               <div style={{ fontSize:"15px", color:"#334155", lineHeight:1.6 }}>{f.eligibility}</div>
             </div>
 
-            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"12px", marginTop:"8px" }}>
-              <a href={f.url} target="_blank" rel="noopener noreferrer"
-                style={{ display:"block", background:"#2563eb", color:"white", textAlign:"center", padding:"14px", borderRadius:"10px", textDecoration:"none", fontWeight:700, fontSize:"15px" }}>
-                Apply Now
-              </a>
-              <a href={f.propublica_url} target="_blank" rel="noopener noreferrer"
-                style={{ display:"block", background:"#f8fafc", color:"#475569", textAlign:"center", padding:"14px", borderRadius:"10px", textDecoration:"none", fontWeight:600, fontSize:"15px", border:"1px solid #e2e8f0" }}>
-                View 990 Filing
-              </a>
-            </div>
+            <ApplyButton url={f.url} deadline={f.deadline} propublicaUrl={f.propublica_url} />
           </div>
 
           <div style={{ marginTop:"24px", padding:"16px", background:"#fffbeb", borderRadius:"10px", border:"1px solid #fde68a" }}>
