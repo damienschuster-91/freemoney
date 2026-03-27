@@ -9,7 +9,8 @@ export default function Navbar() {
 
   const links = [
     { href: "/local",        label: "📍 Local" },
-    { href: "/scholarships", label: "🔍 Scholarships" },
+    { href: "/scholarships", label: "🎓 Scholarships" },
+    { href: "/trades",       label: "🔧 Trades" },
     { href: "/blog",         label: "✍️ Blog" },
     { href: "/about",        label: "About" },
   ]

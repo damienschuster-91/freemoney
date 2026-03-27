@@ -9,7 +9,6 @@ const CATS = [
   { id: "all",        label: "All",                     icon: "✦" },
   { id: "scholarship",label: "Scholarships",            icon: "🎓" },
   { id: "grant",      label: "Grants",                  icon: "💸" },
-  { id: "trade",      label: "Trades",                  icon: "🔧" },
   { id: "other",      label: "Contests & Easy Apply",   icon: "🎯" },
 ]
 

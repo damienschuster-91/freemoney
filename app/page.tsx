@@ -33,7 +33,6 @@ const CATEGORIES = [
   { id: "local",       href: "/local",                        stat: LOCAL_DATA.length },
   { id: "scholarship", href: "/scholarships?cat=scholarship", stat: SCHOLARSHIPS.filter(s=>s.category==="scholarship").length },
   { id: "grant",       href: "/scholarships?cat=grant",       stat: SCHOLARSHIPS.filter(s=>s.category==="grant").length },
-  { id: "trade",       href: "/scholarships?cat=trade",       stat: SCHOLARSHIPS.filter(s=>s.category==="trade").length },
   { id: "other",       href: "/scholarships?cat=other",       stat: SCHOLARSHIPS.filter(s=>s.category==="other").length },
 ]
 
@@ -105,6 +104,17 @@ export default function HomePage() {
           <Link href="/local" style={{ fontSize: 13, color: "#2563eb", fontWeight: 600 }}>
             View all states →
           </Link>
+        </div>
+
+        {/* TRADES CALLOUT */}
+        <div style={{ background: "linear-gradient(135deg,#1a2e1a,#2d5a1b)", borderRadius: 20, padding: "32px", marginBottom: 48, display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
+          <div>
+            <div style={{ fontFamily: "'Fraunces',serif", fontSize: 22, fontWeight: 900, color: "#fff", marginBottom: 6 }}>Not going to college? Trades pay well.</div>
+            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, maxWidth: 500 }}>
+              {SCHOLARSHIPS.filter(s=>s.category==="trade").length}+ verified scholarships, grants, and paid apprenticeships for electricians, welders, HVAC, plumbing, construction, and more.
+            </p>
+          </div>
+          <Link href="/trades" className="btn-primary" style={{ background: "#4a9a2a", whiteSpace: "nowrap" }}>Browse Trade Programs</Link>
         </div>
 
         {/* CATEGORY CARDS */}
