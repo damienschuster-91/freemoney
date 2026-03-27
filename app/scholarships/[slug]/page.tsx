@@ -69,12 +69,14 @@ export default function ScholarshipDetailPage({
         <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#8a9abb" }}>
           <Link href="/" style={{ color: "#8a9abb" }}>Home</Link>
           <span>›</span>
-          <Link href="/scholarships" style={{ color: "#8a9abb" }}>Scholarships</Link>
+          <Link href={s.category === "trade" ? "/trades" : "/scholarships"} style={{ color: "#8a9abb" }}>
+            {s.category === "trade" ? "Trades" : "Scholarships"}
+          </Link>
           <span>›</span>
           <span style={{ color: "#0d1f3c", fontWeight: 600 }}>{s.name}</span>
         </div>
-        <Link href="/scholarships" className="btn-ghost" style={{ padding: "6px 14px", fontSize: 12 }}>
-          ← All Scholarships
+        <Link href={s.category === "trade" ? "/trades" : "/scholarships"} className="btn-ghost" style={{ padding: "6px 14px", fontSize: 12 }}>
+          {s.category === "trade" ? "← All Trades" : "← All Scholarships"}
         </Link>
       </div>
 
