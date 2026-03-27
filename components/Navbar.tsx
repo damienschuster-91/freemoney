@@ -8,8 +8,8 @@ export default function Navbar() {
   const total = SCHOLARSHIPS.length + LOCAL_DATA.length
 
   const links = [
-    { href: "/scholarships", label: "🔍 Scholarships" },
     { href: "/local",        label: "📍 Local" },
+    { href: "/scholarships", label: "🔍 Scholarships" },
     { href: "/blog",         label: "✍️ Blog" },
     { href: "/about",        label: "About" },
   ]
