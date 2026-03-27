@@ -297,9 +297,8 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
       <div style={{ minHeight:"100vh", background:"#f9fafb" }}>
       <div style={{ maxWidth:"800px", margin:"0 auto", padding:"40px 20px 60px" }}>
 
-        {/* ── 1. HEADER ── */}
+        {/* ── 1. NAME + VERIFIED BADGE ── */}
         <div style={{ background:"white", borderRadius:"16px", border:"1px solid #e2e8f0", padding:"32px 36px 28px", boxShadow:"0 2px 8px rgba(0,0,0,0.06)", marginBottom:16 }}>
-          {/* Name + verified badge */}
           <div style={{ display:"flex", alignItems:"flex-start", gap:12, flexWrap:"wrap", marginBottom:12 }}>
             <h1 style={{ fontFamily:"'Fraunces',serif", fontSize:"clamp(22px,4vw,28px)", fontWeight:900, color:"#0f172a", margin:0, lineHeight:1.3, flex:1, minWidth:180 }}>
               {f.name}
@@ -317,44 +316,14 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
               </div>
             )}
           </div>
-          {/* Amount + location */}
-          <div style={{ display:"flex", alignItems:"center", gap:14, flexWrap:"wrap" }}>
-            <span style={{ background:"#f0fdf4", color:"#15803d", fontSize:15, fontWeight:700, padding:"5px 16px", borderRadius:999, border:"1px solid #bbf7d0" }}>
-              {f.amount}
-            </span>
-            <span style={{ fontSize:13, color:"#94a3b8" }}>📍 {f.city}, {f.state}</span>
-          </div>
+
+          {/* ── 2. AWARD AMOUNT ── */}
+          <span style={{ background:"#f0fdf4", color:"#15803d", fontSize:15, fontWeight:700, padding:"5px 16px", borderRadius:999, border:"1px solid #bbf7d0" }}>
+            {f.amount}
+          </span>
         </div>
 
-        {/* ── 2. DEADLINE BOX — single source of truth ── */}
-        <div style={{ background:"white", borderRadius:"12px", border:"1px solid #e2e8f0", padding:"16px 20px", marginBottom:16, display:"flex", alignItems:"center", gap:16 }}>
-          <div>
-            <div style={{ fontSize:11, color:"#94a3b8", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:4 }}>Deadline</div>
-            <div style={{ fontSize:17, fontWeight:700, color:"#0f172a" }}>
-              {f.application_open && f.application_close
-                ? `${f.application_open} – ${f.application_close}`
-                : f.deadline}
-            </div>
-          </div>
-        </div>
-
-        {/* ── 3. STATUS BLOCK — open/closed + buttons only ── */}
-        <div style={{ marginBottom:16 }}>
-          <FoundationStatusBlock
-            url={f.url}
-            propublicaUrl={f.propublica_url}
-            deadline={f.deadline}
-            applicationOpen={f.application_open}
-            applicationClose={f.application_close}
-          />
-        </div>
-
-        {/* ── 4. ELIGIBILITY ── */}
-        <div style={{ background:"white", borderRadius:"14px", border:"1px solid #e2e8f0", padding:"24px 28px", marginBottom:16, boxShadow:"0 1px 4px rgba(0,0,0,0.04)" }}>
-          <p style={{ margin:0, fontSize:15, color:"#334155", lineHeight:1.7 }}>{f.eligibility}</p>
-        </div>
-
-        {/* ── 5. VERIFIED DETAILS ── */}
+        {/* ── 3. VERIFIED DETAILS (if verified) ── */}
         {f.verified_by_foundation && (f.scholarships_count || f.annual_awards || f.awards_announced) && (
           <div style={{ background:"#f0fdf4", borderRadius:"14px", border:"1px solid #bbf7d0", padding:"20px 28px", marginBottom:16 }}>
             <div style={{ fontSize:11, color:"#15803d", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:12 }}>
@@ -383,6 +352,38 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
           </div>
         )}
 
+        {/* ── 4. ELIGIBILITY ── */}
+        <div style={{ background:"white", borderRadius:"14px", border:"1px solid #e2e8f0", padding:"24px 28px", marginBottom:16, boxShadow:"0 1px 4px rgba(0,0,0,0.04)" }}>
+          <p style={{ margin:0, fontSize:15, color:"#334155", lineHeight:1.7 }}>{f.eligibility}</p>
+        </div>
+
+        {/* ── 5. DEADLINE + LOCATION — side by side ── */}
+        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:12, marginBottom:16 }}>
+          <div style={{ background:"white", borderRadius:"12px", border:"1px solid #e2e8f0", padding:"16px 20px" }}>
+            <div style={{ fontSize:11, color:"#94a3b8", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:4 }}>Deadline</div>
+            <div style={{ fontSize:16, fontWeight:700, color:"#0f172a" }}>
+              {f.application_open && f.application_close
+                ? `${f.application_open} – ${f.application_close}`
+                : f.deadline}
+            </div>
+          </div>
+          <div style={{ background:"white", borderRadius:"12px", border:"1px solid #e2e8f0", padding:"16px 20px" }}>
+            <div style={{ fontSize:11, color:"#94a3b8", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:4 }}>Location</div>
+            <div style={{ fontSize:16, fontWeight:700, color:"#0f172a" }}>{f.city}, {f.state}</div>
+          </div>
+        </div>
+
+        {/* ── 6. STATUS + BUTTONS ── */}
+        <div style={{ marginBottom:16 }}>
+          <FoundationStatusBlock
+            url={f.url}
+            propublicaUrl={f.propublica_url}
+            deadline={f.deadline}
+            applicationOpen={f.application_open}
+            applicationClose={f.application_close}
+          />
+        </div>
+
         {/* Disclaimer for non-verified */}
         {!f.verified_by_foundation && (
           <div style={{ padding:"14px 18px", background:"#fffbeb", borderRadius:"10px", border:"1px solid #fde68a", marginBottom:16 }}>
@@ -392,7 +393,7 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
           </div>
         )}
 
-        {/* ── 6. BOTTOM NAV ── */}
+        {/* ── 7. BREADCRUMB NAV ── */}
         <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
           <Link href={`/local/${f.state.toLowerCase()}/${citySlug(f.city)}-scholarships`} style={{ color:"#2563eb", textDecoration:"none", fontSize:14 }}>
             ← All {f.city} scholarships
