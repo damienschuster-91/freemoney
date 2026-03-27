@@ -411,11 +411,13 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
             />
           </div>
 
-          <div style={{ marginTop:"24px", padding:"16px", background:"#fffbeb", borderRadius:"10px", border:"1px solid #fde68a" }}>
-            <p style={{ margin:0, fontSize:"13px", color:"#92400e", lineHeight:1.6 }}>
-              Always verify deadlines and eligibility directly with the foundation before applying.
-            </p>
-          </div>
+          {!f.verified_by_foundation && (
+            <div style={{ marginTop:"24px", padding:"16px", background:"#fffbeb", borderRadius:"10px", border:"1px solid #fde68a" }}>
+              <p style={{ margin:0, fontSize:"13px", color:"#92400e", lineHeight:1.6 }}>
+                Always verify deadlines and eligibility directly with the foundation before applying.
+              </p>
+            </div>
+          )}
         </div>
 
         <div style={{ marginTop:"24px", display:"flex", gap:16, flexWrap:"wrap" }}>

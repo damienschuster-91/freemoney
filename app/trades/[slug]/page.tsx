@@ -183,9 +183,11 @@ export default function TradeDetailPage({
         </div>
 
         {/* Disclaimer */}
-        <div className="disclaimer">
-          ⚠️ Always verify current deadlines and requirements at the official website above — details change yearly. This listing is for informational purposes only.
-        </div>
+        {!s.verified_by_foundation && (
+          <div className="disclaimer">
+            ⚠️ Always verify current deadlines and requirements at the official website above — details change yearly. This listing is for informational purposes only.
+          </div>
+        )}
 
         {/* Related */}
         {related.length > 0 && (

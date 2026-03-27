@@ -16,6 +16,7 @@ export interface Scholarship {
   tags: string[]
   eligibility: string
   application_open?: string   // "Aug 1" — when cycle opens
+  verified_by_foundation?: boolean
 }
 
 export interface LocalScholarship {
