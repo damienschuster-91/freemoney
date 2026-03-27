@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { LOCAL_DATA } from "@/lib/data"
+import LocalSearchClient from "@/components/LocalSearchClient"
 
 export const metadata: Metadata = {
   title: "Local Foundation Scholarships by State",
@@ -75,6 +76,9 @@ export default function LocalPage() {
             don't advertise. We find them by reading IRS 990 forms so you don't have to.
           </p>
         </div>
+
+        {/* Search */}
+        <LocalSearchClient data={LOCAL_DATA as any} />
 
         {/* Top states */}
         {topStates.length > 0 && (
