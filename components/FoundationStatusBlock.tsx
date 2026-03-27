@@ -42,12 +42,11 @@ type Props = {
   deadline: string
   applicationOpen?: string
   applicationClose?: string
-  awardsAnnounced?: string
 }
 
 export default function FoundationStatusBlock({
   url, propublicaUrl, deadline,
-  applicationOpen, applicationClose, awardsAnnounced,
+  applicationOpen, applicationClose,
 }: Props) {
   const [open, setOpen] = useState(true) // SSR-safe default
 
@@ -59,8 +58,6 @@ export default function FoundationStatusBlock({
     }
   }, [deadline, applicationOpen, applicationClose])
 
-  const hasWindow = applicationOpen && applicationClose
-
   return (
     <div style={{
       background: "white",
@@ -70,7 +67,7 @@ export default function FoundationStatusBlock({
       boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
     }}>
       {/* Status label */}
-      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
         <span style={{
           display: "inline-flex", alignItems: "center", gap: 6,
           background: open ? "#f0fdf4" : "#f1f5f9",
@@ -82,18 +79,6 @@ export default function FoundationStatusBlock({
           <span style={{ fontSize: 8 }}>{open ? "●" : "○"}</span>
           {open ? "Now Accepting Applications" : "Applications Closed"}
         </span>
-      </div>
-
-      {/* Date line */}
-      <div style={{ fontSize: 14, color: "#64748b", marginBottom: 20, lineHeight: 1.5 }}>
-        {hasWindow ? (
-          <>
-            Opens {applicationOpen} &mdash; Closes {applicationClose}
-            {awardsAnnounced && <> &mdash; Awards: {awardsAnnounced}</>}
-          </>
-        ) : (
-          <>Deadline: {deadline}</>
-        )}
       </div>
 
       {/* Buttons */}

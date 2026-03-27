@@ -326,7 +326,19 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
           </div>
         </div>
 
-        {/* ── 2. STATUS BLOCK ── */}
+        {/* ── 2. DEADLINE BOX — single source of truth ── */}
+        <div style={{ background:"white", borderRadius:"12px", border:"1px solid #e2e8f0", padding:"16px 20px", marginBottom:16, display:"flex", alignItems:"center", gap:16 }}>
+          <div>
+            <div style={{ fontSize:11, color:"#94a3b8", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:4 }}>Deadline</div>
+            <div style={{ fontSize:17, fontWeight:700, color:"#0f172a" }}>
+              {f.application_open && f.application_close
+                ? `${f.application_open} – ${f.application_close}`
+                : f.deadline}
+            </div>
+          </div>
+        </div>
+
+        {/* ── 3. STATUS BLOCK — open/closed + buttons only ── */}
         <div style={{ marginBottom:16 }}>
           <FoundationStatusBlock
             url={f.url}
@@ -334,17 +346,16 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
             deadline={f.deadline}
             applicationOpen={f.application_open}
             applicationClose={f.application_close}
-            awardsAnnounced={f.awards_announced}
           />
         </div>
 
-        {/* ── 3. ELIGIBILITY ── */}
+        {/* ── 4. ELIGIBILITY ── */}
         <div style={{ background:"white", borderRadius:"14px", border:"1px solid #e2e8f0", padding:"24px 28px", marginBottom:16, boxShadow:"0 1px 4px rgba(0,0,0,0.04)" }}>
           <p style={{ margin:0, fontSize:15, color:"#334155", lineHeight:1.7 }}>{f.eligibility}</p>
         </div>
 
-        {/* ── 4. VERIFIED DETAILS ── */}
-        {f.verified_by_foundation && (f.scholarships_count || f.annual_awards) && (
+        {/* ── 5. VERIFIED DETAILS ── */}
+        {f.verified_by_foundation && (f.scholarships_count || f.annual_awards || f.awards_announced) && (
           <div style={{ background:"#f0fdf4", borderRadius:"14px", border:"1px solid #bbf7d0", padding:"20px 28px", marginBottom:16 }}>
             <div style={{ fontSize:11, color:"#15803d", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:12 }}>
               ✓ Foundation Verified Details
@@ -362,6 +373,12 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
                   <span style={{ fontWeight:700, color:"#0f172a" }}>{f.annual_awards}</span>
                 </div>
               )}
+              {f.awards_announced && (
+                <div style={{ display:"flex", justifyContent:"space-between", fontSize:14 }}>
+                  <span style={{ color:"#475569" }}>Awards announced</span>
+                  <span style={{ fontWeight:700, color:"#0f172a" }}>{f.awards_announced}</span>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -375,7 +392,7 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
           </div>
         )}
 
-        {/* ── 5. BOTTOM NAV ── */}
+        {/* ── 6. BOTTOM NAV ── */}
         <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
           <Link href={`/local/${f.state.toLowerCase()}/${citySlug(f.city)}-scholarships`} style={{ color:"#2563eb", textDecoration:"none", fontSize:14 }}>
             ← All {f.city} scholarships
