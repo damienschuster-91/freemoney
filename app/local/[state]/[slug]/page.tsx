@@ -368,6 +368,16 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
           <p style={{ margin:0, fontSize:14, color:"#334155", lineHeight:1.7 }}>{f.eligibility}</p>
         </div>
 
+        {/* ── 4a. NOTES / HOW IT WORKS ── */}
+        {f.notes && (
+          <div style={{ background:"white", borderRadius:14, border:"1px solid #e2e8f0", padding:"18px 20px", marginBottom:10, boxShadow:"0 1px 3px rgba(0,0,0,0.04)" }}>
+            <div style={{ fontSize:10, fontWeight:700, color:"#94a3b8", textTransform:"uppercase", letterSpacing:"0.1em", marginBottom:8, paddingLeft:10, borderLeft:"3px solid #1a7a4a" }}>
+              How It Works
+            </div>
+            <p style={{ margin:0, fontSize:14, color:"#334155", lineHeight:1.7 }}>{f.notes}</p>
+          </div>
+        )}
+
         {/* ── 4b. TIPS FROM THE FOUNDATION ── */}
         {f.tips && f.tips.length > 0 && (
           <div style={{ background:"white", borderRadius:14, border:"1px solid #e2e8f0", padding:"18px 20px", marginBottom:10, boxShadow:"0 1px 3px rgba(0,0,0,0.04)" }}>
@@ -444,7 +454,7 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
         {!f.verified_by_foundation && (
           <div style={{ padding:"12px 16px", background:"#fffbeb", borderRadius:10, border:"1px solid #fde68a", marginBottom:10 }}>
             <p style={{ margin:0, fontSize:12, color:"#92400e", lineHeight:1.6 }}>
-              Always verify deadlines and eligibility directly with the foundation before applying.
+              Always verify deadlines and eligibility at the official source before applying. Details change yearly.
             </p>
           </div>
         )}
