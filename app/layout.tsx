@@ -46,9 +46,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/blog">Blog</a>
               <a href="/about">About</a>
             </div>
-            <p className="footer-disclaimer">
-              Always verify deadlines and eligibility at the official source before applying. Details change yearly. File your FAFSA early.
-            </p>
           </div>
         </footer>
       </body>

@@ -47,7 +47,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-inner">
           <div className="hero-badge">Free. No signup. No spam.</div>
-          <h1>Find Your<br/><span>Free Money</span></h1>
+          <h1>Find Your <br/><span>Free Money</span></h1>
           <p className="hero-sub">
             {SCHOLARSHIPS.length + LOCAL_DATA.length}+ scholarships, grants, trades & local foundations —<br/>
             all verified, all free to apply.
@@ -180,11 +180,6 @@ export default function HomePage() {
           <Link href="/scholarships?tag=no-essay" className="btn-primary">Browse No-Essay Awards</Link>
         </div>
 
-        {/* SEO FOOTER NOTE */}
-        <div style={{ paddingTop: 20, borderTop: "1.5px solid #e8edf5", fontSize: 13, color: "#c5cde0", textAlign: "center", lineHeight: 1.9, fontWeight: 500 }}>
-          Always verify deadlines and eligibility at the official source. Amounts change yearly.<br/>
-          <strong style={{ color: "#1a3a6b" }}>Tip:</strong> File your FAFSA early — it unlocks most grants and many scholarships.
-        </div>
       </div>
     </>
   )

@@ -3,8 +3,8 @@ import Link from "next/link"
 import { getAllPosts } from "@/lib/blog"
 
 export const metadata: Metadata = {
-  title: "Scholarship Guides & Tips",
-  description: "How-to guides for winning scholarships, understanding deadlines, and finding local awards with less competition.",
+  title: { absolute: "Scholarship Tips, Guides & Strategies | LocalScholarships.org" },
+  description: "Free scholarship guides covering how to find local scholarships, win competitive awards, understand financial aid, and make the most of every application.",
   alternates: { canonical: "/blog" },
 }
 

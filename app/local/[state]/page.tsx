@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: { state: string } }
   const fullName = STATE_NAMES[stateUpper] || stateUpper
   return {
     title: `${stateUpper} Scholarships & Local Foundations — ${total} Verified`,
-    description: `${localCount} IRS 990-verified local foundations and ${schCount} state-specific scholarships in ${fullName}. Less competition than national awards.`,
+    description: `${localCount} IRS 990-verified local foundation scholarships in ${fullName}. Find community foundation awards with less competition than national scholarships.`,
     alternates: { canonical: `/local/${params.state}` },
   }
 }

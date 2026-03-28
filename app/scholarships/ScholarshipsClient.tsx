@@ -46,7 +46,7 @@ function ScholarshipsClientInner({
       {/* Hero */}
       <section className="hero" style={{padding:"40px 24px 48px"}}>
         <div className="hero-inner">
-          <h1 style={{marginBottom:10}}>Find Your<br/><span>Free Money</span></h1>
+          <h1 style={{marginBottom:10}}>Scholarships <span>&amp; Grants</span></h1>
           <p className="hero-sub" style={{marginBottom:24}}>{total}+ opportunities. Filter to find yours.</p>
           <div className="hero-search-wrap">
             <span className="hero-search-icon">🔍</span>

@@ -37,7 +37,7 @@ function TradesClientInner({ scholarships }: { scholarships: Scholarship[] }) {
       <section className="hero" style={{ padding: "40px 24px 48px", background: "linear-gradient(135deg, #e85d26 0%, #c44a18 100%)" }}>
         <div className="hero-inner">
           <div className="hero-badge">🔧 Verified Trade Opportunities</div>
-          <h1 style={{ marginBottom: 10 }}>Trade School<br/><span>Scholarships & Apprenticeships</span></h1>
+          <h1 style={{ marginBottom: 10 }}>Trade School <br/><span>Scholarships &amp; Apprenticeships</span></h1>
           <p className="hero-sub" style={{ marginBottom: 24 }}>
             {scholarships.length}+ verified scholarships, grants, and paid apprenticeships for electricians, welders, HVAC, plumbing, construction, and more.
           </p>
