@@ -283,6 +283,13 @@ function parseDeadlineLines(s: string): { date: string; label: string }[] | null
   })
 }
 
+function compactAmount(s: string): string {
+  return s.replace(/\$(\d{1,3}),(\d{3})/g, (_, a, b) => {
+    const n = parseInt(a) * 1000 + parseInt(b)
+    return n % 1000 === 0 ? `$${n / 1000}K` : `$${(n / 1000).toFixed(1)}K`
+  })
+}
+
 function formatVerifiedDate(dateStr: string): string {
   const SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
   const parts = dateStr.split("-")
@@ -336,29 +343,27 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
           </span>
         </div>
 
-        {/* ── 3. VERIFIED STATS — 3 bold blocks ── */}
-        {(f.scholarships_count || f.annual_awards || f.awards_announced) && (
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:8, marginBottom:10 }}>
-            {f.scholarships_count && (
-              <div style={{ background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:12, padding:"14px 12px", textAlign:"center" }}>
-                <div style={{ fontFamily:"'Fraunces',serif", fontSize:26, fontWeight:900, color:"#15803d", lineHeight:1 }}>{f.scholarships_count}</div>
-                <div style={{ fontSize:11, color:"#16a34a", fontWeight:600, marginTop:4, textTransform:"uppercase", letterSpacing:"0.05em" }}>Scholarships</div>
-              </div>
-            )}
-            {f.annual_awards && (
-              <div style={{ background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:12, padding:"14px 12px", textAlign:"center" }}>
-                <div style={{ fontFamily:"'Fraunces',serif", fontSize:26, fontWeight:900, color:"#15803d", lineHeight:1 }}>{f.annual_awards}</div>
-                <div style={{ fontSize:11, color:"#16a34a", fontWeight:600, marginTop:4, textTransform:"uppercase", letterSpacing:"0.05em" }}>Awarded/yr</div>
-              </div>
-            )}
-            {f.awards_announced && (
-              <div style={{ background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:12, padding:"14px 12px", textAlign:"center" }}>
-                <div style={{ fontFamily:"'Fraunces',serif", fontSize:26, fontWeight:900, color:"#15803d", lineHeight:1 }}>{f.awards_announced}</div>
-                <div style={{ fontSize:11, color:"#16a34a", fontWeight:600, marginTop:4, textTransform:"uppercase", letterSpacing:"0.05em" }}>Awards</div>
-              </div>
-            )}
-          </div>
-        )}
+        {/* ── 3. STAT BLOCKS ── */}
+        {(() => {
+          const block2 = f.annual_awards ? { value: f.annual_awards, label: "Awarded/yr" }
+            : f.amount ? { value: compactAmount(f.amount), label: "Award Range" } : null
+          const blocks = [
+            f.scholarships_count ? { value: String(f.scholarships_count), label: "Scholarships" } : null,
+            block2,
+            f.awards_announced ? { value: f.awards_announced, label: "Awards" } : null,
+          ].filter(Boolean) as { value: string; label: string }[]
+          if (!blocks.length) return null
+          return (
+            <div style={{ display:"grid", gridTemplateColumns:`repeat(${blocks.length},1fr)`, gap:8, marginBottom:10 }}>
+              {blocks.map((b, i) => (
+                <div key={i} style={{ background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:12, padding:"14px 12px", textAlign:"center" }}>
+                  <div style={{ fontFamily:"'Fraunces',serif", fontSize:26, fontWeight:900, color:"#15803d", lineHeight:1 }}>{b.value}</div>
+                  <div style={{ fontSize:11, color:"#16a34a", fontWeight:600, marginTop:4, textTransform:"uppercase", letterSpacing:"0.05em" }}>{b.label}</div>
+                </div>
+              ))}
+            </div>
+          )
+        })()}
 
         {/* ── 4. ELIGIBILITY ── */}
         <div style={{ background:"white", borderRadius:14, border:"1px solid #e2e8f0", padding:"18px 20px", marginBottom:10, boxShadow:"0 1px 3px rgba(0,0,0,0.04)" }}>
