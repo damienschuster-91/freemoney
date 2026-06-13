@@ -1,0 +1,700 @@
+URL AUDIT REPORT — 2026-03-25T22:26:53.645Z
+======================================================================
+
+SUMMARY
+  Total URLs checked:  321
+  OK (2xx):            273
+  OK via redirect:     121
+  Broken:              48
+
+CLIENT_ERR_400 (3)
+──────────────────────────────────────────────────
+  [SCH] Foot Locker Scholar Athletes
+  URL: https://www.footlocker.com/company/scholar-athletes.html
+
+  [SCH] Tailhook Educational Foundation Scholarship
+  URL: https://www.tailhook.net/scholarship.htm
+
+  [LOCAL/FL] Cape Coral Community Foundation
+  URL: https://www.capecoralcf.org/scholarship-funds.html
+  Hops: 301 -> https://www.charitablecommunity.org/scholarship-funds.html
+
+CLIENT_ERR_403 (11)
+──────────────────────────────────────────────────
+  [SCH] Cal Grant (California)
+  URL: https://www.csac.ca.gov/cal-grants
+
+  [SCH] AmeriCorps Education Award
+  URL: https://americorps.gov
+
+  [SCH] Navy / Marine NROTC Scholarship
+  URL: https://www.nrotc.navy.mil
+
+  [SCH] Air Force ROTC Scholarship
+  URL: https://www.afrotc.com/scholarships
+
+  [SCH] AFCEA ROTC Scholarship
+  URL: https://www.afcea.org/scholarships
+  Hops: 301 -> https://www.afcea.org/scholarships/
+
+  [SCH] National Association of Black Journalists
+  URL: https://www.nabj.org/scholarships
+
+  [SCH] Health Resources & Services Administration Scholarships
+  URL: https://bhw.hrsa.gov/scholarships-loans
+
+  [SCH] Niche $25,000 No Essay Scholarship
+  URL: https://www.niche.com/colleges/scholarships/no-essay-scholarship
+
+  [SCH] Epilepsy Foundation Scholarship
+  URL: https://www.epilepsy.com/scholarships
+
+  [SCH] GoodRx Healthcare Equity Scholarship
+  URL: https://www.goodrx.com/hc/education/healthcare-equity-scholarship
+
+  [SCH] GMiS STEM Scholarship
+  URL: https://gmis.org
+
+CONN_ERROR (28)
+──────────────────────────────────────────────────
+  [SCH] Society of Women Engineers Scholarship
+  URL: https://scholarships.swe.org
+  Error: getaddrinfo ENOTFOUND scholarships.swe.org
+
+  [SCH] Society of Women Engineers Reentry Scholarship
+  URL: https://scholarships.swe.org
+  Error: getaddrinfo ENOTFOUND scholarships.swe.org
+
+  [SCH] Zell Miller Scholarship (GA)
+  URL: https://www.gsfc.org/HOPE
+  Error: certificate has expired
+
+  [SCH] Fontana Transport Inc. Scholarship
+  URL: https://www.fontanatransport.com
+  Error: getaddrinfo ENOTFOUND www.fontanatransport.com
+
+  [SCH] Wendy's High School Heisman Award
+  URL: https://wendyshighschoolheisman.com
+  Error: Hostname/IP does not match certificate's altnames: Host: wendyshighschoolheisman.com. is not in the cert's altnames: DNS:www.wendyshighschoolheisman.com
+
+  [SCH] CDW Foundation Scholarship
+  URL: https://www.cdwfoundation.org
+  Error: getaddrinfo ENOTFOUND www.cdwfoundation.org
+
+  [SCH] Epsilon Sigma Alpha Foundation Scholarship
+  URL: https://esaintl.com/esaf/scholarships
+  Error: getaddrinfo ENOTFOUND esaintl.com
+
+  [SCH] Joseph Shinoda Memorial Scholarship
+  URL: https://www.shinodafoundation.org
+  Error: getaddrinfo ENOTFOUND www.shinodafoundation.org
+
+  [SCH] American Quarter Horse Foundation Scholarship
+  URL: https://www.aqha.com/foundation-scholarships
+  Error: unable to verify the first certificate; if the root CA is installed locally, try running Node.js with --use-system-ca
+
+  [SCH] International Foodservice Editorial Council
+  URL: https://ifeconline.com/scholarships
+  Error: Hostname/IP does not match certificate's altnames: Host: ifeconline.com. is not in the cert's altnames: DNS:nxcli.net, DNS:*.au-south-1.nxcli.net, DNS:*.mynexcess.site, DNS:*.nl-west-1.nxcli.net, DNS:*.nxcli.io, DNS:*.nxcli.net, DNS:*.uk-south-2.nxcli.net, DNS:*.us-midwest-1.nxcli.net, DNS:*.us-midwest-2.nxcli.net, DNS:*.us-south-1.nxcli.net, DNS:*.us-west-1.nxcli.net, DNS:*.us-west-2.nxcli.net
+
+  [SCH] Polish American Club of North Jersey Scholarship
+  URL: https://www.polishamericanclub.org
+  Error: getaddrinfo ENOTFOUND www.polishamericanclub.org
+
+  [SCH] Sertoma Scholarship for Hard of Hearing or Deaf
+  URL: https://sertoma.org/scholarships
+  Error: Hostname/IP does not match certificate's altnames: Host: sertoma.org. is not in the cert's altnames: DNS:www.sertoma.org
+
+  [SCH] National High School Poetry Contest
+  URL: https://www.poetrysociety.org
+  Error: Hostname/IP does not match certificate's altnames: Host: www.poetrysociety.org. is not in the cert's altnames: DNS:poetrysociety.org
+
+  [SCH] Business and Professional Women's Foundation
+  URL: https://bpwfoundation.org/education-equity-fund
+  Error: Hostname/IP does not match certificate's altnames: Host: bpwfoundation.org. is not in the cert's altnames: DNS:*.bluehost.com, DNS:bluehost.com
+
+  [SCH] Stephen Phillips Memorial Scholarship
+  URL: https://www.s-p-m-f.org
+  Error: getaddrinfo ENOTFOUND www.s-p-m-f.org
+
+  [SCH] Evans Scholars Program
+  URL: https://www.wgaesf.org/evans-scholars-program
+  Error: unable to verify the first certificate; if the root CA is installed locally, try running Node.js with --use-system-ca
+
+  [SCH] KFC Colonel's Scholars Scholarship
+  URL: https://kfcscholars.org
+  Error: socket hang up
+
+  [LOCAL/MS] Community Foundation for Mississippi
+  URL: https://www.cfmiss.org/scholarships
+  Error: getaddrinfo ENOTFOUND www.cfmiss.org
+
+  [LOCAL/NJ] Princeton Area Community Foundation
+  URL: https://www.pacfnj.org/scholarships
+  Error: getaddrinfo ENOTFOUND www.pacfnj.org
+
+  [LOCAL/UT] Community Foundation of Utah
+  URL: https://www.cfutah.org/scholarships
+  Error: getaddrinfo ENOTFOUND www.cfutah.org
+
+  [LOCAL/AL] Alabama Power Foundation
+  URL: https://www.alabamapowerfoundation.com/scholarships
+  Error: getaddrinfo ENOTFOUND www.alabamapowerfoundation.com
+
+  [LOCAL/DE] Crystal Trust Foundation
+  URL: https://www.crystaltrust.org
+  Error: getaddrinfo ENOTFOUND www.crystaltrust.org
+
+  [LOCAL/HI] Atherton Family Foundation
+  URL: https://www.athertonhawaii.org
+  Error: getaddrinfo ENOTFOUND www.athertonhawaii.org
+
+  [LOCAL/IL] Community Foundation of the Fox River Valley
+  URL: https://www.cffoxrivervalley.org/scholarships
+  Error: getaddrinfo ENOTFOUND www.cffoxrivervalley.org
+
+  [LOCAL/LA] Community Foundation of Northwest Louisiana
+  URL: https://cfnwla.org/scholarships
+  Error: getaddrinfo ENOTFOUND cfnwla.org
+
+  [LOCAL/MT] Billings Community Foundation
+  URL: https://www.billingscf.org/scholarships
+  Error: getaddrinfo ENOTFOUND www.billingscf.org
+
+  [LOCAL/NY] Community Foundation of Herkimer and Oneida Counties
+  URL: https://www.cfhoc.org/scholarships
+  Error: getaddrinfo ENOTFOUND www.cfhoc.org
+
+  [LOCAL/NY] Long Island Community Foundation
+  URL: https://www.licf.org/scholarships
+  Error: Hostname/IP does not match certificate's altnames: Host: www.licf.org. is not in the cert's altnames: DNS:licf.org
+
+  [LOCAL/NV] Community Foundation of Northern Nevada
+  URL: https://www.cfnn.org/scholarships
+  Error: write EPROTO 005071DB01000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:../deps/openssl/openssl/ssl/record/rec_layer_s3.c:918:SSL alert number 80
+
+
+SERVER_ERR_500 (1)
+──────────────────────────────────────────────────
+  [LOCAL/CO] Denver Foundation
+  URL: https://www.denverfoundation.org/scholarships
+  Hops: 301 -> https://denverfoundation.org/scholarships | 301 -> https://denverfoundation.org/scholarships/
+
+SERVER_ERR_526 (1)
+──────────────────────────────────────────────────
+  [SCH] Burger King McLamore Foundation Scholarship
+  URL: https://bkscholars.csfa.net
+
+TIMEOUT (4)
+──────────────────────────────────────────────────
+  [SCH] USDA 1890 National Scholars Program
+  URL: https://www.usda.gov
+
+  [SCH] Walmart Associate Scholarship
+  URL: https://foundation.walmart.com
+
+  [SCH] Prudential Spirit of Community Award
+  URL: https://spirit.prudential.com
+
+  [LOCAL/WI] Madison Community Foundation
+  URL: https://www.madisoncf.org/scholarships
+
+
+REDIRECTS (OK but URL has moved)
+──────────────────────────────────────────────────
+  [SCH] Elks Most Valuable Student
+  From: https://www.elks.org/scholars
+  To:   https://www.elks.org/scholars/
+
+  [SCH] Regeneron Science Talent Search
+  From: https://www.regeneron.com/science-talent-search
+  To:   https://www.regeneron.com/responsibility/fueling-stem-innovators/sts
+
+  [SCH] Jackie Robinson Foundation Scholarship
+  From: https://www.jackierobinson.org/apply
+  To:   https://jackierobinson.org/apply/
+
+  [SCH] Texas TEXAS Grant
+  From: https://www.collegeforalltexans.com
+  To:   https://www.mytexasfuture.org/middle-high-school/college-for-all-texans-content-has-moved/
+
+  [SCH] Florida Bright Futures Scholarship
+  From: https://www.floridastudentfinancialaidsg.org
+  To:   https://www.floridastudentfinancialaidsg.org/SAPHome/SAPHome?url=home
+
+  [SCH] Boettcher Foundation Scholarship (CO)
+  From: https://boettcherfoundation.org/scholars
+  To:   https://boettcherfoundation.org/give/scholars-fund-qa/
+
+  [SCH] New York TAP Grant
+  From: https://www.hesc.ny.gov
+  To:   https://hesc.ny.gov/
+
+  [SCH] Ron Brown Scholar Program
+  From: https://www.ronbrown.org
+  To:   https://ronbrown.org/
+
+  [SCH] Horatio Alger Scholarship
+  From: https://scholars.horatioalger.org
+  To:   https://horatioalger.org/scholarships-and-services/
+
+  [SCH] Horatio Alger Career & Technical Award
+  From: https://scholars.horatioalger.org
+  To:   https://horatioalger.org/scholarships-and-services/
+
+  [SCH] NSF REU
+  From: https://www.nsf.gov/crssprgm/reu
+  To:   https://www.nsf.gov/funding/initiatives/reu
+
+  [SCH] Soros Fellowship for New Americans
+  From: https://www.pdsoros.org
+  To:   https://pdsoros.org/
+
+  [SCH] Mike Rowe Works Foundation Scholarship
+  From: https://www.mikeroweworks.org/scholarship
+  To:   https://mikeroweworks.org/scholarship/?utm_source=YTP
+
+  [SCH] Plumbers & Pipefitters (UA) Apprenticeship
+  From: https://www.ua.org/apprenticeship
+  To:   https://ua.org/apprenticeship/
+
+  [SCH] NIH Undergraduate Scholarship
+  From: https://www.training.nih.gov/programs/ugsp
+  To:   https://www.training.nih.gov/research-training/pb/ugsp/
+
+  [SCH] IBEW Electrical Apprenticeship
+  From: https://www.ibew.org/Apprenticeship
+  To:   https://ibew.org/apprenticeships-offer-women-a-nontraditional-path-to-the-middle-class/
+
+  [SCH] Carpenters International Training Fund
+  From: https://www.carpenters.org/training
+  To:   https://www.carpenters.org/training-center/
+
+  [SCH] TechForce Automotive Scholarship
+  From: https://www.techforce.org/scholarships
+  To:   https://techforce.org/scholarships/
+
+  [SCH] Army ROTC Scholarship
+  From: https://www.goarmy.com/rotc/scholarships.html
+  To:   https://www.goarmy.com/careers-and-jobs/find-your-path/army-officers/rotc/scholarships
+
+  [SCH] NASA Internship & Scholarship
+  From: https://intern.nasa.gov
+  To:   https://www.nasa.gov/learning-resources/internship-programs/
+
+  [SCH] Tylenol Future Care Scholarship
+  From: https://www.tylenol.com/news/scholarship
+  To:   https://www.tylenol.com/tylenol-future-care-scholarship
+
+  [SCH] AES Engineering Scholarship
+  From: https://www.aesengineers.com/scholarships.htm
+  To:   https://www.aesengineers.com/scholarships.php
+
+  [SCH] Congressional Black Caucus Foundation
+  From: https://cbcfinc.org/scholarships
+  To:   https://www.cbcfinc.org/programs/scholarships/
+
+  [SCH] Regeneron ISEF
+  From: https://www.societyforscience.org/isef
+  To:   https://www.societyforscience.org/isef/
+
+  [SCH] American Legion Legacy Scholarship
+  From: https://www.legion.org/scholarships
+  To:   https://www.legion.org/get-involved/scholarships
+
+  [SCH] Newman Civic Fellow Award
+  From: https://compact.org/newman-civic-fellows
+  To:   https://compact.org/current-programs/student-programming/newman-civic-fellowship/newman-civic-fellows
+
+  [SCH] P. Buckley Moss Foundation Scholarship
+  From: https://mossfoundation.org
+  To:   https://www.mossfoundation.org/
+
+  [SCH] American Chemical Society (ACS) Scholars
+  From: https://www.acs.org/scholars
+  To:   https://www.acs.org/education/acs-undergraduate-scholarship.html
+
+  [SCH] Atlas Shrugged Essay Contest
+  From: https://www.aynrand.org/students/essay-contests
+  To:   https://aynrand.org/students/essay-contests/
+
+  [SCH] Anthem Essay Contest
+  From: https://www.aynrand.org/students/essay-contests
+  To:   https://aynrand.org/students/essay-contests/
+
+  [SCH] United Parcel Service (UPS) Scholarship
+  From: https://www.theupsstore.com/tools/scholarship
+  To:   https://www.theupsstore.com/en-us/page-not-found
+
+  [SCH] Society of Exploration Geophysicists Scholarship
+  From: https://seg.org/scholarships
+  To:   https://seg.org/programs/student-programs/scholarships/
+
+  [SCH] Raytheon / RTX STEM Scholarship
+  From: https://www.rtx.com/raytheon/who-we-are/raytheon-technologies-foundation
+  To:   https://www.rtx.com/raytheon/404?aspxerrorpath=https://www.rtx.com/raytheon/who-we-are/raytheon-technologies-foundation
+
+  [SCH] Davidson Institute THINK Scholarship
+  From: https://www.davidsongifted.org/think
+  To:   https://www.davidsongifted.org/gifted-programs/summer-opportunities/davidson-summer-programs/
+
+  [SCH] Pilot Flying J Scholarship
+  From: https://www.pilotflyingj.com
+  To:   https://pilotcompany.com
+
+  [SCH] National Dairy Shrine Scholarship
+  From: https://www.dairyshrine.org
+  To:   https://dairyshrine.org/
+
+  [SCH] United Methodist Church Scholarship
+  From: https://www.gbhem.org/scholarships
+  To:   https://www.gbhem.org/scholarships/
+
+  [SCH] Landscape Architecture Foundation Scholarship
+  From: https://www.lafoundation.org/scholarships
+  To:   https://www.lafoundation.org/what-we-do/scholarships/student-scholarships
+
+  [SCH] Golden Key International Honour Society
+  From: https://goldenkey.org/scholarships
+  To:   https://www.goldenkey.org/scholarships/
+
+  [SCH] Don Sahli-Kathy Woodall SEIU Scholarship
+  From: https://www.seiu.org/scholarships
+  To:   https://www.seiu.org/error-page/404/
+
+  [SCH] Automotive Women's Alliance Foundation
+  From: https://www.awafoundation.org
+  To:   https://awafoundation.org:443/
+
+  [SCH] Harness Tracks of America Scholarship
+  From: https://www.harnesslink.com
+  To:   https://harnesslink.com/
+
+  [SCH] PRSA Foundation Diversity Scholarship
+  From: https://prsafoundation.org
+  To:   https://www.prsafoundation.org/
+
+  [SCH] National Funeral Directors Association Scholarship
+  From: https://www.nfda.org/education/scholarships
+  To:   https://nfda.org/education/scholarships
+
+  [SCH] Indian Health Service Scholarship
+  From: https://www.ihs.gov/scholarship
+  To:   https://www.ihs.gov/scholarship/
+
+  [SCH] National Italian American Foundation Scholarship
+  From: https://www.niaf.org/scholarships
+  To:   https://www.niaf.org/programs/scholarships/
+
+  [SCH] IFMA Foundation Scholarship
+  From: https://foundation.ifma.org/scholarships
+  To:   https://foundation.ifma.org/students-academics/scholarships/
+
+  [SCH] Charles B. Rangel International Affairs Program
+  From: https://www.rangelprogram.org
+  To:   https://rangelprogram.org/
+
+  [SCH] American Foreign Service Association Scholarship
+  From: https://www.afsa.org/scholarships
+  To:   https://afsa.org/afsa-scholarships
+
+  [SCH] Sallie Mae $2,000 Monthly Scholarship
+  From: https://www.sallie.com/resources/scholarships
+  To:   https://www.sallie.com/resources/tag/scholarships
+
+  [SCH] NAWIC Founders' Scholarship
+  From: https://www.nawic.org
+  To:   https://nawic.org/
+
+  [SCH] CareerFitter Scholarship
+  From: https://www.careerfitter.com/free_test/careerScholarship
+  To:   https://www.careerfitter.com/free_test/careerscholarship
+
+  [SCH] SoFi $2,500 Monthly Scholarship
+  From: https://www.sofi.com/scholarship
+  To:   https://www.sofi.com/scholarship/
+
+  [SCH] American Council of the Blind Scholarship
+  From: https://acb.org/scholarships
+  To:   https://www.acb.org/scholarships
+
+  [SCH] DoSomething.org Scholarships
+  From: https://www.dosomething.org/us/about/easy-scholarships
+  To:   https://dosomething.org:443/what-we-do
+
+  [SCH] CHADD Scholarship (ADHD)
+  From: https://chadd.org/scholarship
+  To:   https://chadd.org/scholarships/
+
+  [SCH] Patient Advocate Foundation Scholarship
+  From: https://www.patientadvocate.org/scholarships
+  To:   https://www.patientadvocate.org/connect-with-services/apply-for-a-scholarship/
+
+  [SCH] Diabetes Scholars Foundation Scholarship
+  From: https://www.diabetesscholars.org
+  To:   https://beyondtype1.org/beyond-scholars/
+
+  [SCH] Alexander Graham Bell Assoc. Scholarship
+  From: https://www.agbell.org/scholarships
+  To:   https://agbell.org/2020/01/24/scholarships-change-lives/
+
+  [SCH] National Federation of the Blind Scholarship
+  From: https://nfb.org/scholarships
+  To:   https://nfb.org/programs-services/scholarships-and-awards/scholarship-program
+
+  [SCH] Make It With Wool Competition
+  From: https://www.nationalmakeitwithwool.com
+  To:   https://domains.atom.com/lpd/name/www.nationalmakeitwithwool.com
+
+  [SCH] AAUW American Fellowships
+  From: https://www.aauw.org/resources/programs/fellowships-grants
+  To:   https://www.aauw.org/resources/programs/fellowships-grants/
+
+  [SCH] P.E.O. Scholar Award
+  From: https://www.peointernational.org/about-peo-scholar-awards
+  To:   https://www.peointernational.org/educational-support/scholar-awards/
+
+  [SCH] NSHSS Scholar Program
+  From: https://www.nshss.org/scholarships
+  To:   https://www.nshss.org/scholarships/
+
+  [SCH] RISE UP Bullying Prevention Scholarship
+  From: https://www.humanityrising.org
+  To:   https://humanityrising.org/
+
+  [SCH] National Restaurant Association Educational Foundation
+  From: https://www.chooserestaurants.org
+  To:   https://chooserestaurants.org/
+
+  [LOCAL/TX] Communities Foundation of Texas
+  From: https://www.cftexas.org/scholarships
+  To:   https://www.cftexas.org/scholarships/
+
+  [LOCAL/NY] Rochester Area Community Foundation
+  From: https://www.racf.org/scholarships
+  To:   https://www.racf.org/scholarships/search-for-scholarships/
+
+  [LOCAL/NY] Community Foundation for the Greater Capital Region
+  From: https://www.cfgcr.org/scholarships
+  To:   https://cfgcr.org/scholarships/
+
+  [LOCAL/OH] Columbus Foundation
+  From: https://www.columbusfoundation.org/scholarships
+  To:   https://www.columbusfoundation.org/students/scholarships
+
+  [LOCAL/CA] Silicon Valley Community Foundation
+  From: https://www.siliconvalleycf.org/scholarships
+  To:   https://www.svcf.org/scholarships
+
+  [SCH] Gravure Education Foundation Scholarship
+  From: https://www.gaa.org
+  To:   https://www.rolltoroll.org/printing-committee
+
+  [LOCAL/GA] Community Foundation for Greater Atlanta
+  From: https://cfgreateratlanta.org/scholarships
+  To:   https://cfgreateratlanta.org/scholarships/
+
+  [LOCAL/NE] Nebraska Community Foundation
+  From: https://nebcommfound.org/scholarships
+  To:   https://www.nebcommfound.org/scholarships/
+
+  [LOCAL/ME] Maine Community Foundation
+  From: https://www.mainecf.org/scholarships
+  To:   https://www.mainecf.org/find-a-scholarship/
+
+  [LOCAL/WA] Seattle Foundation
+  From: https://www.seattlefoundation.org/scholarships
+  To:   https://www.seattlefoundation.org/current-scholarship-opportunities/
+
+  [LOCAL/OR] Oregon Community Foundation
+  From: https://oregoncf.org/scholarships
+  To:   https://oregoncf.org/grants-and-scholarships/scholarships
+
+  [LOCAL/MO] Greater Kansas City Community Foundation
+  From: https://www.growyourgiving.org/scholarships
+  To:   https://www.growyourgiving.org/resources/scholarships/
+
+  [LOCAL/KS] Kansas City Community Foundation
+  From: https://www.growyourgiving.org/scholarships
+  To:   https://www.growyourgiving.org/resources/scholarships/
+
+  [LOCAL/AZ] Arizona Community Foundation
+  From: https://www.azfoundation.org/scholarships
+  To:   https://www.azfoundation.org/scholarship-seekers/
+
+  [LOCAL/KY] Community Foundation of Louisville
+  From: https://www.cflouisville.org/scholarships
+  To:   https://www.cflouisville.org/scholarships/
+
+  [LOCAL/AR] Arkansas Community Foundation
+  From: https://www.arcf.org/scholarships
+  To:   https://www.arcf.org/apply/scholarships/
+
+  [LOCAL/AK] Alaska Community Foundation
+  From: https://alaskacf.org/scholarships
+  To:   https://alaskacf.org/scholarships/
+
+  [LOCAL/RI] Rhode Island Foundation
+  From: https://rifoundation.org/scholarships
+  To:   https://rifoundation.org/grants-scholarships/browse-scholarships
+
+  [LOCAL/PA] Philadelphia Foundation
+  From: https://www.philafound.org/scholarships
+  To:   https://www.philafound.org/scholarships/
+
+  [LOCAL/IN] Community Foundation of Greater Fort Wayne
+  From: https://cfgfw.org/scholarships
+  To:   https://cfgfw.org/scholarships/
+
+  [LOCAL/IN] Central Indiana Community Foundation
+  From: https://www.cicf.org/scholarships
+  To:   https://www.cicf.org/scholarships/
+
+  [LOCAL/MT] Montana Community Foundation
+  From: https://www.mtcf.org/scholarships
+  To:   https://mtcf.org/scholarships/about-scholarships
+
+  [LOCAL/WY] Wyoming Community Foundation
+  From: https://www.wycf.org/scholarships
+  To:   https://wycf.org/scholarships/
+
+  [LOCAL/MD] Baltimore Community Foundation
+  From: https://www.bcf.org/scholarships
+  To:   https://www.bcf.org/scholarships/
+
+  [LOCAL/NH] New Hampshire Charitable Foundation
+  From: https://www.nhcf.org/scholarships
+  To:   https://www.nhcf.org/how-can-we-help-you/apply-for-a-scholarship/
+
+  [LOCAL/DE] Delaware Community Foundation
+  From: https://www.delcf.org/scholarships
+  To:   https://delcf.org/scholarships/
+
+  [LOCAL/NJ] Community Foundation of New Jersey
+  From: https://cfnj.org/scholarships
+  To:   https://cfnj.org/scholarships-not-universal-application/
+
+  [LOCAL/OK] Oklahoma City Community Foundation
+  From: https://www.occf.org/scholarships
+  To:   https://occf.org/scholarships/
+
+  [LOCAL/SC] Central Carolina Community Foundation
+  From: https://www.yourfoundation.org/scholarships
+  To:   https://www.yourfoundation.org/grants-scholarships/scholarships/
+
+  [LOCAL/AZ] Community Foundation for Southern Arizona
+  From: https://www.cfsaz.org/scholarships
+  To:   https://cfsaz.org/scholarships/
+
+  [LOCAL/CT] Connecticut Community Foundation
+  From: https://www.conncf.org/scholarships
+  To:   https://conncf.org/scholarships/
+
+  [LOCAL/LA] Greater New Orleans Foundation
+  From: https://www.gnof.org/scholarships
+  To:   https://www.gnof.org/nonprofits/grants/scholarships/
+
+  [LOCAL/MA] Community Foundation of Western Massachusetts
+  From: https://communityfoundation.org/scholarships
+  To:   https://communityfoundation.org/students/scholarships/
+
+  [LOCAL/KY] Blue Grass Community Foundation
+  From: https://www.bgcf.org/scholarships
+  To:   https://www.bgcf.org/scholarships/
+
+  [LOCAL/FL] Miami Foundation
+  From: https://miamifoundation.org/scholarships
+  To:   https://miamifoundation.org/scholarships/
+
+  [LOCAL/MI] Kalamazoo Community Foundation
+  From: https://www.kalfound.org/scholarships
+  To:   https://kzcf.org/scholarships/
+
+  [LOCAL/MS] Community Foundation of Greater Jackson
+  From: https://cfgreaterjackson.org/scholarships
+  To:   https://cfgreaterjackson.org/pagenotfound
+
+  [LOCAL/MI] Grand Rapids Community Foundation
+  From: https://www.grfoundation.org/scholarships
+  To:   https://www.grfoundation.org/apply-for-scholarships
+
+  [LOCAL/MO] Community Foundation of the Ozarks
+  From: https://www.cfozarks.org/scholarships
+  To:   https://www.cfozarks.org/what-we-do/scholarships
+
+  [LOCAL/NH] Foundation for Seacoast Health
+  From: https://www.ffsh.org/scholarships
+  To:   https://www.foundationforseacoasthealth.org/
+
+  [LOCAL/MI] Community Foundation for Southeast Michigan
+  From: https://cfsem.org/scholarships
+  To:   https://cfsem.org/scholarships/
+
+  [LOCAL/OH] Toledo Community Foundation
+  From: https://www.toledocf.org/scholarships
+  To:   https://toledocf.org/scholarships
+
+  [LOCAL/OK] Tulsa Community Foundation
+  From: https://www.tulsacf.org/scholarships
+  To:   https://tulsacf.org/scholarships/
+
+  [LOCAL/SD] Community Foundation of the Black Hills
+  From: https://bhacf.org/scholarships
+  To:   https://bhacf.org/scholarships/
+
+  [LOCAL/TN] Community Foundation of Greater Memphis
+  From: https://www.cfgm.org/scholarships
+  To:   https://cfgm.org/grants-scholarships/scholarships/
+
+  [LOCAL/TX] San Antonio Area Foundation
+  From: https://www.saafdn.org/scholarships
+  To:   https://saafdn.org/scholarships/
+
+  [LOCAL/UT] Daniels Fund
+  From: https://www.danielsfund.org/scholarships
+  To:   https://danielsfund.org/our-work/scholarships/
+
+  [LOCAL/NM] Albuquerque Community Foundation
+  From: https://www.abqcf.org/scholarships
+  To:   https://abqcf.org/scholarships/
+
+  [LOCAL/MS] Mississippi Gulf Coast Community Foundation
+  From: https://www.mgccf.org/scholarships
+  To:   https://www.mgccf.org/available-scholarships/
+
+  [LOCAL/VA] Hampton Roads Community Foundation
+  From: https://www.hamptonroadscf.org/scholarships
+  To:   https://hamptonroadscf.org/scholarships/scholarships-at-hampton-roads-community-foundation
+
+  [LOCAL/NC] Triangle Community Foundation
+  From: https://www.trianglecf.org/scholarships
+  To:   https://trianglecf.org/apply/scholarships-for-students/
+
+  [LOCAL/WV] West Virginia Community Foundation
+  From: https://www.wvcf.com/scholarships
+  To:   https://wvcf.org/grants-scholarships/scholarships/
+
+  [LOCAL/AL] The Fayette Community Foundation
+  From: https://www.faycofoundation.com/scholarships
+  To:   https://greaterfayette.com/scholarships/
+
+  [LOCAL/GA] The Coweta Community Foundation Inc
+  From: https://cowetafoundation.org/grants/
+  To:   https://caringcommunitiesfoundation.org/grants/
+
+  [LOCAL/KS] Central Kansas Community Foundation
+  From: https://centralkansascfscholarships.communityforce.com/
+  To:   https://centralkansascfscholarships.communityforce.com/Funds/Search.aspx
+
+  [LOCAL/LA] Community Foundation Of Acadiana
+  From: https://www.cfacadiana.org/applications
+  To:   https://www.cfacadiana.org/funds-and-impact/grants-scholarships-applications/
+
+  [LOCAL/IL] Dupage Community Foundation
+  From: https://dupagefoundation.org/who-we-are/foundation-funds.html/title/scholarship-funds
+  To:   https://www.dupagefoundation.org/foundation-funds/scholarship-funds/
+
+  [LOCAL/WI] Waukesha County Community Foundation Inc
+  From: https://waukeshafoundation.org/overview-scholarships/scholarship-offerings/
+  To:   https://waukeshafoundation.org/overview-scholarships/scholarship-opportunities/
+
