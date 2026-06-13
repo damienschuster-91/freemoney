@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { SCHOLARSHIPS, LOCAL_DATA } from "@/lib/data"
+import FounderCard from "@/components/FounderCard"
 
 export const metadata: Metadata = {
   title: { absolute: "About | LocalScholarships.org" },
@@ -45,6 +46,10 @@ export default function AboutPage() {
               <div style={{ fontSize: 12, color: "#8a9abb", fontWeight: 600 }}>{stat.label}</div>
             </div>
           ))}
+        </div>
+
+        <div style={{ marginBottom: 32 }}>
+          <FounderCard />
         </div>
 
         <article className="blog-article">
