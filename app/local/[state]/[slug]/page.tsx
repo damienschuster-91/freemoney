@@ -371,6 +371,14 @@ function FoundationPage({ params }: { params: { state: string; slug: string } })
             Who Can Apply
           </div>
           <p style={{ margin:0, fontSize:14, color:"#334155", lineHeight:1.7 }}>{f.eligibility}</p>
+          {f.related_post && (
+            <p style={{ margin:"12px 0 0", fontSize:13, color:"#475569", lineHeight:1.6 }}>
+              This foundation also participates in the Lilly Endowment Community Scholarship — see our{" "}
+              <Link href={f.related_post.url} style={{ color:"#2563eb", fontWeight:600, textDecoration:"none" }}>
+                full guide to Indiana&apos;s hidden full-ride
+              </Link>.
+            </p>
+          )}
         </div>
 
         {/* ── 4a. NOTES / HOW IT WORKS ── */}

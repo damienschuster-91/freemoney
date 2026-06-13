@@ -36,4 +36,4 @@ A few things to know going in:
 - **You have to live in the county where you're applying** and be on track to graduate from an accredited Indiana high school, headed to an eligible Indiana college or university. Many counties also set a minimum GPA and weigh financial need, so read your foundation's page carefully.
 - **Deadlines are early.** Most county applications open in summer and close somewhere between late August and mid-September — well before most other scholarship deadlines. Don't wait too long to apply!
 
-Looking for more scholarships with less competition? [Browse local scholarships in your state](https://localscholarships.org/local) — community foundation awards most students never find.
+Looking for more Indiana scholarships with less competition? [Browse Indiana's community foundations](https://localscholarships.org/local/in) — including the [Community Foundation of Greater Fort Wayne](https://localscholarships.org/local/in/community-foundation-of-greater-fort-wayne) and dozens of others that administer this award and many more local scholarships most students never find.
