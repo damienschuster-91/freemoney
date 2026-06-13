@@ -3,7 +3,7 @@ export default function FounderCard() {
     <div className="founder-card">
       <img
         className="founder-photo"
-        src="/damien-schuster.png"
+        src="/damien.png"
         alt="Damien Schuster, founder of LocalScholarships.org"
         width={96}
         height={96}
